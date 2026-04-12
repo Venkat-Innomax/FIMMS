@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 
 import '../features/auth/login_page.dart';
 import '../features/collector_dash/collector_dashboard_page.dart';
+import '../features/compliance/compliance_portal_page.dart';
 import '../features/collector_dash/widgets/facility_detail_page.dart';
 import '../features/field_officer/inspection_page.dart';
 import '../features/field_officer/officer_home_page.dart';
@@ -117,12 +118,7 @@ final routerProvider = Provider<GoRouter>((ref) {
 
       GoRoute(
         path: '/compliance',
-        builder: (context, state) => const _StubPage(
-          title: 'Compliance Portal',
-          icon: Icons.verified_user,
-          description: 'View inspection remarks, upload rectification evidence, '
-              'respond to observations, track pending compliance items',
-        ),
+        builder: (context, state) => const CompliancePortalPage(),
       ),
 
       // ── Grievance-Side ───────────────────────────────────────
