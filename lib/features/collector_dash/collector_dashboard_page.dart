@@ -11,11 +11,14 @@ import '../../models/inspection.dart';
 import '../../models/mandal.dart';
 import '../../models/user.dart';
 import '../shared_widgets/responsive_scaffold.dart';
+import 'widgets/alerts_panel.dart';
 import 'widgets/district_map.dart';
 import 'widgets/facility_popup.dart';
 import 'widgets/filter_panel.dart';
 import 'widgets/mandal_bars.dart';
+import 'widgets/reports_table.dart';
 import 'widgets/stat_card_row.dart';
+import 'widgets/trend_chart.dart';
 
 class CollectorDashboardPage extends ConsumerStatefulWidget {
   final String? mandalScopeId;
@@ -32,9 +35,12 @@ class CollectorDashboardPage extends ConsumerStatefulWidget {
       _CollectorDashboardPageState();
 }
 
+enum _ViewMode { map, reports, trends }
+
 class _CollectorDashboardPageState
     extends ConsumerState<CollectorDashboardPage> {
   Facility? _selected;
+  _ViewMode _viewMode = _ViewMode.map;
 
   @override
   Widget build(BuildContext context) {
@@ -181,11 +187,62 @@ class _CollectorDashboardPageState
 
     final isMobile = Responsive.isMobile(context);
 
+    final alertsPanel = widget.mandalScopeId == null
+        ? Padding(
+            padding: const EdgeInsets.fromLTRB(24, 8, 24, 0),
+            child: AlertsPanel(
+              facilities: filtered,
+              latestByFacility: insByFacility,
+            ),
+          )
+        : const SizedBox.shrink();
+
+    final viewToggle = widget.mandalScopeId == null
+        ? Padding(
+            padding: const EdgeInsets.fromLTRB(24, 4, 24, 0),
+            child: SegmentedButton<_ViewMode>(
+              segments: const [
+                ButtonSegment(
+                    value: _ViewMode.map,
+                    icon: Icon(Icons.map, size: 16),
+                    label: Text('Map')),
+                ButtonSegment(
+                    value: _ViewMode.reports,
+                    icon: Icon(Icons.table_chart, size: 16),
+                    label: Text('Reports')),
+                ButtonSegment(
+                    value: _ViewMode.trends,
+                    icon: Icon(Icons.trending_up, size: 16),
+                    label: Text('Trends')),
+              ],
+              selected: {_viewMode},
+              onSelectionChanged: (s) =>
+                  setState(() => _viewMode = s.first),
+            ),
+          )
+        : const SizedBox.shrink();
+
+    Widget mainContent;
+    switch (_viewMode) {
+      case _ViewMode.map:
+        mainContent = _mapStack(filtered, insByFacility, userById);
+      case _ViewMode.reports:
+        mainContent = ReportsTable(
+          inspections: inspections,
+          facilityMap: {for (final f in facilities) f.id: f},
+          userMap: userById,
+        );
+      case _ViewMode.trends:
+        mainContent = TrendChart(inspections: inspections);
+    }
+
     if (isMobile) {
       return SingleChildScrollView(
         child: Column(
           children: [
             statsRow,
+            alertsPanel,
+            viewToggle,
             Padding(
               padding: const EdgeInsets.all(16),
               child: const FilterPanel(),
@@ -194,7 +251,7 @@ class _CollectorDashboardPageState
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: SizedBox(
                 height: MediaQuery.sizeOf(context).height * 0.55,
-                child: _mapStack(filtered, insByFacility, userById),
+                child: mainContent,
               ),
             ),
             Padding(
@@ -213,6 +270,8 @@ class _CollectorDashboardPageState
     return Column(
       children: [
         statsRow,
+        alertsPanel,
+        viewToggle,
         Expanded(
           child: Padding(
             padding: const EdgeInsets.fromLTRB(24, 16, 24, 24),
@@ -239,9 +298,7 @@ class _CollectorDashboardPageState
                   ),
                 ),
                 const SizedBox(width: 16),
-                Expanded(
-                  child: _mapStack(filtered, insByFacility, userById),
-                ),
+                Expanded(child: mainContent),
               ],
             ),
           ),
