@@ -4,6 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../features/auth/login_page.dart';
+import '../features/grievance/grievance_portal_page.dart';
+import '../features/grievance_admin/grievance_admin_page.dart';
 import '../features/collector_dash/collector_dashboard_page.dart';
 import '../features/collector_dash/widgets/facility_detail_page.dart';
 import '../features/field_officer/inspection_page.dart';
@@ -129,21 +131,11 @@ final routerProvider = Provider<GoRouter>((ref) {
 
       GoRoute(
         path: '/grievance',
-        builder: (context, state) => const _StubPage(
-          title: 'Grievance Portal',
-          icon: Icons.report_problem,
-          description: 'Lodge complaint, upload evidence, track status, '
-              'receive updates',
-        ),
+        builder: (context, state) => const GrievancePortalPage(),
       ),
       GoRoute(
         path: '/grievance-admin',
-        builder: (context, state) => const _StubPage(
-          title: 'Grievance Admin',
-          icon: Icons.support_agent,
-          description: 'Intake, triage, assign complaints, merge duplicates, '
-              'escalate to district, mark resolved',
-        ),
+        builder: (context, state) => const GrievanceAdminPage(),
       ),
     ],
   );

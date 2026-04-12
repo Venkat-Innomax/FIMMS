@@ -11,6 +11,7 @@ import '../../models/inspection.dart';
 import '../../models/user.dart';
 import '../../services/mock_auth_service.dart';
 import '../shared_widgets/grade_chip.dart';
+import '../shared_widgets/notification_bell.dart';
 import '../shared_widgets/responsive_scaffold.dart';
 
 /// Three-tab shell for the Field Officer app: Assignments, History, Profile.
@@ -30,6 +31,7 @@ class _OfficerHomePageState extends ConsumerState<OfficerHomePage> {
 
     return ResponsiveScaffold(
       title: 'FIMMS — Field Officer',
+      actions: const [NotificationBell()],
       items: const [
         NavItem(
             label: 'Assignments',
