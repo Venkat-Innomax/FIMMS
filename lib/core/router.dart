@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../features/admin_dash/admin_dashboard_page.dart';
 import '../features/auth/login_page.dart';
 import '../features/collector_dash/collector_dashboard_page.dart';
 import '../features/collector_dash/widgets/facility_detail_page.dart';
@@ -10,6 +11,8 @@ import '../features/field_officer/inspection_page.dart';
 import '../features/field_officer/officer_home_page.dart';
 import '../features/field_officer/score_summary_page.dart';
 import '../features/mandal_dash/mandal_dashboard_page.dart';
+import '../features/nodal_dash/nodal_dashboard_page.dart';
+import '../features/supervisor_dash/supervisor_dashboard_page.dart';
 import '../models/user.dart';
 import '../services/mock_auth_service.dart';
 
@@ -67,20 +70,11 @@ final routerProvider = Provider<GoRouter>((ref) {
       ),
       GoRoute(
         path: '/nodal',
-        builder: (context, state) => const _StubPage(
-          title: 'Nodal Officer Dashboard',
-          icon: Icons.approval,
-          description: 'Escalation queue, non-compliant cases, inspection approval',
-        ),
+        builder: (context, state) => const NodalDashboardPage(),
       ),
       GoRoute(
         path: '/admin',
-        builder: (context, state) => const _StubPage(
-          title: 'Admin Dashboard',
-          icon: Icons.admin_panel_settings,
-          description: 'Facility master, user management, form builder, '
-              'assignment control, SLA monitoring',
-        ),
+        builder: (context, state) => const AdminDashboardPage(),
       ),
       GoRoute(
         path: '/mandal/:id',
@@ -89,11 +83,7 @@ final routerProvider = Provider<GoRouter>((ref) {
       ),
       GoRoute(
         path: '/supervisor',
-        builder: (context, state) => const _StubPage(
-          title: 'Inspection Supervisor Dashboard',
-          icon: Icons.rate_review,
-          description: 'Review queue, re-inspect orders, officer performance',
-        ),
+        builder: (context, state) => const SupervisorDashboardPage(),
       ),
       GoRoute(
         path: '/officer',
