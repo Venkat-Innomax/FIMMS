@@ -1,10 +1,19 @@
-/// Role hierarchy from spec §3.1 Government Internal Logins.
+/// Role hierarchy from spec §3.1–§3.3 Login Roles.
 enum Role {
+  // §3.1 Government Internal
   collector,
   admin, // District Inspection Cell Admin
   mandalAdmin, // Additional Collector / Nodal Officer
   mandalOfficer,
   fieldOfficer,
+  inspectionSupervisor, // Inspection Officer / Supervisor
+
+  // §3.2 Facility-Side
+  facilityAdmin, // Hostel Warden / Hospital Superintendent
+
+  // §3.3 Grievance-Side
+  publicUser, // Student / Parent / Guardian
+  grievanceOfficer, // Grievance Review Officer
 }
 
 extension RoleX on Role {
@@ -15,11 +24,19 @@ extension RoleX on Role {
       case Role.admin:
         return 'District Admin';
       case Role.mandalAdmin:
-        return 'Mandal Admin';
+        return 'Nodal Officer';
       case Role.mandalOfficer:
         return 'Mandal Officer';
       case Role.fieldOfficer:
         return 'Field Officer';
+      case Role.inspectionSupervisor:
+        return 'Inspection Supervisor';
+      case Role.facilityAdmin:
+        return 'Facility Admin';
+      case Role.publicUser:
+        return 'Public User';
+      case Role.grievanceOfficer:
+        return 'Grievance Officer';
     }
   }
 
@@ -35,6 +52,14 @@ extension RoleX on Role {
         return Role.mandalOfficer;
       case 'field_officer':
         return Role.fieldOfficer;
+      case 'inspection_supervisor':
+        return Role.inspectionSupervisor;
+      case 'facility_admin':
+        return Role.facilityAdmin;
+      case 'public_user':
+        return Role.publicUser;
+      case 'grievance_officer':
+        return Role.grievanceOfficer;
       default:
         throw ArgumentError('Unknown role: $value');
     }
@@ -47,6 +72,7 @@ class User {
   final String designation;
   final Role role;
   final String? mandalId;
+  final String? facilityId;
 
   const User({
     required this.id,
@@ -54,6 +80,7 @@ class User {
     required this.designation,
     required this.role,
     this.mandalId,
+    this.facilityId,
   });
 
   factory User.fromJson(Map<String, dynamic> json) {
@@ -63,6 +90,7 @@ class User {
       designation: json['designation'] as String? ?? '',
       role: RoleX.fromString(json['role'] as String),
       mandalId: json['mandal_id'] as String?,
+      facilityId: json['facility_id'] as String?,
     );
   }
 }

@@ -14,6 +14,20 @@
     "mandal_id": null
   },
   {
+    "id": "u_nodal",
+    "name": "Sri B. Ramesh Kumar",
+    "designation": "Additional Collector / Nodal Officer",
+    "role": "mandal_admin",
+    "mandal_id": null
+  },
+  {
+    "id": "u_supervisor",
+    "name": "Sri T. Narasimha Rao",
+    "designation": "Inspection Supervisor — Bhongir Zone",
+    "role": "inspection_supervisor",
+    "mandal_id": "bhongir"
+  },
+  {
     "id": "u_mandal_bhongir",
     "name": "Sri Venkat Reddy",
     "designation": "Mandal Officer — Bhongir",
@@ -61,5 +75,42 @@
     "designation": "Field Inspection Officer — Alair",
     "role": "field_officer",
     "mandal_id": "alair"
+  },
+  {
+    "id": "u_warden_1",
+    "name": "Sri P. Mahesh",
+    "designation": "Hostel Warden — SW Boys Hostel, Bhongir",
+    "role": "facility_admin",
+    "mandal_id": "bhongir",
+    "facility_id": "f_h01"
+  },
+  {
+    "id": "u_superintendent_1",
+    "name": "Dr. S. Anitha",
+    "designation": "Hospital Superintendent — CHC Alair",
+    "role": "facility_admin",
+    "mandal_id": "alair",
+    "facility_id": "f_p03"
+  },
+  {
+    "id": "u_public_1",
+    "name": "Sri A. Ravi Kumar",
+    "designation": "Parent / Guardian",
+    "role": "public_user",
+    "mandal_id": null
+  },
+  {
+    "id": "u_public_2",
+    "name": "Smt. D. Priya",
+    "designation": "Student",
+    "role": "public_user",
+    "mandal_id": null
+  },
+  {
+    "id": "u_grievance_officer",
+    "name": "Sri V. Suresh",
+    "designation": "Grievance Review Officer",
+    "role": "grievance_officer",
+    "mandal_id": null
   }
 ]

@@ -1,0 +1,96 @@
+[
+  {
+    "id": "a01",
+    "facility_id": "f_h01",
+    "officer_id": "u_field_1",
+    "assigned_by": "u_admin",
+    "due_date": "2026-04-15",
+    "status": "pending",
+    "is_reinspection": false
+  },
+  {
+    "id": "a02",
+    "facility_id": "f_h02",
+    "officer_id": "u_field_1",
+    "assigned_by": "u_admin",
+    "due_date": "2026-04-14",
+    "status": "pending",
+    "is_reinspection": false
+  },
+  {
+    "id": "a03",
+    "facility_id": "f_h05",
+    "officer_id": "u_field_1",
+    "assigned_by": "u_supervisor",
+    "due_date": "2026-04-13",
+    "status": "pending",
+    "is_reinspection": true,
+    "inspection_id": "i05"
+  },
+  {
+    "id": "a04",
+    "facility_id": "f_h03",
+    "officer_id": "u_field_2",
+    "assigned_by": "u_admin",
+    "due_date": "2026-04-16",
+    "status": "pending",
+    "is_reinspection": false
+  },
+  {
+    "id": "a05",
+    "facility_id": "f_h04",
+    "officer_id": "u_field_2",
+    "assigned_by": "u_admin",
+    "due_date": "2026-04-14",
+    "status": "in_progress",
+    "is_reinspection": false
+  },
+  {
+    "id": "a06",
+    "facility_id": "f_p01",
+    "officer_id": "u_field_1",
+    "assigned_by": "u_admin",
+    "due_date": "2026-04-15",
+    "status": "completed",
+    "is_reinspection": false,
+    "inspection_id": "i16"
+  },
+  {
+    "id": "a07",
+    "facility_id": "f_p03",
+    "officer_id": "u_field_2",
+    "assigned_by": "u_admin",
+    "due_date": "2026-04-12",
+    "status": "overdue",
+    "is_reinspection": false
+  },
+  {
+    "id": "a08",
+    "facility_id": "f_p04",
+    "officer_id": "u_field_1",
+    "assigned_by": "u_supervisor",
+    "due_date": "2026-04-13",
+    "status": "pending",
+    "is_reinspection": true,
+    "inspection_id": "i19"
+  },
+  {
+    "id": "a09",
+    "facility_id": "f_h07",
+    "officer_id": "u_field_1",
+    "assigned_by": "u_supervisor",
+    "due_date": "2026-04-14",
+    "status": "pending",
+    "is_reinspection": true,
+    "inspection_id": "i07"
+  },
+  {
+    "id": "a10",
+    "facility_id": "f_p08",
+    "officer_id": "u_field_2",
+    "assigned_by": "u_admin",
+    "due_date": "2026-04-15",
+    "status": "pending",
+    "is_reinspection": false
+  }
+]

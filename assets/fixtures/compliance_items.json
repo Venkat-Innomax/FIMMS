@@ -1,0 +1,94 @@
+[
+  {
+    "id": "c01",
+    "inspection_id": "i05",
+    "facility_id": "f_h05",
+    "section_id": "s4_sanitation",
+    "observation": "Drinking water contamination detected — water purifier non-functional, stored water uncovered",
+    "facility_response": null,
+    "evidence_paths": [],
+    "status": "pending",
+    "created_at": "2026-04-03T11:00:00"
+  },
+  {
+    "id": "c02",
+    "inspection_id": "i05",
+    "facility_id": "f_h05",
+    "section_id": "s1_infra",
+    "observation": "Broken windows in dormitory block B — glass shards on floor near beds",
+    "facility_response": "Windows repaired on 2026-04-06. Glass cleaned and replaced with safety glass.",
+    "evidence_paths": ["evidence/c02_repair_1.jpg", "evidence/c02_repair_2.jpg"],
+    "status": "submitted",
+    "created_at": "2026-04-03T11:00:00",
+    "responded_at": "2026-04-06T14:30:00"
+  },
+  {
+    "id": "c03",
+    "inspection_id": "i07",
+    "facility_id": "f_h07",
+    "section_id": "s3_kitchen",
+    "observation": "Kitchen hygiene below standards — food stored without covers, expired provisions found",
+    "facility_response": null,
+    "evidence_paths": [],
+    "status": "pending",
+    "created_at": "2026-04-02T13:00:00"
+  },
+  {
+    "id": "c04",
+    "inspection_id": "i04",
+    "facility_id": "f_h04",
+    "section_id": "s2_staff",
+    "observation": "Night warden absent for 3 consecutive days — no substitute arranged",
+    "facility_response": "New night warden appointed from 2026-04-07. Attendance register updated.",
+    "evidence_paths": ["evidence/c04_appointment_letter.jpg"],
+    "status": "submitted",
+    "created_at": "2026-04-04T15:00:00",
+    "responded_at": "2026-04-07T10:00:00"
+  },
+  {
+    "id": "c05",
+    "inspection_id": "i11",
+    "facility_id": "f_h11",
+    "section_id": "s5_safety",
+    "observation": "Fire extinguishers expired — last serviced 18 months ago, no evacuation drill conducted",
+    "facility_response": null,
+    "evidence_paths": [],
+    "status": "pending",
+    "created_at": "2026-04-01T15:30:00"
+  },
+  {
+    "id": "c06",
+    "inspection_id": "i19",
+    "facility_id": "f_p04",
+    "section_id": "s3_medicines",
+    "observation": "Essential medicines stockout — 12 critical drugs unavailable, 3 vials past expiry date",
+    "facility_response": null,
+    "evidence_paths": [],
+    "status": "pending",
+    "created_at": "2026-04-03T11:00:00"
+  },
+  {
+    "id": "c07",
+    "inspection_id": "i23",
+    "facility_id": "f_p08",
+    "section_id": "s1_infra",
+    "observation": "Operation theatre AC non-functional — temperature exceeds safe limits for procedures",
+    "facility_response": "AC unit replaced on 2026-04-08. Temperature logs maintained since.",
+    "evidence_paths": ["evidence/c07_ac_invoice.jpg"],
+    "status": "accepted",
+    "created_at": "2026-04-06T12:00:00",
+    "responded_at": "2026-04-08T16:00:00"
+  },
+  {
+    "id": "c08",
+    "inspection_id": "i21",
+    "facility_id": "f_p06",
+    "section_id": "s4_sanitation",
+    "observation": "Biomedical waste segregation not followed — coloured bins missing in 3 wards",
+    "facility_response": "Ordered new bins, expected delivery by 2026-04-12",
+    "evidence_paths": [],
+    "status": "rejected",
+    "created_at": "2026-04-02T16:00:00",
+    "responded_at": "2026-04-05T09:00:00"
+  }
+]

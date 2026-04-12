@@ -81,6 +81,54 @@ extension GradeX on Grade {
   }
 }
 
+/// Lifecycle status for an inspection.
+enum InspectionStatus {
+  draft,
+  submitted,
+  underReview,
+  approved,
+  rejected,
+  reinspectionOrdered,
+}
+
+extension InspectionStatusX on InspectionStatus {
+  String get label {
+    switch (this) {
+      case InspectionStatus.draft:
+        return 'Draft';
+      case InspectionStatus.submitted:
+        return 'Submitted';
+      case InspectionStatus.underReview:
+        return 'Under Review';
+      case InspectionStatus.approved:
+        return 'Approved';
+      case InspectionStatus.rejected:
+        return 'Rejected';
+      case InspectionStatus.reinspectionOrdered:
+        return 'Re-inspection Ordered';
+    }
+  }
+
+  static InspectionStatus fromString(String raw) {
+    switch (raw) {
+      case 'draft':
+        return InspectionStatus.draft;
+      case 'submitted':
+        return InspectionStatus.submitted;
+      case 'under_review':
+        return InspectionStatus.underReview;
+      case 'approved':
+        return InspectionStatus.approved;
+      case 'rejected':
+        return InspectionStatus.rejected;
+      case 'reinspection_ordered':
+        return InspectionStatus.reinspectionOrdered;
+      default:
+        return InspectionStatus.submitted;
+    }
+  }
+}
+
 class SectionResult {
   final String sectionId;
   final String title;
@@ -131,6 +179,8 @@ class Inspection {
   final List<SectionResult> sections;
   final double totalScore; // 0–100
   final Grade grade;
+  final InspectionStatus status;
+  final String? reviewedBy;
 
   const Inspection({
     required this.id,
@@ -144,6 +194,8 @@ class Inspection {
     required this.totalScore,
     required this.grade,
     this.urgentReason,
+    this.status = InspectionStatus.submitted,
+    this.reviewedBy,
   });
 
   factory Inspection.fromJson(Map<String, dynamic> json) => Inspection(
@@ -163,5 +215,9 @@ class Inspection {
             .toList(),
         totalScore: (json['total_score'] as num).toDouble(),
         grade: GradeX.fromString(json['grade'] as String),
+        status: json['status'] != null
+            ? InspectionStatusX.fromString(json['status'] as String)
+            : InspectionStatus.submitted,
+        reviewedBy: json['reviewed_by'] as String?,
       );
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -50,6 +51,9 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/login',
         builder: (context, state) => const LoginPage(),
       ),
+
+      // ── Government Internal ──────────────────────────────────
+
       GoRoute(
         path: '/collector',
         builder: (context, state) => const CollectorDashboardPage(),
@@ -62,9 +66,34 @@ final routerProvider = Provider<GoRouter>((ref) {
         ],
       ),
       GoRoute(
+        path: '/nodal',
+        builder: (context, state) => const _StubPage(
+          title: 'Nodal Officer Dashboard',
+          icon: Icons.approval,
+          description: 'Escalation queue, non-compliant cases, inspection approval',
+        ),
+      ),
+      GoRoute(
+        path: '/admin',
+        builder: (context, state) => const _StubPage(
+          title: 'Admin Dashboard',
+          icon: Icons.admin_panel_settings,
+          description: 'Facility master, user management, form builder, '
+              'assignment control, SLA monitoring',
+        ),
+      ),
+      GoRoute(
         path: '/mandal/:id',
         builder: (context, state) =>
             MandalDashboardPage(mandalId: state.pathParameters['id']!),
+      ),
+      GoRoute(
+        path: '/supervisor',
+        builder: (context, state) => const _StubPage(
+          title: 'Inspection Supervisor Dashboard',
+          icon: Icons.rate_review,
+          description: 'Review queue, re-inspect orders, officer performance',
+        ),
       ),
       GoRoute(
         path: '/officer',
@@ -83,6 +112,39 @@ final routerProvider = Provider<GoRouter>((ref) {
           ),
         ],
       ),
+
+      // ── Facility-Side ────────────────────────────────────────
+
+      GoRoute(
+        path: '/compliance',
+        builder: (context, state) => const _StubPage(
+          title: 'Compliance Portal',
+          icon: Icons.verified_user,
+          description: 'View inspection remarks, upload rectification evidence, '
+              'respond to observations, track pending compliance items',
+        ),
+      ),
+
+      // ── Grievance-Side ───────────────────────────────────────
+
+      GoRoute(
+        path: '/grievance',
+        builder: (context, state) => const _StubPage(
+          title: 'Grievance Portal',
+          icon: Icons.report_problem,
+          description: 'Lodge complaint, upload evidence, track status, '
+              'receive updates',
+        ),
+      ),
+      GoRoute(
+        path: '/grievance-admin',
+        builder: (context, state) => const _StubPage(
+          title: 'Grievance Admin',
+          icon: Icons.support_agent,
+          description: 'Intake, triage, assign complaints, merge duplicates, '
+              'escalate to district, mark resolved',
+        ),
+      ),
     ],
   );
 });
@@ -90,12 +152,96 @@ final routerProvider = Provider<GoRouter>((ref) {
 String _homeFor(User user) {
   switch (user.role) {
     case Role.collector:
-    case Role.admin:
-    case Role.mandalAdmin:
       return '/collector';
+    case Role.admin:
+      return '/admin';
+    case Role.mandalAdmin:
+      return '/nodal';
     case Role.mandalOfficer:
       return '/mandal/${user.mandalId ?? 'unknown'}';
     case Role.fieldOfficer:
       return '/officer';
+    case Role.inspectionSupervisor:
+      return '/supervisor';
+    case Role.facilityAdmin:
+      return '/compliance';
+    case Role.publicUser:
+      return '/grievance';
+    case Role.grievanceOfficer:
+      return '/grievance-admin';
+  }
+}
+
+/// Placeholder page for dashboards not yet implemented.
+/// Each branch will replace the relevant stub with a real page.
+class _StubPage extends StatelessWidget {
+  final String title;
+  final IconData icon;
+  final String description;
+
+  const _StubPage({
+    required this.title,
+    required this.icon,
+    required this.description,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(title),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () {
+              // Sign out — the router redirect handles navigation back to login.
+              ProviderScope.containerOf(context)
+                  .read(authStateProvider.notifier)
+                  .signOut();
+            },
+          ),
+        ],
+      ),
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(32),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(icon, size: 64, color: Theme.of(context).colorScheme.primary),
+              const SizedBox(height: 24),
+              Text(
+                title,
+                style: Theme.of(context).textTheme.headlineMedium,
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 12),
+              Text(
+                description,
+                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                      color: Theme.of(context).colorScheme.onSurfaceVariant,
+                    ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 32),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.tertiaryContainer,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Text(
+                  'Coming soon — implementation in progress',
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.onTertiaryContainer,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
