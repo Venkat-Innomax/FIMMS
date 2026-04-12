@@ -134,7 +134,7 @@ class _SectionCard extends StatelessWidget {
                             borderRadius: BorderRadius.circular(4),
                           ),
                           child: Text(
-                            field.type,
+                            field.type.name,
                             style: const TextStyle(
                                 fontSize: 10,
                                 fontWeight: FontWeight.w600,
