@@ -1,0 +1,65 @@
+[
+  {
+    "id": "u_collector",
+    "name": "Smt. Pamela Satpathy, IAS",
+    "designation": "District Collector",
+    "role": "collector",
+    "mandal_id": null
+  },
+  {
+    "id": "u_admin",
+    "name": "Sri K. Srinivasa Rao",
+    "designation": "District Inspection Cell Admin",
+    "role": "admin",
+    "mandal_id": null
+  },
+  {
+    "id": "u_mandal_bhongir",
+    "name": "Sri Venkat Reddy",
+    "designation": "Mandal Officer — Bhongir",
+    "role": "mandal_officer",
+    "mandal_id": "bhongir"
+  },
+  {
+    "id": "u_mandal_choutuppal",
+    "name": "Smt. Lakshmi Devi",
+    "designation": "Mandal Officer — Choutuppal",
+    "role": "mandal_officer",
+    "mandal_id": "choutuppal"
+  },
+  {
+    "id": "u_mandal_alair",
+    "name": "Sri R. Prasad",
+    "designation": "Mandal Officer — Alair",
+    "role": "mandal_officer",
+    "mandal_id": "alair"
+  },
+  {
+    "id": "u_mandal_mothkur",
+    "name": "Sri G. Rajesh",
+    "designation": "Mandal Officer — Mothkur",
+    "role": "mandal_officer",
+    "mandal_id": "mothkur"
+  },
+  {
+    "id": "u_mandal_yadagiri",
+    "name": "Smt. Sunitha Rao",
+    "designation": "Mandal Officer — Yadagirigutta",
+    "role": "mandal_officer",
+    "mandal_id": "yadagirigutta"
+  },
+  {
+    "id": "u_field_1",
+    "name": "Sri M. Kishore",
+    "designation": "Field Inspection Officer — Bhongir",
+    "role": "field_officer",
+    "mandal_id": "bhongir"
+  },
+  {
+    "id": "u_field_2",
+    "name": "Smt. K. Radhika",
+    "designation": "Field Inspection Officer — Alair",
+    "role": "field_officer",
+    "mandal_id": "alair"
+  }
+]

@@ -1,0 +1,9 @@
+[
+  { "id": "bhongir",       "name": "Bhongir",       "lat": 17.5124, "lng": 78.8886 },
+  { "id": "choutuppal",    "name": "Choutuppal",    "lat": 17.2550, "lng": 78.9400 },
+  { "id": "alair",         "name": "Alair",         "lat": 17.4290, "lng": 79.1160 },
+  { "id": "yadagirigutta", "name": "Yadagirigutta", "lat": 17.5830, "lng": 78.9510 },
+  { "id": "mothkur",       "name": "Mothkur",       "lat": 17.4370, "lng": 79.3090 },
+  { "id": "ramannapet",    "name": "Ramannapet",    "lat": 17.2680, "lng": 79.0490 },
+  { "id": "bhuvanagiri",   "name": "Bhuvanagiri",   "lat": 17.5118, "lng": 78.8889 }
+]
