@@ -1,0 +1,107 @@
+{
+  "id": "hostel",
+  "title": "Government Hostel Inspection",
+  "sections": [
+    {
+      "id": "s1_infra",
+      "title": "Infrastructure",
+      "max_score": 15,
+      "fields": [
+        { "id": "building_condition", "label": "Building structural condition", "type": "good_avg_poor", "scored": true, "weight": 2 },
+        { "id": "rooms_sanctioned", "label": "Rooms — sanctioned capacity", "type": "number", "scored": false },
+        { "id": "rooms_occupied",   "label": "Rooms — actual occupancy",      "type": "number", "scored": false },
+        { "id": "beds_functional",  "label": "Beds available and functional", "type": "avail_partial_na", "scored": true, "weight": 2 },
+        { "id": "mattresses",       "label": "Mattresses condition",          "type": "good_avg_poor",    "scored": true, "weight": 2 },
+        { "id": "study_tables",     "label": "Study tables and chairs",       "type": "avail_partial_na", "scored": true, "weight": 2 },
+        { "id": "cupboards",        "label": "Cupboards / storage",           "type": "avail_partial_na", "scored": true, "weight": 2 },
+        { "id": "lighting",         "label": "Lighting in rooms",             "type": "good_avg_poor",    "scored": true, "weight": 1.5 },
+        { "id": "ventilation",      "label": "Ventilation in rooms",          "type": "good_avg_poor",    "scored": true, "weight": 1.5 },
+        { "id": "common_area",      "label": "Common area condition",         "type": "good_avg_poor",    "scored": true, "weight": 2 }
+      ]
+    },
+    {
+      "id": "s2_sanitation",
+      "title": "Sanitation & Hygiene",
+      "max_score": 20,
+      "fields": [
+        { "id": "toilets_count", "label": "Number of toilets available", "type": "number", "scored": false },
+        { "id": "toilets_clean", "label": "Toilets functional and clean", "type": "good_avg_poor", "scored": true, "weight": 3 },
+        { "id": "bathrooms_count", "label": "Number of bathrooms available", "type": "number", "scored": false },
+        { "id": "bathrooms_clean", "label": "Bathrooms functional and clean", "type": "good_avg_poor", "scored": true, "weight": 3 },
+        { "id": "drinking_water_avail", "label": "Drinking water availability", "type": "yes_no", "scored": true, "weight": 2 },
+        { "id": "drinking_water_source", "label": "Drinking water source", "type": "dropdown", "scored": false, "options": ["Municipal", "Borewell", "Tank", "Other"] },
+        { "id": "drinking_water_quality", "label": "Drinking water quality (visual)", "type": "good_avg_poor", "scored": true, "weight": 3 },
+        { "id": "drainage", "label": "Drainage system condition", "type": "good_avg_poor", "scored": true, "weight": 3 },
+        { "id": "waste_disposal", "label": "Waste disposal arrangement", "type": "good_avg_poor", "scored": true, "weight": 3 },
+        { "id": "campus_cleanliness", "label": "Overall campus cleanliness", "type": "good_avg_poor", "scored": true, "weight": 3 }
+      ]
+    },
+    {
+      "id": "s3_kitchen",
+      "title": "Kitchen & Mess",
+      "max_score": 15,
+      "notes": "Skipped if this hostel has no mess. Weight redistributes to other sections.",
+      "skip_trigger_field": "mess_available",
+      "skip_trigger_value": "no",
+      "fields": [
+        { "id": "mess_available", "label": "Mess available at this hostel", "type": "yes_no", "scored": false, "helper": "Select 'No' to skip this section" },
+        { "id": "kitchen_operational", "label": "Kitchen operational", "type": "yes_no", "scored": true, "weight": 1.5 },
+        { "id": "kitchen_clean", "label": "Kitchen cleanliness", "type": "good_avg_poor", "scored": true, "weight": 2 },
+        { "id": "food_quality", "label": "Food quality compliance", "type": "yes_no", "scored": true, "weight": 2 },
+        { "id": "menu_displayed", "label": "Monthly menu displayed", "type": "yes_no", "scored": true, "weight": 1.5 },
+        { "id": "food_storage", "label": "Food storage condition", "type": "good_avg_poor", "scored": true, "weight": 2 },
+        { "id": "cooking_fuel", "label": "Cooking fuel / gas safety", "type": "good_avg_poor", "scored": true, "weight": 2 },
+        { "id": "utensils", "label": "Utensil cleanliness", "type": "good_avg_poor", "scored": true, "weight": 2 },
+        { "id": "mess_attendance", "label": "Mess attendance record maintained", "type": "yes_no", "scored": true, "weight": 2 }
+      ]
+    },
+    {
+      "id": "s4_staff",
+      "title": "Staff & Availability",
+      "max_score": 25,
+      "fields": [
+        {
+          "id": "staff_table",
+          "label": "Staff roster — sanctioned vs present",
+          "type": "staff_table",
+          "scored": true,
+          "weight": 25,
+          "dynamic_rows": true,
+          "staff_roles": [
+            { "id": "warden", "label": "Warden" },
+            { "id": "asst_warden", "label": "Assistant Warden" },
+            { "id": "cook", "label": "Cook / Head Cook" },
+            { "id": "asst_cook", "label": "Assistant Cook" },
+            { "id": "cleaning", "label": "Cleaning Staff / Sweeper" },
+            { "id": "security", "label": "Security / Watchman" },
+            { "id": "store_keeper", "label": "Store Keeper" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s5_safety",
+      "title": "Safety & Security",
+      "max_score": 15,
+      "fields": [
+        { "id": "guard_present", "label": "Security guard present", "type": "yes_no", "scored": true, "weight": 2.5 },
+        { "id": "cctv_functional", "label": "CCTV cameras functional", "type": "yes_no_na", "scored": true, "weight": 2.5 },
+        { "id": "fire_ext", "label": "Fire extinguisher available", "type": "yes_no", "scored": true, "weight": 2.5 },
+        { "id": "fire_ext_valid", "label": "Fire extinguisher within validity", "type": "yes_no", "scored": true, "weight": 2.5 },
+        { "id": "first_aid", "label": "First aid kit available and stocked", "type": "yes_no", "scored": true, "weight": 2.5 },
+        { "id": "emergency_contacts", "label": "Emergency contact list displayed", "type": "yes_no", "scored": true, "weight": 2.5 }
+      ]
+    },
+    {
+      "id": "s6_utilities",
+      "title": "Utilities",
+      "max_score": 10,
+      "fields": [
+        { "id": "electricity", "label": "Electricity availability", "type": "regular_interrupted_na", "scored": true, "weight": 3 },
+        { "id": "generator", "label": "Generator / backup power", "type": "avail_partial_na", "scored": true, "weight": 3 },
+        { "id": "water_supply", "label": "Regular water supply", "type": "yes_no", "scored": true, "weight": 4 },
+        { "id": "solar", "label": "Solar / alternative energy", "type": "yes_no_na", "scored": false }
+      ]
+    }
+  ]
+}

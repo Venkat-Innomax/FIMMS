@@ -1,0 +1,282 @@
+[
+  {
+    "id": "g01",
+    "facility_id": "f_h01",
+    "submitted_by": "u_public_1",
+    "category": "food",
+    "description": "Food quality has deteriorated significantly in the past two weeks. Rice is undercooked and dal is watery. Students are skipping meals.",
+    "evidence_paths": ["evidence/g01_food_1.jpg"],
+    "status": "assigned",
+    "priority": "high",
+    "created_at": "2026-04-05T09:00:00",
+    "assigned_to": "u_grievance_officer",
+    "timeline": [
+      {
+        "status": "submitted",
+        "datetime": "2026-04-05T09:00:00",
+        "comment": "Complaint lodged by parent",
+        "changed_by": "u_public_1"
+      },
+      {
+        "status": "under_review",
+        "datetime": "2026-04-05T11:30:00",
+        "comment": "Received and under initial review",
+        "changed_by": "u_grievance_officer"
+      },
+      {
+        "status": "assigned",
+        "datetime": "2026-04-05T14:00:00",
+        "comment": "Assigned to grievance officer for investigation",
+        "changed_by": "u_grievance_officer"
+      }
+    ]
+  },
+  {
+    "id": "g02",
+    "facility_id": "f_h03",
+    "submitted_by": "u_public_2",
+    "category": "infrastructure",
+    "description": "Bathroom taps in girls' wing are broken — no running water after 6 PM. Students forced to store water in buckets during daytime.",
+    "evidence_paths": ["evidence/g02_tap_1.jpg", "evidence/g02_tap_2.jpg"],
+    "status": "resolved",
+    "priority": "high",
+    "created_at": "2026-03-28T14:30:00",
+    "assigned_to": "u_grievance_officer",
+    "resolution": "Plumbing repaired and water supply restored. Verified by warden on 2026-04-02.",
+    "timeline": [
+      {
+        "status": "submitted",
+        "datetime": "2026-03-28T14:30:00",
+        "comment": "Student complaint about broken taps",
+        "changed_by": "u_public_2"
+      },
+      {
+        "status": "assigned",
+        "datetime": "2026-03-29T09:00:00",
+        "comment": "Assigned for urgent repair",
+        "changed_by": "u_grievance_officer"
+      },
+      {
+        "status": "in_progress",
+        "datetime": "2026-03-30T10:00:00",
+        "comment": "Plumber dispatched",
+        "changed_by": "u_grievance_officer"
+      },
+      {
+        "status": "resolved",
+        "datetime": "2026-04-02T16:00:00",
+        "comment": "Repairs completed and verified",
+        "changed_by": "u_grievance_officer"
+      }
+    ]
+  },
+  {
+    "id": "g03",
+    "facility_id": "f_h05",
+    "submitted_by": "u_public_1",
+    "category": "hygiene",
+    "description": "Drinking water has bad smell and yellowish colour. Multiple students reported stomach illness last week.",
+    "evidence_paths": ["evidence/g03_water_1.jpg"],
+    "status": "under_review",
+    "priority": "critical",
+    "created_at": "2026-04-08T07:45:00",
+    "timeline": [
+      {
+        "status": "submitted",
+        "datetime": "2026-04-08T07:45:00",
+        "comment": "Urgent complaint about water quality",
+        "changed_by": "u_public_1"
+      },
+      {
+        "status": "under_review",
+        "datetime": "2026-04-08T10:00:00",
+        "comment": "Flagged as critical — correlates with inspection i05 finding",
+        "changed_by": "u_grievance_officer"
+      }
+    ]
+  },
+  {
+    "id": "g04",
+    "facility_id": "f_h02",
+    "submitted_by": "u_public_2",
+    "category": "safety",
+    "description": "Main gate lock is broken. Hostel compound is accessible to outsiders at night. No security guard posted after 9 PM.",
+    "evidence_paths": [],
+    "status": "submitted",
+    "priority": "medium",
+    "created_at": "2026-04-10T18:20:00",
+    "timeline": [
+      {
+        "status": "submitted",
+        "datetime": "2026-04-10T18:20:00",
+        "comment": "Security concern reported",
+        "changed_by": "u_public_2"
+      }
+    ]
+  },
+  {
+    "id": "g05",
+    "facility_id": "f_h01",
+    "submitted_by": "u_public_1",
+    "category": "staff",
+    "description": "Warden is frequently absent during evening study hours. No supervision for students between 5 PM and 8 PM.",
+    "evidence_paths": [],
+    "status": "submitted",
+    "priority": "medium",
+    "created_at": "2026-04-11T08:00:00",
+    "timeline": [
+      {
+        "status": "submitted",
+        "datetime": "2026-04-11T08:00:00",
+        "comment": "Staff absence complaint",
+        "changed_by": "u_public_1"
+      }
+    ]
+  },
+  {
+    "id": "g06",
+    "facility_id": "f_h04",
+    "submitted_by": "u_public_2",
+    "category": "infrastructure",
+    "description": "Ceiling fan in dormitory room 3 is wobbling dangerously. Electrical wiring exposed near washroom entrance.",
+    "evidence_paths": ["evidence/g06_fan_1.jpg"],
+    "status": "in_progress",
+    "priority": "high",
+    "created_at": "2026-04-07T12:00:00",
+    "assigned_to": "u_grievance_officer",
+    "timeline": [
+      {
+        "status": "submitted",
+        "datetime": "2026-04-07T12:00:00",
+        "comment": "Electrical hazard reported",
+        "changed_by": "u_public_2"
+      },
+      {
+        "status": "assigned",
+        "datetime": "2026-04-07T15:00:00",
+        "comment": "Assigned for immediate attention",
+        "changed_by": "u_grievance_officer"
+      },
+      {
+        "status": "in_progress",
+        "datetime": "2026-04-08T09:30:00",
+        "comment": "Electrician scheduled for 2026-04-09",
+        "changed_by": "u_grievance_officer"
+      }
+    ]
+  },
+  {
+    "id": "g07",
+    "facility_id": "f_h01",
+    "submitted_by": "u_public_1",
+    "category": "food",
+    "description": "Menu served does not match the weekly diet chart displayed on the notice board. Students report receiving the same meal three days in a row.",
+    "evidence_paths": ["evidence/g07_menu_1.jpg"],
+    "status": "escalated_to_mandal",
+    "priority": "high",
+    "created_at": "2026-04-06T10:00:00",
+    "assigned_to": "u_grievance_officer",
+    "escalated_to": "u_mandal_bhongir",
+    "escalated_by": "u_grievance_officer",
+    "timeline": [
+      {
+        "status": "submitted",
+        "datetime": "2026-04-06T10:00:00",
+        "comment": "Complaint about repeated meals",
+        "changed_by": "u_public_1"
+      },
+      {
+        "status": "under_review",
+        "datetime": "2026-04-06T12:00:00",
+        "comment": "Reviewing diet chart compliance",
+        "changed_by": "u_grievance_officer"
+      },
+      {
+        "status": "assigned",
+        "datetime": "2026-04-06T14:00:00",
+        "comment": "Assigned for investigation",
+        "changed_by": "u_grievance_officer"
+      },
+      {
+        "status": "escalated_to_mandal",
+        "datetime": "2026-04-07T09:00:00",
+        "comment": "Escalated to Mandal Officer — repeated violations require on-site verification",
+        "changed_by": "u_grievance_officer"
+      }
+    ]
+  },
+  {
+    "id": "g08",
+    "facility_id": "f_h03",
+    "submitted_by": "u_public_2",
+    "category": "safety",
+    "description": "Fire extinguishers in the dormitory wing are expired. Emergency exit door on first floor is permanently locked from outside.",
+    "evidence_paths": ["evidence/g08_fire_ext_1.jpg", "evidence/g08_exit_1.jpg"],
+    "status": "escalated_to_district",
+    "priority": "critical",
+    "created_at": "2026-04-03T08:30:00",
+    "assigned_to": "u_grievance_officer",
+    "escalated_to": "u_admin",
+    "escalated_by": "u_mandal_choutuppal",
+    "timeline": [
+      {
+        "status": "submitted",
+        "datetime": "2026-04-03T08:30:00",
+        "comment": "Fire safety concern reported",
+        "changed_by": "u_public_2"
+      },
+      {
+        "status": "assigned",
+        "datetime": "2026-04-03T11:00:00",
+        "comment": "Assigned for urgent review",
+        "changed_by": "u_grievance_officer"
+      },
+      {
+        "status": "escalated_to_mandal",
+        "datetime": "2026-04-04T09:00:00",
+        "comment": "Escalated to Mandal Officer — critical safety issue",
+        "changed_by": "u_grievance_officer"
+      },
+      {
+        "status": "escalated_to_district",
+        "datetime": "2026-04-05T10:00:00",
+        "comment": "Escalated to District Admin — requires district-level inspection and compliance action",
+        "changed_by": "u_mandal_choutuppal"
+      }
+    ]
+  },
+  {
+    "id": "g09",
+    "facility_id": "f_h02",
+    "submitted_by": "u_public_1",
+    "category": "hygiene",
+    "description": "Water tank has not been cleaned in over 3 months. Green algae visible inside the overhead tank. Students complaining of skin rashes.",
+    "evidence_paths": ["evidence/g09_tank_1.jpg"],
+    "status": "inspection_requested",
+    "priority": "high",
+    "created_at": "2026-04-04T07:00:00",
+    "assigned_to": "u_grievance_officer",
+    "escalated_to": "u_admin",
+    "escalated_by": "u_mandal_bhongir",
+    "timeline": [
+      {
+        "status": "submitted",
+        "datetime": "2026-04-04T07:00:00",
+        "comment": "Water tank hygiene complaint",
+        "changed_by": "u_public_1"
+      },
+      {
+        "status": "escalated_to_mandal",
+        "datetime": "2026-04-05T09:00:00",
+        "comment": "Escalated to Mandal Officer for verification",
+        "changed_by": "u_grievance_officer"
+      },
+      {
+        "status": "inspection_requested",
+        "datetime": "2026-04-06T11:00:00",
+        "comment": "Inspection requested — need formal facility inspection to assess water quality and tank condition",
+        "changed_by": "u_mandal_bhongir"
+      }
+    ]
+  }
+]

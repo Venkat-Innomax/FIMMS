@@ -1,0 +1,101 @@
+{
+  "id": "hospital",
+  "title": "Government Hospital Inspection",
+  "sections": [
+    {
+      "id": "s1_infra",
+      "title": "Infrastructure & Wards",
+      "max_score": 15,
+      "fields": [
+        { "id": "opd_condition", "label": "OPD area condition", "type": "good_avg_poor", "scored": true, "weight": 2 },
+        { "id": "ward_condition", "label": "Ward condition", "type": "good_avg_poor", "scored": true, "weight": 2 },
+        { "id": "beds_sanctioned", "label": "Sanctioned bed strength", "type": "number", "scored": false },
+        { "id": "beds_functional", "label": "Functional beds", "type": "number", "scored": false },
+        { "id": "beds_clean", "label": "Beds and mattresses clean", "type": "good_avg_poor", "scored": true, "weight": 2 },
+        { "id": "ot_functional", "label": "Operation theatre functional", "type": "yes_no_na", "scored": true, "weight": 3, "show_for": ["dh", "chc"] },
+        { "id": "labour_room", "label": "Labour room functional", "type": "yes_no_na", "scored": true, "weight": 3, "show_for": ["dh", "chc"] },
+        { "id": "casualty", "label": "Casualty / emergency area functional", "type": "yes_no", "scored": true, "weight": 3, "show_for": ["dh"] }
+      ]
+    },
+    {
+      "id": "s2_staff",
+      "title": "Staff & Availability",
+      "max_score": 25,
+      "fields": [
+        {
+          "id": "staff_table",
+          "label": "Staff roster — sanctioned vs present",
+          "type": "staff_table",
+          "scored": true,
+          "weight": 20,
+          "dynamic_rows": true,
+          "staff_roles": [
+            { "id": "doctor", "label": "Doctor / Medical Officer" },
+            { "id": "specialist", "label": "Specialist Doctor" },
+            { "id": "nursing", "label": "Nursing Staff / ANM" },
+            { "id": "lab_tech", "label": "Lab Technician" },
+            { "id": "pharmacist", "label": "Pharmacist" },
+            { "id": "ward_attendant", "label": "Ward Attendant / Aaya" },
+            { "id": "cleaning", "label": "Cleaning / Sanitation Staff" },
+            { "id": "security", "label": "Security Staff" }
+          ]
+        },
+        { "id": "duty_roster_displayed", "label": "Duty roster displayed", "type": "yes_no", "scored": true, "weight": 2.5 },
+        { "id": "duty_register", "label": "Duty register maintained", "type": "yes_no", "scored": true, "weight": 2.5 }
+      ]
+    },
+    {
+      "id": "s3_medicines",
+      "title": "Medicines & Equipment",
+      "max_score": 25,
+      "fields": [
+        { "id": "essential_meds", "label": "Essential medicines available", "type": "avail_partial_na", "scored": true, "weight": 4 },
+        { "id": "med_storage", "label": "Medicine storage condition", "type": "good_avg_poor", "scored": true, "weight": 3 },
+        { "id": "expired_meds", "label": "Expired medicines found", "type": "yes_no", "scored": true, "weight": 4, "helper": "Yes is NON-compliant here" },
+        { "id": "emergency_equipment", "label": "Emergency equipment available", "type": "avail_partial_na", "scored": true, "weight": 4 },
+        { "id": "diag_equipment", "label": "Diagnostic equipment functional", "type": "good_avg_poor", "scored": true, "weight": 4 },
+        { "id": "oxygen_supply", "label": "Oxygen supply available", "type": "yes_no", "scored": true, "weight": 3 },
+        { "id": "ambulance", "label": "Ambulance availability", "type": "yes_no_na", "scored": true, "weight": 3 }
+      ]
+    },
+    {
+      "id": "s4_sanitation",
+      "title": "Sanitation & Hygiene",
+      "max_score": 15,
+      "fields": [
+        { "id": "ward_cleanliness", "label": "Ward cleanliness", "type": "good_avg_poor", "scored": true, "weight": 3 },
+        { "id": "patient_toilets", "label": "Toilet facilities for patients", "type": "avail_partial_na", "scored": true, "weight": 2.5 },
+        { "id": "toilet_cleanliness", "label": "Toilet cleanliness", "type": "good_avg_poor", "scored": true, "weight": 2.5 },
+        { "id": "biowaste", "label": "Bio-medical waste disposal", "type": "good_avg_poor", "scored": true, "weight": 3 },
+        { "id": "cleaning_schedule", "label": "Cleaning schedule displayed and maintained", "type": "yes_no", "scored": true, "weight": 2 },
+        { "id": "campus_cleanliness", "label": "Overall hospital campus cleanliness", "type": "good_avg_poor", "scored": true, "weight": 2 }
+      ]
+    },
+    {
+      "id": "s5_records",
+      "title": "Records & Administration",
+      "max_score": 10,
+      "fields": [
+        { "id": "opd_register", "label": "OPD patient register maintained", "type": "yes_no", "scored": true, "weight": 1.5 },
+        { "id": "ipd_register", "label": "IPD patient register maintained", "type": "yes_no", "scored": true, "weight": 1.5 },
+        { "id": "referral_records", "label": "Referral records maintained", "type": "yes_no", "scored": true, "weight": 1.5 },
+        { "id": "birth_records", "label": "Birth records maintained", "type": "yes_no_na", "scored": true, "weight": 2 },
+        { "id": "death_records", "label": "Death records maintained", "type": "yes_no_na", "scored": true, "weight": 2 },
+        { "id": "complaint_register", "label": "Complaint / feedback register available", "type": "yes_no", "scored": true, "weight": 1.5 }
+      ]
+    },
+    {
+      "id": "s6_utilities",
+      "title": "Utilities & Safety",
+      "max_score": 10,
+      "fields": [
+        { "id": "power_backup", "label": "Power backup / generator available", "type": "yes_no", "scored": true, "weight": 1.5 },
+        { "id": "generator_functional", "label": "Generator functional", "type": "yes_no", "scored": true, "weight": 1.5 },
+        { "id": "drinking_water", "label": "Drinking water for patients available", "type": "yes_no", "scored": true, "weight": 2 },
+        { "id": "fire_safety", "label": "Fire safety equipment available", "type": "yes_no", "scored": true, "weight": 1.5 },
+        { "id": "fire_valid", "label": "Fire equipment within validity", "type": "yes_no", "scored": true, "weight": 1.5 },
+        { "id": "emergency_contacts", "label": "Emergency contact list displayed", "type": "yes_no", "scored": true, "weight": 2 }
+      ]
+    }
+  ]
+}

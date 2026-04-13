@@ -1,0 +1,110 @@
+[
+  {
+    "id": "u_collector",
+    "name": "Sri. Anuraag Jayanti, IAS",
+    "designation": "District Collector",
+    "role": "collector",
+    "mandal_id": null
+  },
+  {
+    "id": "u_admin",
+    "name": "Sri K. Srinivasa Rao",
+    "designation": "District Inspection Cell Admin",
+    "role": "admin",
+    "mandal_id": null
+  },
+  {
+    "id": "u_nodal",
+    "name": "Sri B. Ramesh Kumar",
+    "designation": "Additional Collector / Nodal Officer",
+    "role": "mandal_admin",
+    "mandal_id": null
+  },
+  {
+    "id": "u_supervisor",
+    "name": "Sri T. Narasimha Rao",
+    "designation": "Inspection Supervisor — Bhongir Zone",
+    "role": "inspection_supervisor",
+    "mandal_id": "bhongir"
+  },
+  {
+    "id": "u_mandal_bhongir",
+    "name": "Sri Venkat Reddy",
+    "designation": "Mandal Officer — Bhongir",
+    "role": "mandal_officer",
+    "mandal_id": "bhongir"
+  },
+  {
+    "id": "u_mandal_choutuppal",
+    "name": "Sri D. Prasad Rao",
+    "designation": "Mandal Officer — Choutuppal",
+    "role": "mandal_officer",
+    "mandal_id": "choutuppal"
+  },
+  {
+    "id": "u_field_1",
+    "name": "Sri M. Kishore",
+    "designation": "Field Inspection Officer — Bhongir",
+    "role": "field_officer",
+    "mandal_id": "bhongir"
+  },
+  {
+    "id": "u_field_2",
+    "name": "Smt. G. Lakshmi",
+    "designation": "Field Inspection Officer — Choutuppal",
+    "role": "field_officer",
+    "mandal_id": "choutuppal"
+  },
+  {
+    "id": "u_field_3",
+    "name": "Sri R. Nagaraju",
+    "designation": "Field Inspection Officer — Alair",
+    "role": "field_officer",
+    "mandal_id": "alair"
+  },
+  {
+    "id": "u_warden_1",
+    "name": "Sri P. Mahesh",
+    "designation": "Hostel Warden — SW Boys Hostel, Bhongir",
+    "role": "facility_admin",
+    "mandal_id": "bhongir",
+    "facility_id": "f_h01"
+  },
+  {
+    "id": "u_warden_2",
+    "name": "Smt. K. Sunitha",
+    "designation": "Hostel Warden — SW Girls Hostel, Choutuppal",
+    "role": "facility_admin",
+    "mandal_id": "choutuppal",
+    "facility_id": "f_h03"
+  },
+  {
+    "id": "u_hospital_admin",
+    "name": "Dr. S. Ramaiah",
+    "designation": "Medical Superintendent — District Hospital, Bhongir",
+    "role": "facility_admin",
+    "mandal_id": "bhongir",
+    "facility_id": "f_p01"
+  },
+  {
+    "id": "u_public_1",
+    "name": "Sri A. Ravi Kumar",
+    "designation": "Parent / Guardian",
+    "role": "public_user",
+    "mandal_id": null
+  },
+  {
+    "id": "u_public_2",
+    "name": "Smt. B. Padmavathi",
+    "designation": "Parent / Guardian",
+    "role": "public_user",
+    "mandal_id": null
+  },
+  {
+    "id": "u_grievance_officer",
+    "name": "Sri V. Suresh",
+    "designation": "Grievance Review Officer",
+    "role": "grievance_officer",
+    "mandal_id": null
+  }
+]
