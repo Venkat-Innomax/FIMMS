@@ -158,6 +158,12 @@ class FimmsTheme {
         ),
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
       ),
+      tabBarTheme: const TabBarThemeData(
+        labelColor: Colors.white,
+        unselectedLabelColor: Colors.white60,
+        indicatorColor: Colors.white,
+        indicatorSize: TabBarIndicatorSize.tab,
+      ),
       dividerTheme: const DividerThemeData(
         color: FimmsColors.outline,
         thickness: 1,

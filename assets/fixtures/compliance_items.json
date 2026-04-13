@@ -90,5 +90,194 @@
     "status": "rejected",
     "created_at": "2026-04-02T16:00:00",
     "responded_at": "2026-04-05T09:00:00"
+  },
+
+  {
+    "id": "c09",
+    "inspection_id": "i01",
+    "facility_id": "f_h01",
+    "section_id": "s3_kitchen",
+    "observation": "Kitchen exhaust fan non-functional — heavy smoke accumulation during cooking. Gas cylinder storage area lacks ventilation.",
+    "facility_response": null,
+    "evidence_paths": [],
+    "status": "pending",
+    "created_at": "2026-04-08T10:00:00"
+  },
+  {
+    "id": "c10",
+    "inspection_id": "i01",
+    "facility_id": "f_h01",
+    "section_id": "s4_sanitation",
+    "observation": "Toilets in Block A have no running water after 8 PM. Septic tank overflow observed near the rear compound wall.",
+    "facility_response": null,
+    "evidence_paths": [],
+    "status": "pending",
+    "created_at": "2026-04-08T10:00:00"
+  },
+  {
+    "id": "c11",
+    "inspection_id": "i01",
+    "facility_id": "f_h01",
+    "section_id": "s1_infra",
+    "observation": "Ceiling plaster peeling in dormitory room 4 — risk of falling debris on students during sleep.",
+    "facility_response": "Plaster repair completed on 2026-04-10. Room was vacated during work and re-inspected by warden.",
+    "evidence_paths": ["evidence/c11_plaster_before.jpg", "evidence/c11_plaster_after.jpg"],
+    "status": "submitted",
+    "created_at": "2026-04-08T10:00:00",
+    "responded_at": "2026-04-10T16:00:00"
+  },
+  {
+    "id": "c12",
+    "inspection_id": "i01",
+    "facility_id": "f_h01",
+    "section_id": "s2_staff",
+    "observation": "Attendance register not maintained for support staff (cook, watchman, sweeper). No duty roster displayed.",
+    "facility_response": "Duty roster board installed at warden office. Biometric attendance started from 2026-04-09.",
+    "evidence_paths": ["evidence/c12_roster_board.jpg"],
+    "status": "accepted",
+    "created_at": "2026-04-08T10:00:00",
+    "responded_at": "2026-04-09T11:00:00"
+  },
+  {
+    "id": "c13",
+    "inspection_id": "i01",
+    "facility_id": "f_h01",
+    "section_id": "s5_safety",
+    "observation": "Electrical wiring exposed near bathroom entrance in Block B. No MCB/ELCB protection installed on geyser circuit.",
+    "facility_response": "Submitted request to PWD for electrical rewiring. Geyser disconnected until repair.",
+    "evidence_paths": ["evidence/c13_geyser_off.jpg"],
+    "status": "rejected",
+    "created_at": "2026-04-08T10:00:00",
+    "responded_at": "2026-04-11T09:00:00"
+  },
+
+  {
+    "id": "c14",
+    "inspection_id": "i03",
+    "facility_id": "f_h03",
+    "section_id": "s1_infra",
+    "observation": "Leaking roof in study hall — water seepage during rain damages books and furniture. Multiple ceiling tiles missing.",
+    "facility_response": null,
+    "evidence_paths": [],
+    "status": "pending",
+    "created_at": "2026-04-07T09:30:00"
+  },
+  {
+    "id": "c15",
+    "inspection_id": "i03",
+    "facility_id": "f_h03",
+    "section_id": "s3_kitchen",
+    "observation": "Menu chart not displayed. Milk and curd stored without refrigeration — spoilage risk in summer.",
+    "facility_response": null,
+    "evidence_paths": [],
+    "status": "pending",
+    "created_at": "2026-04-07T09:30:00"
+  },
+  {
+    "id": "c16",
+    "inspection_id": "i03",
+    "facility_id": "f_h03",
+    "section_id": "s5_safety",
+    "observation": "Compound wall broken at two points — unauthorized entry possible. CCTV cameras in corridor non-functional.",
+    "facility_response": "Temporary barricade erected on 2026-04-09. CCTV vendor contacted for repair — expected by 2026-04-15.",
+    "evidence_paths": ["evidence/c16_barricade.jpg", "evidence/c16_cctv_complaint.jpg"],
+    "status": "submitted",
+    "created_at": "2026-04-07T09:30:00",
+    "responded_at": "2026-04-09T14:00:00"
+  },
+  {
+    "id": "c17",
+    "inspection_id": "i03",
+    "facility_id": "f_h03",
+    "section_id": "s4_sanitation",
+    "observation": "Girls' washroom has no door locks on 4 out of 8 stalls. Soap and sanitary pad dispenser empty.",
+    "facility_response": "Door locks fixed on 2026-04-08. Dispensers refilled and supply contract renewed.",
+    "evidence_paths": ["evidence/c17_locks.jpg", "evidence/c17_dispenser.jpg"],
+    "status": "accepted",
+    "created_at": "2026-04-07T09:30:00",
+    "responded_at": "2026-04-08T17:30:00"
+  },
+  {
+    "id": "c18",
+    "inspection_id": "i03",
+    "facility_id": "f_h03",
+    "section_id": "s2_staff",
+    "observation": "Only 1 warden for 120 students — staff-to-student ratio below prescribed norms. No female security guard at night.",
+    "facility_response": "Requested additional warden posting from District Welfare Office.",
+    "evidence_paths": ["evidence/c18_request_letter.jpg"],
+    "status": "rejected",
+    "created_at": "2026-04-07T09:30:00",
+    "responded_at": "2026-04-10T10:00:00"
+  },
+
+  {
+    "id": "c19",
+    "inspection_id": "i16",
+    "facility_id": "f_p01",
+    "section_id": "s1_infra",
+    "observation": "X-ray machine non-functional for 2 weeks — patients referred to private diagnostic centres. UPS for ICU monitors not working.",
+    "facility_response": null,
+    "evidence_paths": [],
+    "status": "pending",
+    "created_at": "2026-04-06T11:00:00"
+  },
+  {
+    "id": "c20",
+    "inspection_id": "i16",
+    "facility_id": "f_p01",
+    "section_id": "s3_medicines",
+    "observation": "Essential drug stockout: Amoxicillin, Metformin, ORS packets unavailable. Insulin stored outside cold chain — temperature log missing.",
+    "facility_response": null,
+    "evidence_paths": [],
+    "status": "pending",
+    "created_at": "2026-04-06T11:00:00"
+  },
+  {
+    "id": "c21",
+    "inspection_id": "i16",
+    "facility_id": "f_p01",
+    "section_id": "s4_sanitation",
+    "observation": "Biomedical waste not segregated in labour room and casualty ward. Yellow and red bins interchanged. No TSPCB authorization certificate displayed.",
+    "facility_response": "Correct coloured bins procured and placed. Staff awareness session conducted on 2026-04-08. TSPCB certificate renewal applied.",
+    "evidence_paths": ["evidence/c21_bins.jpg", "evidence/c21_training.jpg"],
+    "status": "submitted",
+    "created_at": "2026-04-06T11:00:00",
+    "responded_at": "2026-04-09T15:00:00"
+  },
+  {
+    "id": "c22",
+    "inspection_id": "i16",
+    "facility_id": "f_p01",
+    "section_id": "s2_staff",
+    "observation": "No specialist doctor (gynaecologist) posted — position vacant for 4 months. ANM conducting deliveries without MBBS supervision.",
+    "facility_response": "DM&HO informed. Specialist from CHC Alair visits twice weekly as interim arrangement.",
+    "evidence_paths": ["evidence/c22_visiting_schedule.jpg"],
+    "status": "submitted",
+    "created_at": "2026-04-06T11:00:00",
+    "responded_at": "2026-04-08T12:00:00"
+  },
+  {
+    "id": "c23",
+    "inspection_id": "i16",
+    "facility_id": "f_p01",
+    "section_id": "s5_safety",
+    "observation": "Fire exit on first floor blocked with stored furniture. Emergency assembly point not marked. No fire drill conducted in last 12 months.",
+    "facility_response": "Fire exit cleared immediately. Assembly point marking done on 2026-04-07. Fire drill scheduled for 2026-04-20.",
+    "evidence_paths": ["evidence/c23_exit_cleared.jpg", "evidence/c23_assembly_point.jpg"],
+    "status": "accepted",
+    "created_at": "2026-04-06T11:00:00",
+    "responded_at": "2026-04-07T18:00:00"
+  },
+  {
+    "id": "c24",
+    "inspection_id": "i16",
+    "facility_id": "f_p01",
+    "section_id": "s6_records",
+    "observation": "Patient discharge summary register incomplete — 40% of entries missing diagnosis and follow-up instructions. OPD register not updated since 2026-03-28.",
+    "facility_response": "Backlog entries completed. Assigned dedicated data entry operator from 2026-04-09.",
+    "evidence_paths": [],
+    "status": "rejected",
+    "created_at": "2026-04-06T11:00:00",
+    "responded_at": "2026-04-10T11:00:00"
   }
 ]

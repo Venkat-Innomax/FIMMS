@@ -1,18 +1,71 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
 import '../../../core/theme.dart';
+import '../../../data/repositories/complaint_repository.dart';
+import '../../../data/repositories/facility_repository.dart';
 import '../../../models/complaint.dart';
 import '../../../models/facility.dart';
-import 'complaint_detail_page.dart';
-import 'triage_dialog.dart';
+import 'admin_complaint_detail_page.dart';
 
-class IntakeQueue extends StatelessWidget {
+class AdminGrievancePage extends ConsumerWidget {
+  const AdminGrievancePage({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final complaints = ref.watch(complaintListProvider);
+    final facilitiesAsync = ref.watch(facilitiesProvider);
+    final facilities = facilitiesAsync.valueOrNull ?? <Facility>[];
+    final facilityMap = {for (final f in facilities) f.id: f};
+
+    final pending = complaints
+        .where((c) =>
+            c.status == ComplaintStatus.escalatedToDistrict ||
+            c.status == ComplaintStatus.inspectionRequested)
+        .toList()
+      ..sort((a, b) => b.createdAt.compareTo(a.createdAt));
+
+    final assigned = complaints
+        .where(
+            (c) => c.status == ComplaintStatus.inspectionAssigned)
+        .toList()
+      ..sort((a, b) => b.createdAt.compareTo(a.createdAt));
+
+    return DefaultTabController(
+      length: 2,
+      child: Column(
+        children: [
+          TabBar(
+            labelColor: FimmsColors.primary,
+            unselectedLabelColor: FimmsColors.textMuted,
+            indicatorColor: FimmsColors.primary,
+            tabs: const [
+              Tab(text: 'Pending'),
+              Tab(text: 'Assigned'),
+            ],
+          ),
+          Expanded(
+            child: TabBarView(
+              children: [
+                _GrievanceList(
+                    complaints: pending, facilityMap: facilityMap),
+                _GrievanceList(
+                    complaints: assigned, facilityMap: facilityMap),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _GrievanceList extends StatelessWidget {
   final List<Complaint> complaints;
   final Map<String, Facility> facilityMap;
 
-  const IntakeQueue({
-    super.key,
+  const _GrievanceList({
     required this.complaints,
     required this.facilityMap,
   });
@@ -24,26 +77,24 @@ class IntakeQueue extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(Icons.inbox, size: 48, color: FimmsColors.textMuted),
+            Icon(Icons.check_circle_outline,
+                size: 48, color: FimmsColors.textMuted),
             SizedBox(height: 12),
-            Text('No complaints in this queue',
+            Text('No grievances in this queue',
                 style: TextStyle(color: FimmsColors.textMuted)),
           ],
         ),
       );
     }
 
-    final sorted = List.of(complaints)
-      ..sort((a, b) => b.createdAt.compareTo(a.createdAt));
-
     return ListView.separated(
       padding: const EdgeInsets.all(16),
-      itemCount: sorted.length,
+      itemCount: complaints.length,
       separatorBuilder: (_, __) => const SizedBox(height: 8),
       itemBuilder: (context, index) {
-        final c = sorted[index];
+        final c = complaints[index];
         final facility = facilityMap[c.facilityId];
-        return _ComplaintRow(
+        return _AdminComplaintRow(
           complaint: c,
           facilityName: facility?.name ?? c.facilityId,
         );
@@ -52,11 +103,11 @@ class IntakeQueue extends StatelessWidget {
   }
 }
 
-class _ComplaintRow extends StatelessWidget {
+class _AdminComplaintRow extends StatelessWidget {
   final Complaint complaint;
   final String facilityName;
 
-  const _ComplaintRow({
+  const _AdminComplaintRow({
     required this.complaint,
     required this.facilityName,
   });
@@ -69,17 +120,11 @@ class _ComplaintRow extends StatelessWidget {
       };
 
   Color get _statusColor => switch (complaint.status) {
-        ComplaintStatus.submitted => Colors.blue,
-        ComplaintStatus.underReview => Colors.amber.shade700,
-        ComplaintStatus.assigned => Colors.orange,
-        ComplaintStatus.inProgress => Colors.purple,
-        ComplaintStatus.escalatedToMandal => Colors.deepOrange,
         ComplaintStatus.escalatedToDistrict => Colors.red.shade700,
         ComplaintStatus.inspectionRequested => Colors.teal,
         ComplaintStatus.inspectionAssigned => FimmsColors.primary,
         ComplaintStatus.resolved => FimmsColors.success,
-        ComplaintStatus.closed => Colors.grey,
-        ComplaintStatus.draft => Colors.grey.shade400,
+        _ => Colors.grey,
       };
 
   @override
@@ -95,7 +140,7 @@ class _ComplaintRow extends StatelessWidget {
         onTap: () => Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (_) => ComplaintDetailPage(
+            builder: (_) => AdminComplaintDetailPage(
               complaint: complaint,
               facilityName: facilityName,
             ),
@@ -174,18 +219,6 @@ class _ComplaintRow extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(width: 8),
-              if (complaint.status == ComplaintStatus.submitted ||
-                  complaint.status == ComplaintStatus.underReview)
-                IconButton(
-                  icon: const Icon(Icons.assignment_turned_in, size: 20),
-                  tooltip: 'Triage',
-                  onPressed: () => showDialog(
-                    context: context,
-                    builder: (_) =>
-                        TriageDialog(complaint: complaint),
-                  ),
-                ),
             ],
           ),
         ),

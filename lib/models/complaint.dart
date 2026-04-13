@@ -5,6 +5,10 @@ enum ComplaintStatus {
   underReview,
   assigned,
   inProgress,
+  escalatedToMandal,
+  escalatedToDistrict,
+  inspectionRequested,
+  inspectionAssigned,
   resolved,
   closed,
 }
@@ -22,6 +26,14 @@ extension ComplaintStatusX on ComplaintStatus {
         return 'Assigned';
       case ComplaintStatus.inProgress:
         return 'In Progress';
+      case ComplaintStatus.escalatedToMandal:
+        return 'Escalated to Mandal';
+      case ComplaintStatus.escalatedToDistrict:
+        return 'Escalated to District';
+      case ComplaintStatus.inspectionRequested:
+        return 'Inspection Requested';
+      case ComplaintStatus.inspectionAssigned:
+        return 'Inspection Assigned';
       case ComplaintStatus.resolved:
         return 'Resolved';
       case ComplaintStatus.closed:
@@ -41,6 +53,14 @@ extension ComplaintStatusX on ComplaintStatus {
         return ComplaintStatus.assigned;
       case 'in_progress':
         return ComplaintStatus.inProgress;
+      case 'escalated_to_mandal':
+        return ComplaintStatus.escalatedToMandal;
+      case 'escalated_to_district':
+        return ComplaintStatus.escalatedToDistrict;
+      case 'inspection_requested':
+        return ComplaintStatus.inspectionRequested;
+      case 'inspection_assigned':
+        return ComplaintStatus.inspectionAssigned;
       case 'resolved':
         return ComplaintStatus.resolved;
       case 'closed':
@@ -172,6 +192,8 @@ class Complaint {
   final String? assignedTo;
   final String? resolution;
   final String? mergedIntoId;
+  final String? escalatedTo;
+  final String? escalatedBy;
 
   const Complaint({
     required this.id,
@@ -187,6 +209,8 @@ class Complaint {
     this.assignedTo,
     this.resolution,
     this.mergedIntoId,
+    this.escalatedTo,
+    this.escalatedBy,
   });
 
   factory Complaint.fromJson(Map<String, dynamic> json) => Complaint(
@@ -209,5 +233,43 @@ class Complaint {
         assignedTo: json['assigned_to'] as String?,
         resolution: json['resolution'] as String?,
         mergedIntoId: json['merged_into_id'] as String?,
+        escalatedTo: json['escalated_to'] as String?,
+        escalatedBy: json['escalated_by'] as String?,
       );
+
+  Complaint copyWith({
+    String? id,
+    String? facilityId,
+    String? submittedBy,
+    ComplaintCategory? category,
+    String? description,
+    List<String>? evidencePaths,
+    ComplaintStatus? status,
+    ComplaintPriority? priority,
+    DateTime? createdAt,
+    List<StatusChange>? timeline,
+    String? assignedTo,
+    String? resolution,
+    String? mergedIntoId,
+    String? escalatedTo,
+    String? escalatedBy,
+  }) {
+    return Complaint(
+      id: id ?? this.id,
+      facilityId: facilityId ?? this.facilityId,
+      submittedBy: submittedBy ?? this.submittedBy,
+      category: category ?? this.category,
+      description: description ?? this.description,
+      evidencePaths: evidencePaths ?? this.evidencePaths,
+      status: status ?? this.status,
+      priority: priority ?? this.priority,
+      createdAt: createdAt ?? this.createdAt,
+      timeline: timeline ?? this.timeline,
+      assignedTo: assignedTo ?? this.assignedTo,
+      resolution: resolution ?? this.resolution,
+      mergedIntoId: mergedIntoId ?? this.mergedIntoId,
+      escalatedTo: escalatedTo ?? this.escalatedTo,
+      escalatedBy: escalatedBy ?? this.escalatedBy,
+    );
+  }
 }

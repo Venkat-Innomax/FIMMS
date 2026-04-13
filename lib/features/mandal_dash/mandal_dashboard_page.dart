@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../services/mock_auth_service.dart';
 import '../collector_dash/collector_dashboard_page.dart';
 import 'widgets/facility_list.dart';
+import 'widgets/mandal_grievances.dart';
 import 'widgets/officer_load.dart';
 import 'widgets/pending_inspections.dart';
 
@@ -33,7 +34,7 @@ class _MandalDashboardPageState extends ConsumerState<MandalDashboardPage> {
       ),
       Scaffold(
         appBar: AppBar(
-          title: const Text('Pending Inspections'),
+          title: const Text('Inspections'),
           actions: [_logoutButton()],
         ),
         body: PendingInspections(mandalId: widget.mandalId),
@@ -52,6 +53,13 @@ class _MandalDashboardPageState extends ConsumerState<MandalDashboardPage> {
         ),
         body: OfficerLoad(mandalId: widget.mandalId),
       ),
+      Scaffold(
+        appBar: AppBar(
+          title: const Text('Grievances'),
+          actions: [_logoutButton()],
+        ),
+        body: MandalGrievances(mandalId: widget.mandalId),
+      ),
     ];
 
     return Scaffold(
@@ -62,10 +70,12 @@ class _MandalDashboardPageState extends ConsumerState<MandalDashboardPage> {
         destinations: const [
           NavigationDestination(icon: Icon(Icons.map), label: 'Map'),
           NavigationDestination(
-              icon: Icon(Icons.pending_actions), label: 'Pending'),
+              icon: Icon(Icons.fact_check), label: 'Inspections'),
           NavigationDestination(icon: Icon(Icons.list), label: 'Facilities'),
           NavigationDestination(
               icon: Icon(Icons.bar_chart), label: 'Load'),
+          NavigationDestination(
+              icon: Icon(Icons.report_problem), label: 'Grievances'),
         ],
       ),
     );

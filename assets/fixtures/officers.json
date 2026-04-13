@@ -1,7 +1,7 @@
 [
   {
     "id": "u_collector",
-    "name": "Smt. Pamela Satpathy, IAS",
+    "name": "Sri. Anuraag Jayanti, IAS",
     "designation": "District Collector",
     "role": "collector",
     "mandal_id": null
@@ -36,31 +36,10 @@
   },
   {
     "id": "u_mandal_choutuppal",
-    "name": "Smt. Lakshmi Devi",
+    "name": "Sri D. Prasad Rao",
     "designation": "Mandal Officer — Choutuppal",
     "role": "mandal_officer",
     "mandal_id": "choutuppal"
-  },
-  {
-    "id": "u_mandal_alair",
-    "name": "Sri R. Prasad",
-    "designation": "Mandal Officer — Alair",
-    "role": "mandal_officer",
-    "mandal_id": "alair"
-  },
-  {
-    "id": "u_mandal_mothkur",
-    "name": "Sri G. Rajesh",
-    "designation": "Mandal Officer — Mothkur",
-    "role": "mandal_officer",
-    "mandal_id": "mothkur"
-  },
-  {
-    "id": "u_mandal_yadagiri",
-    "name": "Smt. Sunitha Rao",
-    "designation": "Mandal Officer — Yadagirigutta",
-    "role": "mandal_officer",
-    "mandal_id": "yadagirigutta"
   },
   {
     "id": "u_field_1",
@@ -71,7 +50,14 @@
   },
   {
     "id": "u_field_2",
-    "name": "Smt. K. Radhika",
+    "name": "Smt. G. Lakshmi",
+    "designation": "Field Inspection Officer — Choutuppal",
+    "role": "field_officer",
+    "mandal_id": "choutuppal"
+  },
+  {
+    "id": "u_field_3",
+    "name": "Sri R. Nagaraju",
     "designation": "Field Inspection Officer — Alair",
     "role": "field_officer",
     "mandal_id": "alair"
@@ -85,12 +71,20 @@
     "facility_id": "f_h01"
   },
   {
-    "id": "u_superintendent_1",
-    "name": "Dr. S. Anitha",
-    "designation": "Hospital Superintendent — CHC Alair",
+    "id": "u_warden_2",
+    "name": "Smt. K. Sunitha",
+    "designation": "Hostel Warden — SW Girls Hostel, Choutuppal",
     "role": "facility_admin",
-    "mandal_id": "alair",
-    "facility_id": "f_p03"
+    "mandal_id": "choutuppal",
+    "facility_id": "f_h03"
+  },
+  {
+    "id": "u_hospital_admin",
+    "name": "Dr. S. Ramaiah",
+    "designation": "Medical Superintendent — District Hospital, Bhongir",
+    "role": "facility_admin",
+    "mandal_id": "bhongir",
+    "facility_id": "f_p01"
   },
   {
     "id": "u_public_1",
@@ -101,8 +95,8 @@
   },
   {
     "id": "u_public_2",
-    "name": "Smt. D. Priya",
-    "designation": "Student",
+    "name": "Smt. B. Padmavathi",
+    "designation": "Parent / Guardian",
     "role": "public_user",
     "mandal_id": null
   },

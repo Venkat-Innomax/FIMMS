@@ -3,152 +3,302 @@
     "id": "i01", "facility_id": "f_h01", "officer_id": "u_field_1",
     "datetime": "2026-04-08T10:15:00", "lat": 17.4980, "lng": 78.8810,
     "geofence_pass": true, "urgent_flag": false,
-    "total_score": 88, "grade": "excellent", "status": "approved", "sections": []
+    "total_score": 88, "grade": "excellent", "status": "approved", "sections": [
+      {"section_id": "s1_infra", "title": "Infrastructure & Buildings", "raw_score": 18, "max_score": 20, "normalized": 90, "field_responses": {}, "remarks": "Well maintained. Minor paint peeling in corridor.", "photo_paths": ["evidence/i01_s1.jpg"], "skipped": false},
+      {"section_id": "s2_staff", "title": "Staff & Administration", "raw_score": 17, "max_score": 20, "normalized": 85, "field_responses": {}, "remarks": "All staff present. Attendance register up to date.", "photo_paths": [], "skipped": false},
+      {"section_id": "s3_kitchen", "title": "Kitchen & Nutrition", "raw_score": 19, "max_score": 20, "normalized": 95, "field_responses": {}, "remarks": "Menu chart displayed. Fresh ingredients verified.", "photo_paths": ["evidence/i01_s3.jpg"], "skipped": false},
+      {"section_id": "s4_sanitation", "title": "Sanitation & Hygiene", "raw_score": 16, "max_score": 20, "normalized": 80, "field_responses": {}, "remarks": "Toilets functional. Water supply adequate. Minor drainage issue near Block A.", "photo_paths": [], "skipped": false},
+      {"section_id": "s5_safety", "title": "Safety & Security", "raw_score": 18, "max_score": 20, "normalized": 90, "field_responses": {}, "remarks": "CCTV operational. Fire extinguishers in date. Compound wall secure.", "photo_paths": ["evidence/i01_s5.jpg"], "skipped": false}
+    ]
   },
   {
     "id": "i02", "facility_id": "f_h02", "officer_id": "u_field_1",
     "datetime": "2026-04-07T11:00:00", "lat": 17.5160, "lng": 78.8940,
     "geofence_pass": true, "urgent_flag": false,
-    "total_score": 76, "grade": "good", "status": "approved", "sections": []
+    "total_score": 76, "grade": "good", "status": "approved", "sections": [
+      {"section_id": "s1_infra", "title": "Infrastructure & Buildings", "raw_score": 15, "max_score": 20, "normalized": 75, "field_responses": {}, "remarks": "Ceiling plaster needs repair in room 4. Windows intact.", "photo_paths": ["evidence/i02_s1.jpg"], "skipped": false},
+      {"section_id": "s2_staff", "title": "Staff & Administration", "raw_score": 16, "max_score": 20, "normalized": 80, "field_responses": {}, "remarks": "Warden present. Night watchman roster maintained.", "photo_paths": [], "skipped": false},
+      {"section_id": "s3_kitchen", "title": "Kitchen & Nutrition", "raw_score": 14, "max_score": 20, "normalized": 70, "field_responses": {}, "remarks": "Kitchen clean but exhaust fan non-functional. Menu chart present.", "photo_paths": ["evidence/i02_s3.jpg"], "skipped": false},
+      {"section_id": "s4_sanitation", "title": "Sanitation & Hygiene", "raw_score": 16, "max_score": 20, "normalized": 80, "field_responses": {}, "remarks": "Water supply adequate. Toilets need deep cleaning.", "photo_paths": [], "skipped": false},
+      {"section_id": "s5_safety", "title": "Safety & Security", "raw_score": 15, "max_score": 20, "normalized": 75, "field_responses": {}, "remarks": "Main gate lock needs replacement. CCTV functional.", "photo_paths": ["evidence/i02_s5.jpg"], "skipped": false}
+    ]
   },
   {
     "id": "i03", "facility_id": "f_h03", "officer_id": "u_field_2",
     "datetime": "2026-04-05T09:30:00", "lat": 17.2620, "lng": 78.9465,
     "geofence_pass": true, "urgent_flag": false,
-    "total_score": 72, "grade": "good", "status": "approved", "sections": []
+    "total_score": 72, "grade": "good", "status": "approved", "sections": [
+      {"section_id": "s1_infra", "title": "Infrastructure & Buildings", "raw_score": 14, "max_score": 20, "normalized": 70, "field_responses": {}, "remarks": "Study hall roof leaking during rain. Main building structurally sound. Whitewash overdue.", "photo_paths": ["evidence/i03_s1.jpg"], "skipped": false},
+      {"section_id": "s2_staff", "title": "Staff & Administration", "raw_score": 13, "max_score": 20, "normalized": 65, "field_responses": {}, "remarks": "Only 1 warden for 120 students — below prescribed ratio. Cook and helper present.", "photo_paths": [], "skipped": false},
+      {"section_id": "s3_kitchen", "title": "Kitchen & Nutrition", "raw_score": 15, "max_score": 20, "normalized": 75, "field_responses": {}, "remarks": "Diet chart not displayed. Milk stored without refrigeration. Rice and dal quality acceptable.", "photo_paths": ["evidence/i03_s3.jpg"], "skipped": false},
+      {"section_id": "s4_sanitation", "title": "Sanitation & Hygiene", "raw_score": 15, "max_score": 20, "normalized": 75, "field_responses": {}, "remarks": "Washroom locks missing on 4 stalls. Sanitary pad dispenser empty. General cleanliness fair.", "photo_paths": ["evidence/i03_s4.jpg"], "skipped": false},
+      {"section_id": "s5_safety", "title": "Safety & Security", "raw_score": 15, "max_score": 20, "normalized": 75, "field_responses": {}, "remarks": "Compound wall broken at 2 points. CCTV cameras non-functional in corridor. Night patrol logged.", "photo_paths": ["evidence/i03_s5.jpg"], "skipped": false}
+    ]
   },
   {
     "id": "i04", "facility_id": "f_h04", "officer_id": "u_field_2",
     "datetime": "2026-04-04T14:20:00", "lat": 17.2565, "lng": 78.9380,
     "geofence_pass": true, "urgent_flag": false,
-    "total_score": 55, "grade": "average", "status": "approved", "sections": []
+    "total_score": 55, "grade": "average", "status": "approved", "sections": [
+      {"section_id": "s1_infra", "title": "Infrastructure & Buildings", "raw_score": 11, "max_score": 20, "normalized": 55, "field_responses": {}, "remarks": "Ceiling fan wobbling in dormitory 3. Exposed wiring near washroom entrance. Floor tiles cracked in common hall.", "photo_paths": ["evidence/i04_s1_a.jpg", "evidence/i04_s1_b.jpg"], "skipped": false},
+      {"section_id": "s2_staff", "title": "Staff & Administration", "raw_score": 10, "max_score": 20, "normalized": 50, "field_responses": {}, "remarks": "Night warden absent for 3 days. No substitute arranged. Day warden cooperative but overworked.", "photo_paths": [], "skipped": false},
+      {"section_id": "s3_kitchen", "title": "Kitchen & Nutrition", "raw_score": 12, "max_score": 20, "normalized": 60, "field_responses": {}, "remarks": "Menu followed partially. Egg supply irregular. Kitchen ventilation poor but hygienic.", "photo_paths": ["evidence/i04_s3.jpg"], "skipped": false},
+      {"section_id": "s4_sanitation", "title": "Sanitation & Hygiene", "raw_score": 11, "max_score": 20, "normalized": 55, "field_responses": {}, "remarks": "3 toilets clogged. Water tank cleaning overdue by 2 months. Drinking water RO functional.", "photo_paths": ["evidence/i04_s4.jpg"], "skipped": false},
+      {"section_id": "s5_safety", "title": "Safety & Security", "raw_score": 11, "max_score": 20, "normalized": 55, "field_responses": {}, "remarks": "1 fire extinguisher expired. Emergency exit route not marked. CCTV recording but 2 cameras offline.", "photo_paths": ["evidence/i04_s5.jpg"], "skipped": false}
+    ]
   },
   {
     "id": "i05", "facility_id": "f_h05", "officer_id": "u_field_1",
     "datetime": "2026-04-03T10:45:00", "lat": 17.4105, "lng": 79.2890,
     "geofence_pass": true, "urgent_flag": true,
     "urgent_reason": "Drinking water contamination reported by warden",
-    "total_score": 32, "grade": "critical", "status": "submitted", "sections": []
+    "total_score": 32, "grade": "critical", "status": "submitted", "sections": [
+      {"section_id": "s1_infra", "title": "Infrastructure & Buildings", "raw_score": 6, "max_score": 20, "normalized": 30, "field_responses": {}, "remarks": "Broken windows in dormitory block B — glass shards on floor. Roof leaking in 3 rooms. Electrical panel rusted and exposed.", "photo_paths": ["evidence/i05_s1_a.jpg", "evidence/i05_s1_b.jpg"], "skipped": false},
+      {"section_id": "s2_staff", "title": "Staff & Administration", "raw_score": 7, "max_score": 20, "normalized": 35, "field_responses": {}, "remarks": "Warden present but records incomplete. No night watchman for past week. Cook absent — helper cooking alone.", "photo_paths": [], "skipped": false},
+      {"section_id": "s3_kitchen", "title": "Kitchen & Nutrition", "raw_score": 5, "max_score": 20, "normalized": 25, "field_responses": {}, "remarks": "Food quality severely deteriorated. Rice undercooked. Expired oil found. Menu chart not followed for 2 weeks.", "photo_paths": ["evidence/i05_s3_a.jpg", "evidence/i05_s3_b.jpg"], "skipped": false},
+      {"section_id": "s4_sanitation", "title": "Sanitation & Hygiene", "raw_score": 7, "max_score": 20, "normalized": 35, "field_responses": {}, "remarks": "URGENT: Water purifier non-functional. Stored water uncovered with visible contamination. Yellow-coloured water from taps. Students reporting stomach illness.", "photo_paths": ["evidence/i05_s4_water.jpg"], "skipped": false},
+      {"section_id": "s5_safety", "title": "Safety & Security", "raw_score": 7, "max_score": 20, "normalized": 35, "field_responses": {}, "remarks": "No compound wall on east side. Fire extinguishers missing. No emergency contact list displayed.", "photo_paths": ["evidence/i05_s5.jpg"], "skipped": false}
+    ]
   },
   {
     "id": "i06", "facility_id": "f_h06", "officer_id": "u_field_2",
     "datetime": "2026-04-06T15:00:00", "lat": 17.4325, "lng": 79.1205,
     "geofence_pass": true, "urgent_flag": false,
-    "total_score": 81, "grade": "good", "status": "approved", "sections": []
+    "total_score": 81, "grade": "good", "status": "approved", "sections": [
+      {"section_id": "s1_infra", "title": "Infrastructure & Buildings", "raw_score": 17, "max_score": 20, "normalized": 85, "field_responses": {}, "remarks": "Building in good condition. Recent repairs visible. One window latch broken in room 6.", "photo_paths": ["evidence/i06_s1.jpg"], "skipped": false},
+      {"section_id": "s2_staff", "title": "Staff & Administration", "raw_score": 16, "max_score": 20, "normalized": 80, "field_responses": {}, "remarks": "Full staff present. Attendance register maintained digitally. Warden proactive and engaged.", "photo_paths": [], "skipped": false},
+      {"section_id": "s3_kitchen", "title": "Kitchen & Nutrition", "raw_score": 16, "max_score": 20, "normalized": 80, "field_responses": {}, "remarks": "Menu chart displayed and followed. Kitchen clean. Provisions stored properly. Gas safety compliance good.", "photo_paths": ["evidence/i06_s3.jpg"], "skipped": false},
+      {"section_id": "s4_sanitation", "title": "Sanitation & Hygiene", "raw_score": 16, "max_score": 20, "normalized": 80, "field_responses": {}, "remarks": "All toilets functional. RO plant working. Water tank cleaned recently. Minor stagnant water near backyard.", "photo_paths": [], "skipped": false},
+      {"section_id": "s5_safety", "title": "Safety & Security", "raw_score": 16, "max_score": 20, "normalized": 80, "field_responses": {}, "remarks": "CCTV operational with 30-day backup. Compound wall intact. Fire drill conducted last month.", "photo_paths": [], "skipped": false}
+    ]
   },
   {
     "id": "i07", "facility_id": "f_h07", "officer_id": "u_field_1",
     "datetime": "2026-04-02T12:00:00", "lat": 17.4420, "lng": 79.3180,
     "geofence_pass": true, "urgent_flag": false,
-    "total_score": 41, "grade": "poor", "status": "reinspection_ordered", "sections": []
+    "total_score": 41, "grade": "poor", "status": "reinspection_ordered", "sections": [
+      {"section_id": "s1_infra", "title": "Infrastructure & Buildings", "raw_score": 8, "max_score": 20, "normalized": 40, "field_responses": {}, "remarks": "Dormitory roof has major leaks. Staircase railing loose. Classroom furniture broken — 30% unusable.", "photo_paths": ["evidence/i07_s1_a.jpg", "evidence/i07_s1_b.jpg"], "skipped": false},
+      {"section_id": "s2_staff", "title": "Staff & Administration", "raw_score": 9, "max_score": 20, "normalized": 45, "field_responses": {}, "remarks": "Warden reported late daily. Helper position vacant for 2 months. Records poorly maintained.", "photo_paths": [], "skipped": false},
+      {"section_id": "s3_kitchen", "title": "Kitchen & Nutrition", "raw_score": 8, "max_score": 20, "normalized": 40, "field_responses": {}, "remarks": "Kitchen hygiene below standards — food stored without covers. Expired provisions found in store room. No pest control evidence.", "photo_paths": ["evidence/i07_s3.jpg"], "skipped": false},
+      {"section_id": "s4_sanitation", "title": "Sanitation & Hygiene", "raw_score": 8, "max_score": 20, "normalized": 40, "field_responses": {}, "remarks": "4 of 8 toilets non-functional. Septic tank overflowing. No handwash or soap available. Water tank unclean.", "photo_paths": ["evidence/i07_s4.jpg"], "skipped": false},
+      {"section_id": "s5_safety", "title": "Safety & Security", "raw_score": 8, "max_score": 20, "normalized": 40, "field_responses": {}, "remarks": "No fire extinguishers on premises. Boundary wall collapsed on south side. No night security arrangements.", "photo_paths": ["evidence/i07_s5.jpg"], "skipped": false}
+    ]
   },
   {
     "id": "i08", "facility_id": "f_h08", "officer_id": "u_field_2",
     "datetime": "2026-04-05T11:30:00", "lat": 17.4460, "lng": 79.1320,
     "geofence_pass": true, "urgent_flag": false,
-    "total_score": 68, "grade": "average", "status": "approved", "sections": []
+    "total_score": 68, "grade": "average", "status": "approved", "sections": [
+      {"section_id": "s1_infra", "title": "Infrastructure & Buildings", "raw_score": 14, "max_score": 20, "normalized": 70, "field_responses": {}, "remarks": "Building adequate. Two rooms need repainting. Bathroom tiles cracked in one block.", "photo_paths": ["evidence/i08_s1.jpg"], "skipped": false},
+      {"section_id": "s2_staff", "title": "Staff & Administration", "raw_score": 13, "max_score": 20, "normalized": 65, "field_responses": {}, "remarks": "Warden cooperative. One support staff position vacant. Attendance register maintained but gaps noted.", "photo_paths": [], "skipped": false},
+      {"section_id": "s3_kitchen", "title": "Kitchen & Nutrition", "raw_score": 14, "max_score": 20, "normalized": 70, "field_responses": {}, "remarks": "Meals served on time. Diet chart displayed but not fully followed — egg day skipped twice this week.", "photo_paths": [], "skipped": false},
+      {"section_id": "s4_sanitation", "title": "Sanitation & Hygiene", "raw_score": 13, "max_score": 20, "normalized": 65, "field_responses": {}, "remarks": "Overhead tank has algae buildup. Toilets functional but need maintenance. Drinking water tested — within limits.", "photo_paths": ["evidence/i08_s4.jpg"], "skipped": false},
+      {"section_id": "s5_safety", "title": "Safety & Security", "raw_score": 14, "max_score": 20, "normalized": 70, "field_responses": {}, "remarks": "Fire extinguishers present but 1 expired. CCTV installed but no night recording. Gate locks functional.", "photo_paths": [], "skipped": false}
+    ]
   },
   {
     "id": "i09", "facility_id": "f_h09", "officer_id": "u_field_1",
     "datetime": "2026-04-06T09:15:00", "lat": 17.5925, "lng": 78.9605,
     "geofence_pass": true, "urgent_flag": false,
-    "total_score": 90, "grade": "excellent", "status": "approved", "sections": []
+    "total_score": 90, "grade": "excellent", "status": "approved", "sections": [
+      {"section_id": "s1_infra", "title": "Infrastructure & Buildings", "raw_score": 18, "max_score": 20, "normalized": 90, "field_responses": {}, "remarks": "Excellent condition. Fresh whitewash. All rooms well-lit and ventilated. Furniture in good shape.", "photo_paths": ["evidence/i09_s1.jpg"], "skipped": false},
+      {"section_id": "s2_staff", "title": "Staff & Administration", "raw_score": 19, "max_score": 20, "normalized": 95, "field_responses": {}, "remarks": "Fully staffed. Warden highly engaged — conducts daily evening study supervision. Digital attendance maintained.", "photo_paths": [], "skipped": false},
+      {"section_id": "s3_kitchen", "title": "Kitchen & Nutrition", "raw_score": 18, "max_score": 20, "normalized": 90, "field_responses": {}, "remarks": "Balanced meals with variety. Kitchen spotless. Provisions fresh and properly stored. Menu rotated weekly.", "photo_paths": ["evidence/i09_s3.jpg"], "skipped": false},
+      {"section_id": "s4_sanitation", "title": "Sanitation & Hygiene", "raw_score": 17, "max_score": 20, "normalized": 85, "field_responses": {}, "remarks": "All facilities clean. RO plant serviced last month. Water tested weekly. Minor issue — soap dispenser empty in one washroom.", "photo_paths": [], "skipped": false},
+      {"section_id": "s5_safety", "title": "Safety & Security", "raw_score": 18, "max_score": 20, "normalized": 90, "field_responses": {}, "remarks": "Model facility for safety. CCTV with 45-day backup. Monthly fire drills. Emergency contacts prominently displayed.", "photo_paths": ["evidence/i09_s5.jpg"], "skipped": false}
+    ]
   },
   {
     "id": "i10", "facility_id": "f_h10", "officer_id": "u_field_2",
     "datetime": "2026-04-07T10:00:00", "lat": 17.2700, "lng": 78.9350,
     "geofence_pass": true, "urgent_flag": false,
-    "total_score": 63, "grade": "average", "status": "submitted", "sections": []
+    "total_score": 63, "grade": "average", "status": "submitted", "sections": [
+      {"section_id": "s1_infra", "title": "Infrastructure & Buildings", "raw_score": 13, "max_score": 20, "normalized": 65, "field_responses": {}, "remarks": "Building old but maintained. Roof patches visible. Electrical board needs upgrading. Common room furniture worn.", "photo_paths": ["evidence/i10_s1.jpg"], "skipped": false},
+      {"section_id": "s2_staff", "title": "Staff & Administration", "raw_score": 12, "max_score": 20, "normalized": 60, "field_responses": {}, "remarks": "Warden present but part-time. No dedicated night warden. Cleaner attends only mornings.", "photo_paths": [], "skipped": false},
+      {"section_id": "s3_kitchen", "title": "Kitchen & Nutrition", "raw_score": 13, "max_score": 20, "normalized": 65, "field_responses": {}, "remarks": "Meals served but repetitive menu. Egg and fruit supply inconsistent. Kitchen moderately clean.", "photo_paths": ["evidence/i10_s3.jpg"], "skipped": false},
+      {"section_id": "s4_sanitation", "title": "Sanitation & Hygiene", "raw_score": 13, "max_score": 20, "normalized": 65, "field_responses": {}, "remarks": "Water supply irregular after 6 PM. 2 toilets have broken flush mechanisms. Overhead tank cleaned last quarter.", "photo_paths": [], "skipped": false},
+      {"section_id": "s5_safety", "title": "Safety & Security", "raw_score": 12, "max_score": 20, "normalized": 60, "field_responses": {}, "remarks": "Fire extinguishers present but not serviced this year. CCTV at main gate only. No compound wall on rear side.", "photo_paths": ["evidence/i10_s5.jpg"], "skipped": false}
+    ]
   },
   {
     "id": "i11", "facility_id": "f_h11", "officer_id": "u_field_1",
     "datetime": "2026-04-01T14:45:00", "lat": 17.5050, "lng": 78.8970,
     "geofence_pass": true, "urgent_flag": false,
-    "total_score": 45, "grade": "poor", "status": "under_review", "sections": []
+    "total_score": 45, "grade": "poor", "status": "under_review", "sections": [
+      {"section_id": "s1_infra", "title": "Infrastructure & Buildings", "raw_score": 8, "max_score": 20, "normalized": 40, "field_responses": {}, "remarks": "Multiple broken windows. Electrical wiring exposed. Walls damp with seepage.", "photo_paths": ["evidence/i11_s1_a.jpg", "evidence/i11_s1_b.jpg"], "skipped": false},
+      {"section_id": "s2_staff", "title": "Staff & Administration", "raw_score": 10, "max_score": 20, "normalized": 50, "field_responses": {}, "remarks": "Warden absent during inspection. Cook present but no helper.", "photo_paths": [], "skipped": false},
+      {"section_id": "s3_kitchen", "title": "Kitchen & Nutrition", "raw_score": 9, "max_score": 20, "normalized": 45, "field_responses": {}, "remarks": "Stale provisions found. Gas cylinder stored inside kitchen. No fire extinguisher nearby.", "photo_paths": ["evidence/i11_s3.jpg"], "skipped": false},
+      {"section_id": "s4_sanitation", "title": "Sanitation & Hygiene", "raw_score": 8, "max_score": 20, "normalized": 40, "field_responses": {}, "remarks": "2 of 6 toilets non-functional. Open drainage near dormitory. No soap in washrooms.", "photo_paths": ["evidence/i11_s4.jpg"], "skipped": false},
+      {"section_id": "s5_safety", "title": "Safety & Security", "raw_score": 10, "max_score": 20, "normalized": 50, "field_responses": {}, "remarks": "Fire extinguishers expired. Compound wall has 2 breach points.", "photo_paths": ["evidence/i11_s5.jpg"], "skipped": false}
+    ]
   },
   {
     "id": "i12", "facility_id": "f_h12", "officer_id": "u_field_2",
     "datetime": "2026-04-05T13:30:00", "lat": 17.4255, "lng": 79.1135,
     "geofence_pass": true, "urgent_flag": false,
-    "total_score": 78, "grade": "good", "status": "approved", "sections": []
+    "total_score": 78, "grade": "good", "status": "approved", "sections": [
+      {"section_id": "s1_infra", "title": "Infrastructure & Buildings", "raw_score": 16, "max_score": 20, "normalized": 80, "field_responses": {}, "remarks": "Building well maintained. Minor crack in boundary wall. Classroom furniture adequate.", "photo_paths": ["evidence/i12_s1.jpg"], "skipped": false},
+      {"section_id": "s2_staff", "title": "Staff & Administration", "raw_score": 16, "max_score": 20, "normalized": 80, "field_responses": {}, "remarks": "Warden dedicated and present. Support staff complete. Records neatly maintained.", "photo_paths": [], "skipped": false},
+      {"section_id": "s3_kitchen", "title": "Kitchen & Nutrition", "raw_score": 15, "max_score": 20, "normalized": 75, "field_responses": {}, "remarks": "Good quality meals. Menu chart followed. Slight delay in lunch service due to gas pressure issue.", "photo_paths": ["evidence/i12_s3.jpg"], "skipped": false},
+      {"section_id": "s4_sanitation", "title": "Sanitation & Hygiene", "raw_score": 16, "max_score": 20, "normalized": 80, "field_responses": {}, "remarks": "Clean premises. Water tested and safe. All toilets functional. Drainage clear.", "photo_paths": [], "skipped": false},
+      {"section_id": "s5_safety", "title": "Safety & Security", "raw_score": 15, "max_score": 20, "normalized": 75, "field_responses": {}, "remarks": "Fire extinguishers valid. CCTV at gate and corridors. Need to add emergency exit signage.", "photo_paths": [], "skipped": false}
+    ]
   },
   {
     "id": "i13", "facility_id": "f_h13", "officer_id": "u_field_1",
     "datetime": "2026-04-08T11:15:00", "lat": 17.5210, "lng": 78.8825,
     "geofence_pass": true, "urgent_flag": false,
-    "total_score": 86, "grade": "excellent", "status": "approved", "sections": []
+    "total_score": 86, "grade": "excellent", "status": "approved", "sections": [
+      {"section_id": "s1_infra", "title": "Infrastructure & Buildings", "raw_score": 17, "max_score": 20, "normalized": 85, "field_responses": {}, "remarks": "Buildings well maintained. Whitewash recent.", "photo_paths": [], "skipped": false},
+      {"section_id": "s2_staff", "title": "Staff & Administration", "raw_score": 18, "max_score": 20, "normalized": 90, "field_responses": {}, "remarks": "Full staff complement. Records exemplary.", "photo_paths": [], "skipped": false},
+      {"section_id": "s3_kitchen", "title": "Kitchen & Nutrition", "raw_score": 17, "max_score": 20, "normalized": 85, "field_responses": {}, "remarks": "Balanced diet served. Kitchen hygienic.", "photo_paths": ["evidence/i13_s3.jpg"], "skipped": false},
+      {"section_id": "s4_sanitation", "title": "Sanitation & Hygiene", "raw_score": 17, "max_score": 20, "normalized": 85, "field_responses": {}, "remarks": "Clean premises. RO plant functional.", "photo_paths": [], "skipped": false},
+      {"section_id": "s5_safety", "title": "Safety & Security", "raw_score": 17, "max_score": 20, "normalized": 85, "field_responses": {}, "remarks": "All safety measures in place. Recent fire drill conducted.", "photo_paths": [], "skipped": false}
+    ]
   },
   {
     "id": "i14", "facility_id": "f_h14", "officer_id": "u_field_1",
     "datetime": "2026-04-04T10:15:00", "lat": 17.5145, "lng": 78.8905,
     "geofence_pass": true, "urgent_flag": false,
-    "total_score": 74, "grade": "good", "status": "approved", "sections": []
+    "total_score": 74, "grade": "good", "status": "approved", "sections": [
+      {"section_id": "s1_infra", "title": "Infrastructure & Buildings", "raw_score": 15, "max_score": 20, "normalized": 75, "field_responses": {}, "remarks": "Urban school building adequate. Computer lab AC non-functional. Sports equipment storage needs shelving.", "photo_paths": ["evidence/i14_s1.jpg"], "skipped": false},
+      {"section_id": "s2_staff", "title": "Staff & Administration", "raw_score": 15, "max_score": 20, "normalized": 75, "field_responses": {}, "remarks": "Teaching staff complete. Administrative assistant on leave — records slightly behind.", "photo_paths": [], "skipped": false},
+      {"section_id": "s3_kitchen", "title": "Kitchen & Nutrition", "raw_score": 14, "max_score": 20, "normalized": 70, "field_responses": {}, "remarks": "Mid-day meals served. Quality acceptable. Need more variety in menu. Kitchen cleanliness fair.", "photo_paths": ["evidence/i14_s3.jpg"], "skipped": false},
+      {"section_id": "s4_sanitation", "title": "Sanitation & Hygiene", "raw_score": 15, "max_score": 20, "normalized": 75, "field_responses": {}, "remarks": "Washrooms clean. Water cooler serviced. Playground area has stagnant rainwater — mosquito risk.", "photo_paths": [], "skipped": false},
+      {"section_id": "s5_safety", "title": "Safety & Security", "raw_score": 15, "max_score": 20, "normalized": 75, "field_responses": {}, "remarks": "School in urban area — good connectivity. Fire extinguishers valid. Need to update emergency evacuation plan.", "photo_paths": [], "skipped": false}
+    ]
   },
   {
     "id": "i15", "facility_id": "f_h15", "officer_id": "u_field_1",
     "datetime": "2026-04-08T08:45:00", "lat": 17.5865, "lng": 78.9580,
     "geofence_pass": true, "urgent_flag": false,
-    "total_score": 66, "grade": "average", "status": "submitted", "sections": []
+    "total_score": 66, "grade": "average", "status": "submitted", "sections": [
+      {"section_id": "s1_infra", "title": "Infrastructure & Buildings", "raw_score": 13, "max_score": 20, "normalized": 65, "field_responses": {}, "remarks": "Old building — needs major renovation. Dampness in ground floor rooms. Electrical wiring outdated but safe.", "photo_paths": ["evidence/i15_s1.jpg"], "skipped": false},
+      {"section_id": "s2_staff", "title": "Staff & Administration", "raw_score": 14, "max_score": 20, "normalized": 70, "field_responses": {}, "remarks": "Warden present. Night helper absent frequently. Student attendance tracking manual — needs digitization.", "photo_paths": [], "skipped": false},
+      {"section_id": "s3_kitchen", "title": "Kitchen & Nutrition", "raw_score": 13, "max_score": 20, "normalized": 65, "field_responses": {}, "remarks": "Meals served on time but quality inconsistent. Fruit provided only twice this week. Store room needs pest treatment.", "photo_paths": ["evidence/i15_s3.jpg"], "skipped": false},
+      {"section_id": "s4_sanitation", "title": "Sanitation & Hygiene", "raw_score": 13, "max_score": 20, "normalized": 65, "field_responses": {}, "remarks": "Water supply intermittent. 2 toilets leaking. Overhead tank cleaning overdue. Waste disposal irregular.", "photo_paths": ["evidence/i15_s4.jpg"], "skipped": false},
+      {"section_id": "s5_safety", "title": "Safety & Security", "raw_score": 13, "max_score": 20, "normalized": 65, "field_responses": {}, "remarks": "Fire extinguisher count insufficient — need 2 more. CCTV at gate only. Compound wall adequate.", "photo_paths": [], "skipped": false}
+    ]
   },
   {
     "id": "i16", "facility_id": "f_p01", "officer_id": "u_field_1",
     "datetime": "2026-04-08T09:30:00", "lat": 17.5130, "lng": 78.8875,
     "geofence_pass": true, "urgent_flag": false,
-    "total_score": 83, "grade": "good", "status": "approved", "sections": []
+    "total_score": 83, "grade": "good", "status": "approved", "sections": [
+      {"section_id": "s1_infra", "title": "Infrastructure & Buildings", "raw_score": 17, "max_score": 20, "normalized": 85, "field_responses": {}, "remarks": "X-ray machine non-functional. UPS for ICU needs replacement. Building structure sound.", "photo_paths": ["evidence/i16_s1.jpg"], "skipped": false},
+      {"section_id": "s2_staff", "title": "Staff & Human Resources", "raw_score": 15, "max_score": 20, "normalized": 75, "field_responses": {}, "remarks": "Gynaecologist position vacant 4 months. ANM managing deliveries. Other staff adequate.", "photo_paths": [], "skipped": false},
+      {"section_id": "s3_medicines", "title": "Medicine & Supply Chain", "raw_score": 16, "max_score": 20, "normalized": 80, "field_responses": {}, "remarks": "3 essential drugs in stockout. Cold chain maintained for vaccines. Insulin storage needs attention.", "photo_paths": ["evidence/i16_s3.jpg"], "skipped": false},
+      {"section_id": "s4_sanitation", "title": "Sanitation & Waste Management", "raw_score": 17, "max_score": 20, "normalized": 85, "field_responses": {}, "remarks": "Biomedical waste segregation issue in 3 wards. General cleanliness good.", "photo_paths": ["evidence/i16_s4.jpg"], "skipped": false},
+      {"section_id": "s5_safety", "title": "Safety & Emergency Preparedness", "raw_score": 18, "max_score": 20, "normalized": 90, "field_responses": {}, "remarks": "Fire exit was blocked — cleared during inspection. Assembly point not marked.", "photo_paths": ["evidence/i16_s5.jpg"], "skipped": false}
+    ]
   },
   {
     "id": "i17", "facility_id": "f_p02", "officer_id": "u_field_2",
     "datetime": "2026-04-07T11:45:00", "lat": 17.4280, "lng": 79.1170,
     "geofence_pass": true, "urgent_flag": false,
-    "total_score": 71, "grade": "good", "status": "approved", "sections": []
+    "total_score": 71, "grade": "good", "status": "approved", "sections": [
+      {"section_id": "s1_infra", "title": "Infrastructure & Buildings", "raw_score": 15, "max_score": 20, "normalized": 75, "field_responses": {}, "remarks": "OPD area cramped but functional. Labour room needs repainting. Generator present but fuel supply low.", "photo_paths": ["evidence/i17_s1.jpg"], "skipped": false},
+      {"section_id": "s2_staff", "title": "Staff & Human Resources", "raw_score": 14, "max_score": 20, "normalized": 70, "field_responses": {}, "remarks": "Medical officer present. Lab technician post vacant — samples sent to district hospital. Nursing staff adequate.", "photo_paths": [], "skipped": false},
+      {"section_id": "s3_medicines", "title": "Medicine & Supply Chain", "raw_score": 14, "max_score": 20, "normalized": 70, "field_responses": {}, "remarks": "Most essential drugs available. ORS and Zinc tablets running low. Vaccine cold chain maintained.", "photo_paths": ["evidence/i17_s3.jpg"], "skipped": false},
+      {"section_id": "s4_sanitation", "title": "Sanitation & Waste Management", "raw_score": 14, "max_score": 20, "normalized": 70, "field_responses": {}, "remarks": "Waste bins colour-coded. Needle destroyer present. Deep burial pit maintained. Toilets clean.", "photo_paths": [], "skipped": false},
+      {"section_id": "s5_safety", "title": "Safety & Emergency Preparedness", "raw_score": 14, "max_score": 20, "normalized": 70, "field_responses": {}, "remarks": "Emergency tray stocked. Referral transport available. Fire extinguisher valid. Need to post emergency numbers.", "photo_paths": [], "skipped": false}
+    ]
   },
   {
     "id": "i18", "facility_id": "f_p03", "officer_id": "u_field_2",
     "datetime": "2026-04-06T13:00:00", "lat": 17.2535, "lng": 78.9410,
     "geofence_pass": true, "urgent_flag": false,
-    "total_score": 59, "grade": "average", "status": "submitted", "sections": []
+    "total_score": 59, "grade": "average", "status": "submitted", "sections": [
+      {"section_id": "s1_infra", "title": "Infrastructure & Buildings", "raw_score": 12, "max_score": 20, "normalized": 60, "field_responses": {}, "remarks": "Building needs renovation. Waiting area has broken benches. Leaking roof in pharmacy section. ECG machine non-functional.", "photo_paths": ["evidence/i18_s1_a.jpg", "evidence/i18_s1_b.jpg"], "skipped": false},
+      {"section_id": "s2_staff", "title": "Staff & Human Resources", "raw_score": 11, "max_score": 20, "normalized": 55, "field_responses": {}, "remarks": "Medical officer on long leave — substitute not yet posted. Staff nurse managing OPD. Pharmacist present.", "photo_paths": [], "skipped": false},
+      {"section_id": "s3_medicines", "title": "Medicine & Supply Chain", "raw_score": 12, "max_score": 20, "normalized": 60, "field_responses": {}, "remarks": "Several essential drugs in stockout including anti-hypertensives. Last supply received 3 weeks ago. Cold chain functioning.", "photo_paths": ["evidence/i18_s3.jpg"], "skipped": false},
+      {"section_id": "s4_sanitation", "title": "Sanitation & Waste Management", "raw_score": 12, "max_score": 20, "normalized": 60, "field_responses": {}, "remarks": "Waste segregation partially followed. Sharps container overdue for collection. Patient toilets need repair — 1 of 3 functional.", "photo_paths": ["evidence/i18_s4.jpg"], "skipped": false},
+      {"section_id": "s5_safety", "title": "Safety & Emergency Preparedness", "raw_score": 12, "max_score": 20, "normalized": 60, "field_responses": {}, "remarks": "No ambulance stationed. Emergency drug tray incomplete. Fire extinguisher present but expired. Referral linkage to district hospital exists.", "photo_paths": [], "skipped": false}
+    ]
   },
   {
     "id": "i19", "facility_id": "f_p04", "officer_id": "u_field_1",
     "datetime": "2026-04-03T10:00:00", "lat": 17.2690, "lng": 79.0505,
     "geofence_pass": true, "urgent_flag": true,
     "urgent_reason": "Essential medicines stockout + expired vials found",
-    "total_score": 28, "grade": "critical", "status": "submitted", "sections": []
+    "total_score": 28, "grade": "critical", "status": "submitted", "sections": [
+      {"section_id": "s1_infra", "title": "Infrastructure & Buildings", "raw_score": 5, "max_score": 20, "normalized": 25, "field_responses": {}, "remarks": "Operation theatre AC non-functional — temperature unsafe. Labour room door doesn't close properly. Ceiling leaks in ward 2. Generator not working.", "photo_paths": ["evidence/i19_s1_a.jpg", "evidence/i19_s1_b.jpg"], "skipped": false},
+      {"section_id": "s2_staff", "title": "Staff & Human Resources", "raw_score": 6, "max_score": 20, "normalized": 30, "field_responses": {}, "remarks": "Medical officer posted but frequently absent. Only 1 staff nurse for entire facility. No lab technician. Sweeper comes alternate days.", "photo_paths": [], "skipped": false},
+      {"section_id": "s3_medicines", "title": "Medicine & Supply Chain", "raw_score": 4, "max_score": 20, "normalized": 20, "field_responses": {}, "remarks": "CRITICAL: 12 essential drugs unavailable. 3 injectable vials past expiry found on shelf. Insulin not in cold chain. Supply indent pending for 6 weeks.", "photo_paths": ["evidence/i19_s3_a.jpg", "evidence/i19_s3_b.jpg", "evidence/i19_s3_c.jpg"], "skipped": false},
+      {"section_id": "s4_sanitation", "title": "Sanitation & Waste Management", "raw_score": 6, "max_score": 20, "normalized": 30, "field_responses": {}, "remarks": "Biomedical waste dumped in open area behind building. No colour-coded bins in wards. Patient toilet has no water supply. Blood bank area unhygienic.", "photo_paths": ["evidence/i19_s4.jpg"], "skipped": false},
+      {"section_id": "s5_safety", "title": "Safety & Emergency Preparedness", "raw_score": 7, "max_score": 20, "normalized": 35, "field_responses": {}, "remarks": "No fire extinguishers. Emergency drug tray missing critical items. Ambulance driver absent. Snake bite anti-venom not stocked in endemic area.", "photo_paths": ["evidence/i19_s5.jpg"], "skipped": false}
+    ]
   },
   {
     "id": "i20", "facility_id": "f_p05", "officer_id": "u_field_1",
     "datetime": "2026-04-07T09:00:00", "lat": 17.5820, "lng": 78.9490,
     "geofence_pass": true, "urgent_flag": false,
-    "total_score": 54, "grade": "average", "status": "approved", "sections": []
+    "total_score": 54, "grade": "average", "status": "approved", "sections": [
+      {"section_id": "s1_infra", "title": "Infrastructure & Buildings", "raw_score": 11, "max_score": 20, "normalized": 55, "field_responses": {}, "remarks": "Small PHC building adequate for patient load. Examination room needs better lighting. Waiting area has only 4 chairs.", "photo_paths": ["evidence/i20_s1.jpg"], "skipped": false},
+      {"section_id": "s2_staff", "title": "Staff & Human Resources", "raw_score": 10, "max_score": 20, "normalized": 50, "field_responses": {}, "remarks": "ANM present. Medical officer visits 3 days/week. No pharmacist — ANM dispenses medicines. Asha worker active in village.", "photo_paths": [], "skipped": false},
+      {"section_id": "s3_medicines", "title": "Medicine & Supply Chain", "raw_score": 11, "max_score": 20, "normalized": 55, "field_responses": {}, "remarks": "Basic medicines available. Paracetamol and ORS stocked. Anti-diabetic drugs not available — patients referred. Cold chain for vaccines maintained.", "photo_paths": [], "skipped": false},
+      {"section_id": "s4_sanitation", "title": "Sanitation & Waste Management", "raw_score": 11, "max_score": 20, "normalized": 55, "field_responses": {}, "remarks": "Single toilet — functional but needs cleaning. Waste disposal through deep burial. Sharps container present. Water supply from bore well.", "photo_paths": ["evidence/i20_s4.jpg"], "skipped": false},
+      {"section_id": "s5_safety", "title": "Safety & Emergency Preparedness", "raw_score": 11, "max_score": 20, "normalized": 55, "field_responses": {}, "remarks": "Basic emergency kit available. No fire extinguisher. Referral transport arranged through 108 ambulance. Emergency number displayed.", "photo_paths": [], "skipped": false}
+    ]
   },
   {
     "id": "i21", "facility_id": "f_p06", "officer_id": "u_field_1",
     "datetime": "2026-04-02T15:30:00", "lat": 17.5955, "lng": 78.9715,
     "geofence_pass": true, "urgent_flag": false,
-    "total_score": 48, "grade": "poor", "status": "under_review", "sections": []
+    "total_score": 48, "grade": "poor", "status": "under_review", "sections": [
+      {"section_id": "s1_infra", "title": "Infrastructure & Buildings", "raw_score": 9, "max_score": 20, "normalized": 45, "field_responses": {}, "remarks": "Building dilapidated. Roof leaks in examination room. No electricity backup — power cuts affect service for hours. Furniture broken.", "photo_paths": ["evidence/i21_s1_a.jpg", "evidence/i21_s1_b.jpg"], "skipped": false},
+      {"section_id": "s2_staff", "title": "Staff & Human Resources", "raw_score": 10, "max_score": 20, "normalized": 50, "field_responses": {}, "remarks": "Medical officer posted but arrives late consistently. ANM dedicated but overburdened. No support staff.", "photo_paths": [], "skipped": false},
+      {"section_id": "s3_medicines", "title": "Medicine & Supply Chain", "raw_score": 10, "max_score": 20, "normalized": 50, "field_responses": {}, "remarks": "Several essential medicines out of stock. Supply chain delays — last indent partially fulfilled. Iron tablets and folic acid available.", "photo_paths": ["evidence/i21_s3.jpg"], "skipped": false},
+      {"section_id": "s4_sanitation", "title": "Sanitation & Waste Management", "raw_score": 9, "max_score": 20, "normalized": 45, "field_responses": {}, "remarks": "Coloured bins missing in 3 wards. Biomedical waste segregation not followed. Patient toilet non-functional. Surrounding area unclean.", "photo_paths": ["evidence/i21_s4.jpg"], "skipped": false},
+      {"section_id": "s5_safety", "title": "Safety & Emergency Preparedness", "raw_score": 10, "max_score": 20, "normalized": 50, "field_responses": {}, "remarks": "No fire safety equipment. Emergency drugs incomplete. Snakebite kit expired. 108 ambulance is primary referral — response time 40 min.", "photo_paths": [], "skipped": false}
+    ]
   },
   {
     "id": "i22", "facility_id": "f_p07", "officer_id": "u_field_1",
     "datetime": "2026-04-05T10:30:00", "lat": 17.5405, "lng": 78.9020,
     "geofence_pass": true, "urgent_flag": false,
-    "total_score": 67, "grade": "average", "status": "approved", "sections": []
+    "total_score": 67, "grade": "average", "status": "approved", "sections": [
+      {"section_id": "s1_infra", "title": "Infrastructure & Buildings", "raw_score": 14, "max_score": 20, "normalized": 70, "field_responses": {}, "remarks": "PHC building recently painted. Examination room well-equipped. Labour room functional. Need additional consulting room.", "photo_paths": ["evidence/i22_s1.jpg"], "skipped": false},
+      {"section_id": "s2_staff", "title": "Staff & Human Resources", "raw_score": 13, "max_score": 20, "normalized": 65, "field_responses": {}, "remarks": "Medical officer present full-time. One ANM transferred — replacement awaited. Lab available but technician part-time.", "photo_paths": [], "skipped": false},
+      {"section_id": "s3_medicines", "title": "Medicine & Supply Chain", "raw_score": 13, "max_score": 20, "normalized": 65, "field_responses": {}, "remarks": "Core medicines available. Shortage of injectables — IV fluids running low. Vaccine stock adequate. Need to reorder antibiotics.", "photo_paths": ["evidence/i22_s3.jpg"], "skipped": false},
+      {"section_id": "s4_sanitation", "title": "Sanitation & Waste Management", "raw_score": 13, "max_score": 20, "normalized": 65, "field_responses": {}, "remarks": "Colour-coded bins present. Collection schedule regular. Patient washrooms functional. Water quality tested — acceptable.", "photo_paths": [], "skipped": false},
+      {"section_id": "s5_safety", "title": "Safety & Emergency Preparedness", "raw_score": 14, "max_score": 20, "normalized": 70, "field_responses": {}, "remarks": "Fire extinguisher present and valid. Emergency contact board displayed. Need to conduct staff training on emergency protocols.", "photo_paths": [], "skipped": false}
+    ]
   },
   {
     "id": "i23", "facility_id": "f_p08", "officer_id": "u_field_2",
     "datetime": "2026-04-06T11:00:00", "lat": 17.3495, "lng": 78.9920,
     "geofence_pass": true, "urgent_flag": false,
-    "total_score": 33, "grade": "critical", "status": "reinspection_ordered", "sections": []
+    "total_score": 33, "grade": "critical", "status": "reinspection_ordered", "sections": [
+      {"section_id": "s1_infra", "title": "Infrastructure & Buildings", "raw_score": 6, "max_score": 20, "normalized": 30, "field_responses": {}, "remarks": "Building in severe disrepair. Roof collapsed in one wing — cordoned off. No running water in examination room. Electrical short circuits reported.", "photo_paths": ["evidence/i23_s1_a.jpg", "evidence/i23_s1_b.jpg"], "skipped": false},
+      {"section_id": "s2_staff", "title": "Staff & Human Resources", "raw_score": 7, "max_score": 20, "normalized": 35, "field_responses": {}, "remarks": "Medical officer transferred 2 months ago — no replacement. ANM running facility alone. No cleaning staff — community volunteers help.", "photo_paths": [], "skipped": false},
+      {"section_id": "s3_medicines", "title": "Medicine & Supply Chain", "raw_score": 6, "max_score": 20, "normalized": 30, "field_responses": {}, "remarks": "Severe stockout — only paracetamol and bandages available. No antibiotics, no anti-hypertensives. Supply indent rejected twice due to budget issues.", "photo_paths": ["evidence/i23_s3.jpg"], "skipped": false},
+      {"section_id": "s4_sanitation", "title": "Sanitation & Waste Management", "raw_score": 7, "max_score": 20, "normalized": 35, "field_responses": {}, "remarks": "No biomedical waste management. Used syringes found in open bin. No toilet facility for patients. Water from contaminated bore well.", "photo_paths": ["evidence/i23_s4.jpg"], "skipped": false},
+      {"section_id": "s5_safety", "title": "Safety & Emergency Preparedness", "raw_score": 7, "max_score": 20, "normalized": 35, "field_responses": {}, "remarks": "No fire safety. No emergency drugs. No referral transport arrangement. Facility barely functional — immediate intervention needed.", "photo_paths": ["evidence/i23_s5.jpg"], "skipped": false}
+    ]
   },
   {
     "id": "i24", "facility_id": "f_p09", "officer_id": "u_field_1",
     "datetime": "2026-04-04T14:00:00", "lat": 17.4395, "lng": 79.3120,
     "geofence_pass": true, "urgent_flag": false,
-    "total_score": 79, "grade": "good", "status": "approved", "sections": []
+    "total_score": 79, "grade": "good", "status": "approved", "sections": [
+      {"section_id": "s1_infra", "title": "Infrastructure & Buildings", "raw_score": 16, "max_score": 20, "normalized": 80, "field_responses": {}, "remarks": "Well-maintained PHC. Examination room equipped with basic instruments. Labour room clean. Generator functional.", "photo_paths": ["evidence/i24_s1.jpg"], "skipped": false},
+      {"section_id": "s2_staff", "title": "Staff & Human Resources", "raw_score": 16, "max_score": 20, "normalized": 80, "field_responses": {}, "remarks": "Medical officer present daily. Two ANMs active. Pharmacist posted. Community health worker covers 3 villages.", "photo_paths": [], "skipped": false},
+      {"section_id": "s3_medicines", "title": "Medicine & Supply Chain", "raw_score": 16, "max_score": 20, "normalized": 80, "field_responses": {}, "remarks": "Good stock levels. All essential medicines available. Insulin cold chain maintained. Need to reorder ORS packets soon.", "photo_paths": ["evidence/i24_s3.jpg"], "skipped": false},
+      {"section_id": "s4_sanitation", "title": "Sanitation & Waste Management", "raw_score": 15, "max_score": 20, "normalized": 75, "field_responses": {}, "remarks": "Waste segregation followed. Bins colour-coded. Patient toilets clean. Minor issue — drainage near back gate needs clearing.", "photo_paths": [], "skipped": false},
+      {"section_id": "s5_safety", "title": "Safety & Emergency Preparedness", "raw_score": 16, "max_score": 20, "normalized": 80, "field_responses": {}, "remarks": "Fire extinguisher valid. Emergency tray complete. Referral linkage to district hospital established. Response time under 20 minutes.", "photo_paths": [], "skipped": false}
+    ]
   },
   {
     "id": "i25", "facility_id": "f_p10", "officer_id": "u_field_1",
     "datetime": "2026-04-08T12:30:00", "lat": 17.5125, "lng": 78.8895,
     "geofence_pass": true, "urgent_flag": false,
-    "total_score": 82, "grade": "good", "status": "approved", "sections": []
+    "total_score": 82, "grade": "good", "status": "approved", "sections": [
+      {"section_id": "s1_infra", "title": "Infrastructure & Buildings", "raw_score": 17, "max_score": 20, "normalized": 85, "field_responses": {}, "remarks": "Urban PHC in good condition. Well-lit OPD area. NCD clinic room functional. Minor plumbing issue in staff washroom.", "photo_paths": ["evidence/i25_s1.jpg"], "skipped": false},
+      {"section_id": "s2_staff", "title": "Staff & Human Resources", "raw_score": 16, "max_score": 20, "normalized": 80, "field_responses": {}, "remarks": "Medical officer and AYUSH doctor present. 2 staff nurses. Pharmacist posted. Good patient rapport observed.", "photo_paths": [], "skipped": false},
+      {"section_id": "s3_medicines", "title": "Medicine & Supply Chain", "raw_score": 17, "max_score": 20, "normalized": 85, "field_responses": {}, "remarks": "Excellent stock management. All NCD medicines available. Digital inventory maintained. Cold chain for vaccines perfect.", "photo_paths": ["evidence/i25_s3.jpg"], "skipped": false},
+      {"section_id": "s4_sanitation", "title": "Sanitation & Waste Management", "raw_score": 16, "max_score": 20, "normalized": 80, "field_responses": {}, "remarks": "Biomedical waste managed properly. TSPCB authorization displayed. Patient washrooms clean. Drinking water RO-filtered.", "photo_paths": [], "skipped": false},
+      {"section_id": "s5_safety", "title": "Safety & Emergency Preparedness", "raw_score": 16, "max_score": 20, "normalized": 80, "field_responses": {}, "remarks": "Fire safety adequate. Emergency protocols displayed. Ambulance arrangement with 108. Staff trained in BLS.", "photo_paths": [], "skipped": false}
+    ]
   }
 ]

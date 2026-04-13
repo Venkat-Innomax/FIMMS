@@ -38,3 +38,39 @@ class ComplaintRepository {
 final complaintRepositoryProvider = Provider<ComplaintRepository>(
   (ref) => ComplaintRepository(),
 );
+
+/// Mutable in-memory list of complaints, seeded from fixtures.
+class ComplaintListNotifier extends StateNotifier<List<Complaint>> {
+  final ComplaintRepository _repo;
+  bool _loaded = false;
+
+  ComplaintListNotifier(this._repo) : super([]);
+
+  Future<void> _ensureLoaded() async {
+    if (_loaded) return;
+    _loaded = true;
+    state = await _repo.loadAll();
+  }
+
+  Future<void> load() => _ensureLoaded();
+
+  /// Replace a complaint by ID with an updated version.
+  void update(Complaint updated) {
+    state = [
+      for (final c in state)
+        if (c.id == updated.id) updated else c,
+    ];
+  }
+
+  void add(Complaint c) {
+    state = [...state, c];
+  }
+}
+
+final complaintListProvider =
+    StateNotifierProvider<ComplaintListNotifier, List<Complaint>>((ref) {
+  final repo = ref.read(complaintRepositoryProvider);
+  final notifier = ComplaintListNotifier(repo);
+  notifier.load();
+  return notifier;
+});

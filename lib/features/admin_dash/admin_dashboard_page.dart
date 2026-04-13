@@ -7,6 +7,8 @@ import 'pages/facility_master_page.dart';
 import 'pages/user_management_page.dart';
 import 'pages/form_builder_page.dart';
 import 'pages/assignment_page.dart';
+import 'pages/assign_inspection_page.dart';
+import 'pages/admin_grievance_page.dart';
 import 'pages/sla_monitor_page.dart';
 
 class AdminDashboardPage extends ConsumerStatefulWidget {
@@ -24,7 +26,9 @@ class _AdminDashboardPageState extends ConsumerState<AdminDashboardPage> {
     _NavItem(icon: Icons.people, label: 'Users'),
     _NavItem(icon: Icons.dynamic_form, label: 'Forms'),
     _NavItem(icon: Icons.assignment, label: 'Assignments'),
+    _NavItem(icon: Icons.assignment_add, label: 'Assign Inspection'),
     _NavItem(icon: Icons.timer, label: 'SLA'),
+    _NavItem(icon: Icons.report_problem, label: 'Grievances'),
   ];
 
   static const _pages = <Widget>[
@@ -32,7 +36,9 @@ class _AdminDashboardPageState extends ConsumerState<AdminDashboardPage> {
     UserManagementPage(),
     FormBuilderPage(),
     AssignmentPage(),
+    AssignInspectionPage(),
     SlaMonitorPage(),
+    AdminGrievancePage(),
   ];
 
   @override
@@ -85,7 +91,15 @@ class _AdminDashboardPageState extends ConsumerState<AdminDashboardPage> {
               ],
             ),
             const VerticalDivider(width: 1),
-            Expanded(child: _pages[_selectedIndex]),
+            Expanded(
+              child: AnimatedSwitcher(
+                duration: const Duration(milliseconds: 300),
+                child: KeyedSubtree(
+                  key: ValueKey(_selectedIndex),
+                  child: _pages[_selectedIndex],
+                ),
+              ),
+            ),
           ],
         ),
       );
@@ -102,7 +116,13 @@ class _AdminDashboardPageState extends ConsumerState<AdminDashboardPage> {
           ),
         ],
       ),
-      body: _pages[_selectedIndex],
+      body: AnimatedSwitcher(
+        duration: const Duration(milliseconds: 300),
+        child: KeyedSubtree(
+          key: ValueKey(_selectedIndex),
+          child: _pages[_selectedIndex],
+        ),
+      ),
       bottomNavigationBar: NavigationBar(
         selectedIndex: _selectedIndex,
         onDestinationSelected: (i) => setState(() => _selectedIndex = i),

@@ -35,7 +35,7 @@ class CollectorDashboardPage extends ConsumerStatefulWidget {
       _CollectorDashboardPageState();
 }
 
-enum _ViewMode { map, reports, trends }
+enum _ViewMode { map, reports, trends, alerts }
 
 class _CollectorDashboardPageState
     extends ConsumerState<CollectorDashboardPage> {
@@ -187,16 +187,6 @@ class _CollectorDashboardPageState
 
     final isMobile = Responsive.isMobile(context);
 
-    final alertsPanel = widget.mandalScopeId == null
-        ? Padding(
-            padding: const EdgeInsets.fromLTRB(24, 8, 24, 0),
-            child: AlertsPanel(
-              facilities: filtered,
-              latestByFacility: insByFacility,
-            ),
-          )
-        : const SizedBox.shrink();
-
     final viewToggle = widget.mandalScopeId == null
         ? Padding(
             padding: const EdgeInsets.fromLTRB(24, 4, 24, 0),
@@ -214,6 +204,10 @@ class _CollectorDashboardPageState
                     value: _ViewMode.trends,
                     icon: Icon(Icons.trending_up, size: 16),
                     label: Text('Trends')),
+                ButtonSegment(
+                    value: _ViewMode.alerts,
+                    icon: Icon(Icons.warning_amber, size: 16),
+                    label: Text('Alerts')),
               ],
               selected: {_viewMode},
               onSelectionChanged: (s) =>
@@ -234,14 +228,27 @@ class _CollectorDashboardPageState
         );
       case _ViewMode.trends:
         mainContent = TrendChart(inspections: inspections);
+      case _ViewMode.alerts:
+        mainContent = AlertsPanel(
+          facilities: filtered,
+          latestByFacility: insByFacility,
+        );
     }
+
+    // Wrap in AnimatedSwitcher for smooth fade between map/reports/trends.
+    mainContent = AnimatedSwitcher(
+      duration: const Duration(milliseconds: 300),
+      child: KeyedSubtree(
+        key: ValueKey(_viewMode),
+        child: mainContent,
+      ),
+    );
 
     if (isMobile) {
       return SingleChildScrollView(
         child: Column(
           children: [
             statsRow,
-            alertsPanel,
             viewToggle,
             Padding(
               padding: const EdgeInsets.all(16),
@@ -270,7 +277,6 @@ class _CollectorDashboardPageState
     return Column(
       children: [
         statsRow,
-        alertsPanel,
         viewToggle,
         Expanded(
           child: Padding(

@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import '../../../core/theme.dart';
 import '../../../models/facility.dart';
 import '../../../models/inspection.dart';
+import '../../shared_widgets/empty_state.dart';
 import '../../shared_widgets/grade_chip.dart';
 
 class AlertsPanel extends StatelessWidget {
@@ -43,7 +44,11 @@ class AlertsPanel extends StatelessWidget {
     });
 
     if (alerts.isEmpty) {
-      return const SizedBox.shrink();
+      return const EmptyState(
+        icon: Icons.notifications_off_outlined,
+        title: 'No active alerts',
+        subtitle: 'All facilities are within acceptable thresholds.',
+      );
     }
 
     return Container(
@@ -85,10 +90,8 @@ class AlertsPanel extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
-            height: alerts.length > 3 ? 180 : null,
+          Expanded(
             child: ListView.builder(
-              shrinkWrap: alerts.length <= 3,
               padding:
                   const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
               itemCount: alerts.length,

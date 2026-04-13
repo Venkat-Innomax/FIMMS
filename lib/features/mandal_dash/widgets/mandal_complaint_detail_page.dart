@@ -6,15 +6,14 @@ import '../../../data/repositories/complaint_repository.dart';
 import '../../../models/complaint.dart';
 import '../../../services/mock_auth_service.dart';
 import '../../grievance/widgets/complaint_timeline.dart';
-import 'escalation_dialog.dart';
-import 'merge_dialog.dart';
-import 'resolution_form.dart';
+import '../../grievance_admin/widgets/escalation_dialog.dart';
+import '../../grievance_admin/widgets/resolution_form.dart';
 
-class ComplaintDetailPage extends ConsumerWidget {
+class MandalComplaintDetailPage extends ConsumerWidget {
   final Complaint complaint;
   final String facilityName;
 
-  const ComplaintDetailPage({
+  const MandalComplaintDetailPage({
     super.key,
     required this.complaint,
     required this.facilityName,
@@ -22,8 +21,13 @@ class ComplaintDetailPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final complaints = ref.watch(complaintListProvider);
+    final liveComplaint =
+        complaints.where((c) => c.id == complaint.id).firstOrNull ??
+            complaint;
+
     return Scaffold(
-      appBar: AppBar(title: Text('Complaint ${complaint.id}')),
+      appBar: AppBar(title: Text('Complaint ${liveComplaint.id}')),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -49,7 +53,7 @@ class ComplaintDetailPage extends ConsumerWidget {
                                   fontSize: 16,
                                   fontWeight: FontWeight.w700)),
                         ),
-                        _StatusBadge(status: complaint.status),
+                        _StatusBadge(status: liveComplaint.status),
                       ],
                     ),
                     const SizedBox(height: 8),
@@ -58,13 +62,13 @@ class ComplaintDetailPage extends ConsumerWidget {
                       children: [
                         _InfoChip(
                             label: 'Category',
-                            value: complaint.category.label),
+                            value: liveComplaint.category.label),
                         _InfoChip(
                             label: 'Priority',
-                            value: complaint.priority.label),
+                            value: liveComplaint.priority.label),
                         _InfoChip(
                             label: 'By',
-                            value: complaint.submittedBy),
+                            value: liveComplaint.submittedBy),
                       ],
                     ),
                   ],
@@ -85,20 +89,23 @@ class ComplaintDetailPage extends ConsumerWidget {
                 color: FimmsColors.surface,
                 borderRadius: BorderRadius.circular(8),
               ),
-              child: Text(complaint.description,
+              child: Text(liveComplaint.description,
                   style: const TextStyle(fontSize: 13)),
             ),
 
-            if (complaint.evidencePaths.isNotEmpty) ...[
+            if (liveComplaint.evidencePaths.isNotEmpty) ...[
               const SizedBox(height: 16),
-              Text('Evidence (${complaint.evidencePaths.length} files)',
+              Text(
+                  'Evidence (${liveComplaint.evidencePaths.length} files)',
                   style: const TextStyle(
                       fontSize: 14, fontWeight: FontWeight.w700)),
               const SizedBox(height: 8),
               Wrap(
                 spacing: 8,
                 children: [
-                  for (var i = 0; i < complaint.evidencePaths.length; i++)
+                  for (var i = 0;
+                      i < liveComplaint.evidencePaths.length;
+                      i++)
                     Container(
                       width: 80,
                       height: 80,
@@ -117,7 +124,7 @@ class ComplaintDetailPage extends ConsumerWidget {
               ),
             ],
 
-            if (complaint.resolution != null) ...[
+            if (liveComplaint.resolution != null) ...[
               const SizedBox(height: 16),
               Container(
                 width: double.infinity,
@@ -139,7 +146,7 @@ class ComplaintDetailPage extends ConsumerWidget {
                             fontWeight: FontWeight.w700,
                             color: FimmsColors.success)),
                     const SizedBox(height: 4),
-                    Text(complaint.resolution!,
+                    Text(liveComplaint.resolution!,
                         style: const TextStyle(fontSize: 12)),
                   ],
                 ),
@@ -151,7 +158,7 @@ class ComplaintDetailPage extends ConsumerWidget {
                 style: TextStyle(
                     fontSize: 14, fontWeight: FontWeight.w700)),
             const SizedBox(height: 12),
-            ComplaintTimeline(timeline: complaint.timeline),
+            ComplaintTimeline(timeline: liveComplaint.timeline),
 
             const SizedBox(height: 24),
             const Divider(),
@@ -164,48 +171,97 @@ class ComplaintDetailPage extends ConsumerWidget {
               spacing: 8,
               runSpacing: 8,
               children: [
-                OutlinedButton.icon(
-                  onPressed: () => showDialog(
-                    context: context,
-                    builder: (_) => EscalationDialog(
-                      title: 'Escalate to Mandal Officer',
-                      description:
-                          'This complaint will be forwarded to the Mandal Officer responsible for the facility\'s mandal for review and action.',
-                      onConfirm: (comment) {
-                        final user = ref.read(authStateProvider);
-                        final updated = complaint.copyWith(
-                          status: ComplaintStatus.escalatedToMandal,
-                          escalatedBy: user?.id,
-                          timeline: [
-                            ...complaint.timeline,
-                            StatusChange(
-                              status: ComplaintStatus.escalatedToMandal,
-                              datetime: DateTime.now(),
-                              comment: comment ??
-                                  'Escalated to Mandal Officer',
-                              changedBy: user?.id ?? 'unknown',
+                if (liveComplaint.status ==
+                    ComplaintStatus.escalatedToMandal) ...[
+                  OutlinedButton.icon(
+                    onPressed: () => showDialog(
+                      context: context,
+                      builder: (_) => EscalationDialog(
+                        title: 'Escalate to District Admin',
+                        description:
+                            'This complaint will be forwarded to the District Admin for district-level action and oversight.',
+                        onConfirm: (comment) {
+                          final user = ref.read(authStateProvider);
+                          final updated = liveComplaint.copyWith(
+                            status:
+                                ComplaintStatus.escalatedToDistrict,
+                            escalatedTo: 'u_admin',
+                            escalatedBy: user?.id,
+                            timeline: [
+                              ...liveComplaint.timeline,
+                              StatusChange(
+                                status: ComplaintStatus
+                                    .escalatedToDistrict,
+                                datetime: DateTime.now(),
+                                comment: comment ??
+                                    'Escalated to District Admin',
+                                changedBy: user?.id ?? 'unknown',
+                              ),
+                            ],
+                          );
+                          ref
+                              .read(complaintListProvider.notifier)
+                              .update(updated);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text(
+                                  'Complaint escalated to District Admin'),
+                              backgroundColor: FimmsColors.success,
                             ),
-                          ],
-                        );
-                        ref
-                            .read(complaintListProvider.notifier)
-                            .update(updated);
-                        Navigator.pop(context);
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text(
-                                'Complaint escalated to Mandal Officer'),
-                            backgroundColor: FimmsColors.success,
-                          ),
-                        );
-                      },
+                          );
+                        },
+                      ),
                     ),
+                    icon: const Icon(Icons.north_east, size: 16),
+                    label: const Text('Escalate to District'),
+                    style: OutlinedButton.styleFrom(
+                        foregroundColor: Colors.red.shade700),
                   ),
-                  icon: const Icon(Icons.north_east, size: 16),
-                  label: const Text('Escalate to Mandal'),
-                  style: OutlinedButton.styleFrom(
-                      foregroundColor: Colors.deepOrange),
-                ),
+                  OutlinedButton.icon(
+                    onPressed: () => showDialog(
+                      context: context,
+                      builder: (_) => EscalationDialog(
+                        title: 'Request Inspection',
+                        description:
+                            'Request a formal facility inspection from the District Admin to investigate this complaint on-site.',
+                        onConfirm: (comment) {
+                          final user = ref.read(authStateProvider);
+                          final updated = liveComplaint.copyWith(
+                            status:
+                                ComplaintStatus.inspectionRequested,
+                            escalatedTo: 'u_admin',
+                            escalatedBy: user?.id,
+                            timeline: [
+                              ...liveComplaint.timeline,
+                              StatusChange(
+                                status: ComplaintStatus
+                                    .inspectionRequested,
+                                datetime: DateTime.now(),
+                                comment: comment ??
+                                    'Inspection requested',
+                                changedBy: user?.id ?? 'unknown',
+                              ),
+                            ],
+                          );
+                          ref
+                              .read(complaintListProvider.notifier)
+                              .update(updated);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content:
+                                  Text('Inspection request sent'),
+                              backgroundColor: FimmsColors.success,
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    icon: const Icon(Icons.search, size: 16),
+                    label: const Text('Request Inspection'),
+                    style: OutlinedButton.styleFrom(
+                        foregroundColor: Colors.teal),
+                  ),
+                ],
                 FilledButton.icon(
                   onPressed: () => showModalBottomSheet(
                     context: context,
@@ -213,16 +269,6 @@ class ComplaintDetailPage extends ConsumerWidget {
                   ),
                   icon: const Icon(Icons.check, size: 16),
                   label: const Text('Mark Resolved'),
-                ),
-                OutlinedButton.icon(
-                  onPressed: () => showDialog(
-                    context: context,
-                    builder: (_) => MergeDialog(
-                        currentComplaintId: complaint.id,
-                        facilityId: complaint.facilityId),
-                  ),
-                  icon: const Icon(Icons.merge, size: 16),
-                  label: const Text('Merge with...'),
                 ),
               ],
             ),
