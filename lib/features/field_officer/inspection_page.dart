@@ -17,6 +17,7 @@ import '../../services/mock_auth_service.dart';
 import '../../services/scoring_engine.dart';
 import '../inspection_form/inspection_form_notifier.dart';
 import '../inspection_form/section_card.dart';
+import '../inspection_form/widgets/selfie_gate.dart';
 
 /// Full inspection flow: header (auto-captured fields), urgent toggle,
 /// section stepper rendered by the schema-driven engine, and submit.
@@ -35,6 +36,9 @@ class _InspectionPageState extends ConsumerState<InspectionPage> {
   bool _loading = true;
   String? _loadError;
   final _urgentReasonCtrl = TextEditingController();
+
+  /// Whether the selfie gate has been successfully passed for this session.
+  bool _faceVerified = false;
 
   @override
   void initState() {
@@ -171,28 +175,50 @@ class _InspectionPageState extends ConsumerState<InspectionPage> {
                 geofencePass: geofencePass,
               ),
               const SizedBox(height: 14),
-              _UrgentSection(
-                flag: state.urgentFlag,
-                controller: _urgentReasonCtrl,
-                onToggle: (v) {
-                  notifier.setUrgent(
-                      flag: v, reason: _urgentReasonCtrl.text);
-                },
-                onReasonChanged: (v) =>
-                    notifier.setUrgent(flag: true, reason: v),
+
+              // ── Selfie identity gate ─────────────────────────────────────
+              // Shown regardless of geofence pass state; the gate itself
+              // displays appropriate messaging when geofence hasn't passed.
+              SelfieGate(
+                onVerified: () => setState(() => _faceVerified = true),
               ),
               const SizedBox(height: 14),
-              for (var i = 0; i < schema.sections.length; i++)
-                SectionCard(
-                  schema: schema,
-                  section: schema.sections[i],
-                  subType: facility.subType,
-                  index: i,
+
+              // ── Form body — locked until selfie gate passes ───────────────
+              IgnorePointer(
+                ignoring: !_faceVerified,
+                child: AnimatedOpacity(
+                  opacity: _faceVerified ? 1.0 : 0.35,
+                  duration: const Duration(milliseconds: 300),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _UrgentSection(
+                        flag: state.urgentFlag,
+                        controller: _urgentReasonCtrl,
+                        onToggle: (v) {
+                          notifier.setUrgent(
+                              flag: v, reason: _urgentReasonCtrl.text);
+                        },
+                        onReasonChanged: (v) =>
+                            notifier.setUrgent(flag: true, reason: v),
+                      ),
+                      const SizedBox(height: 14),
+                      for (var i = 0; i < schema.sections.length; i++)
+                        SectionCard(
+                          schema: schema,
+                          section: schema.sections[i],
+                          subType: facility.subType,
+                          index: i,
+                        ),
+                      const SizedBox(height: 16),
+                      _SubmitBar(
+                        onSubmit: () =>
+                            _submit(facility, schema, geofencePass, user?.id),
+                      ),
+                    ],
+                  ),
                 ),
-              const SizedBox(height: 16),
-              _SubmitBar(
-                onSubmit: () =>
-                    _submit(facility, schema, geofencePass, user?.id),
               ),
             ],
           ),
