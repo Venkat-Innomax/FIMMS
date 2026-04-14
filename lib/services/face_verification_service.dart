@@ -4,6 +4,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:image/image.dart' as img;
 
 import '../core/constants.dart';
 
@@ -27,21 +28,15 @@ enum FaceVerificationResult {
   /// Running on Flutter Web — TFLite is not available.
   webUnsupported,
 
-  /// Unexpected runtime error (model missing, I/O failure, etc.).
+  /// Model file missing or failed to load.
+  modelNotLoaded,
+
+  /// Unexpected runtime error (I/O failure, decode failure, etc.).
   error,
 }
 
 /// Extracts 128-d face embeddings from images using MobileFaceNet (TFLite)
 /// and compares them via cosine similarity for offline 1:1 face verification.
-///
-/// ### Web behaviour
-/// [kIsWeb] is checked first. All public methods immediately return
-/// [FaceVerificationResult.webUnsupported] / empty lists on web so that the
-/// rest of the UI can show an appropriate hard-block message.
-///
-/// ### Production upgrade path
-/// Replace the asset-loading logic with a model downloaded to the app's
-/// documents directory so updates can be pushed without an app release.
 class FaceVerificationService {
   tflite.Interpreter? _interpreter;
   bool _modelLoaded = false;
@@ -56,43 +51,45 @@ class FaceVerificationService {
         AppConstants.mobileFaceNetModelPath,
       );
       _modelLoaded = true;
-    } catch (e) {
+    } catch (_) {
       _modelLoadFailed = true;
-      // Swallow — callers check FaceVerificationResult.error
     }
   }
+
+  bool get isModelLoaded => _modelLoaded;
+  bool get isModelMissing => _modelLoadFailed;
 
   // ── Public API ────────────────────────────────────────────────────────────
 
   /// Generates a 128-d embedding for the face in [imagePath].
-  ///
-  /// Returns an empty list on web or if the model failed to load.
+  /// Returns an empty list if the model is unavailable or image decode fails.
   Future<List<double>> extractEmbedding(String imagePath) async {
     if (kIsWeb) return const [];
     await _ensureModel();
     if (_modelLoadFailed || _interpreter == null) return const [];
+
     if (imagePath.startsWith('sample:')) {
-      // Demo path — return a deterministic pseudo-embedding so the demo flow
-      // can still proceed on platforms without a real camera / model.
       return _pseudoEmbedding(imagePath);
     }
+
     try {
       final imageBytes = File(imagePath).readAsBytesSync();
-      final input = _preprocessImage(imageBytes);
-      final output = List.generate(1, (_) => List<double>.filled(128, 0));
-      _interpreter!.run(input, output);
-      return output[0];
+      final inputFloat = _preprocessImage(imageBytes);
+      if (inputFloat == null) return const [];
+
+      // Output: [1, 128] — one batch, 128-d embedding.
+      final outputData = List.generate(1, (_) => List<double>.filled(128, 0.0));
+      _interpreter!.run(inputFloat, outputData);
+      return outputData[0];
     } catch (_) {
       return const [];
     }
   }
 
   /// Compares two 128-d embeddings and returns the verification result.
-  FaceVerificationResult compare(
-    List<double> embA,
-    List<double> embB,
-  ) {
+  FaceVerificationResult compare(List<double> embA, List<double> embB) {
     if (kIsWeb) return FaceVerificationResult.webUnsupported;
+    if (_modelLoadFailed) return FaceVerificationResult.modelNotLoaded;
     if (embA.isEmpty || embB.isEmpty) return FaceVerificationResult.error;
     final sim = _cosineSimilarity(embA, embB);
     return sim >= AppConstants.faceMatchThreshold
@@ -102,30 +99,38 @@ class FaceVerificationService {
 
   // ── Image preprocessing ───────────────────────────────────────────────────
 
-  /// Resizes the raw image bytes to 112×112 and normalises pixel values
-  /// to [–1, 1] as expected by MobileFaceNet.
+  /// Decodes bytes, resizes to 112×112, and returns a flat [Float32List] of
+  /// shape [1 × 112 × 112 × 3] normalised to [–1, 1] as MobileFaceNet expects.
   ///
-  /// Note: A full production implementation should use a proper image-resize
-  /// library (e.g. `image` package). This is a simplified demo version.
-  List<List<List<List<double>>>> _preprocessImage(Uint8List bytes) {
-    // Decode JPEG/PNG → raw RGBA bytes using Flutter's codec.
-    // For simplicity we create a fixed-size tensor with normalised zeros;
-    // replace with a real image-decode + resize pipeline for production.
+  /// Uses (pixel − 127.5) / 128.0 which matches the training normalisation
+  /// used by the sirius-ai/MobileFaceNet_TF model family.
+  ///
+  /// Returns null if the image cannot be decoded.
+  Float32List? _preprocessImage(Uint8List bytes) {
     const int size = 112;
-    // 1 × 112 × 112 × 3
-    final tensor = List.generate(
-      1,
-      (_) => List.generate(
-        size,
-        (_) => List.generate(
-          size,
-          (_) => List.generate(3, (_) => 0.0),
-        ),
-      ),
+
+    final decoded = img.decodeImage(bytes);
+    if (decoded == null) return null;
+
+    final resized = img.copyResize(
+      decoded,
+      width: size,
+      height: size,
+      interpolation: img.Interpolation.linear,
     );
-    // TODO(production): decode `bytes` with the `image` package, resize to
-    // 112×112, then fill tensor with (pixel / 127.5) - 1.0 per channel.
-    return tensor;
+
+    // Flat layout: [1, 112, 112, 3] — row-major, RGB order.
+    final float32 = Float32List(size * size * 3);
+    int idx = 0;
+    for (int y = 0; y < size; y++) {
+      for (int x = 0; x < size; x++) {
+        final pixel = resized.getPixel(x, y);
+        float32[idx++] = (pixel.r.toDouble() - 127.5) / 128.0;
+        float32[idx++] = (pixel.g.toDouble() - 127.5) / 128.0;
+        float32[idx++] = (pixel.b.toDouble() - 127.5) / 128.0;
+      }
+    }
+    return float32;
   }
 
   // ── Math helpers ──────────────────────────────────────────────────────────
@@ -141,14 +146,10 @@ class FaceVerificationService {
     return denom == 0 ? 0 : dot / denom;
   }
 
-  /// Returns a deterministic pseudo-embedding for "sample:" demo paths.
-  /// Two calls with the *same* path produce the same vector (cosine = 1.0).
+  /// Deterministic pseudo-embedding for "sample:" demo paths.
   List<double> _pseudoEmbedding(String seed) {
     final code = seed.hashCode;
-    return List.generate(128, (i) {
-      final v = math.sin((code + i) * 0.1);
-      return v;
-    });
+    return List.generate(128, (i) => math.sin((code + i) * 0.1));
   }
 
   void dispose() {

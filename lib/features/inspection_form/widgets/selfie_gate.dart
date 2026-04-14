@@ -21,6 +21,7 @@ enum _GateState {
   hardBlocked,
   webUnsupported,
   noProfilePhoto,
+  modelMissing,
 }
 
 // ── SelfieGate ────────────────────────────────────────────────────────────
@@ -161,6 +162,9 @@ class _SelfieGateState extends ConsumerState<SelfieGate> {
           selfiePath: _selfiePath,
         );
 
+      case _GateState.modelMissing:
+        return _ModelMissingBlock();
+
       case _GateState.capturing:
         return _SpinnerBlock(label: 'Opening camera…');
 
@@ -230,6 +234,12 @@ class _SelfieGateState extends ConsumerState<SelfieGate> {
         setState(() => _state = _GateState.webUnsupported);
         break;
 
+      case FaceVerificationResult.modelNotLoaded:
+        // Don't burn attempts — model is just missing from the APK.
+        _attempts--;
+        setState(() => _state = _GateState.modelMissing);
+        break;
+
       case FaceVerificationResult.noMatch:
       case FaceVerificationResult.error:
         if (_attempts >= AppConstants.maxSelfieAttempts) {
@@ -286,12 +296,11 @@ class _SelfieGateState extends ConsumerState<SelfieGate> {
       case _GateState.verified:
         return FimmsColors.gradeExcellent;
       case _GateState.failed:
-        return FimmsColors.gradeCritical;
       case _GateState.hardBlocked:
         return FimmsColors.gradeCritical;
       case _GateState.webUnsupported:
-        return FimmsColors.gradeAverage;
       case _GateState.noProfilePhoto:
+      case _GateState.modelMissing:
         return FimmsColors.gradeAverage;
       default:
         return FimmsColors.outline;
@@ -308,6 +317,8 @@ class _SelfieGateState extends ConsumerState<SelfieGate> {
         return Icons.phonelink_off_outlined;
       case _GateState.noProfilePhoto:
         return Icons.person_off_outlined;
+      case _GateState.modelMissing:
+        return Icons.model_training;
       default:
         return Icons.face_retouching_natural;
     }
@@ -322,6 +333,7 @@ class _SelfieGateState extends ConsumerState<SelfieGate> {
         return FimmsColors.gradeCritical;
       case _GateState.webUnsupported:
       case _GateState.noProfilePhoto:
+      case _GateState.modelMissing:
         return FimmsColors.gradeAverage;
       default:
         return FimmsColors.primary;
@@ -340,6 +352,8 @@ class _SelfieGateState extends ConsumerState<SelfieGate> {
         return 'Requires the FIMMS mobile app';
       case _GateState.noProfilePhoto:
         return 'Profile photo not yet set';
+      case _GateState.modelMissing:
+        return 'AI model file not found in app';
       default:
         return 'Take a selfie to verify your identity';
     }
@@ -347,6 +361,54 @@ class _SelfieGateState extends ConsumerState<SelfieGate> {
 }
 
 // ── Sub-widgets ───────────────────────────────────────────────────────────
+
+class _ModelMissingBlock extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: FimmsColors.gradeAverage.withValues(alpha: 0.07),
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: FimmsColors.gradeAverage.withValues(alpha: 0.3)),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Icon(Icons.model_training,
+              color: FimmsColors.gradeAverage, size: 26),
+          const SizedBox(width: 14),
+          const Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Face verification model not installed',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 13.5,
+                    color: FimmsColors.textPrimary,
+                  ),
+                ),
+                SizedBox(height: 4),
+                Text(
+                  'The file assets/models/mobile_face_net.tflite is missing '
+                  'from the app. Please contact your administrator to reinstall '
+                  'the app with the face verification model included.',
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: FimmsColors.textMuted,
+                    height: 1.5,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
 
 class _WebBlock extends StatelessWidget {
   @override

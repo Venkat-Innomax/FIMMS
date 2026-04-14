@@ -5,22 +5,31 @@ verification to work on mobile devices (Android / iOS).
 
 ## Download
 
-**Option A – Sirius Face (recommended, open-source)**
+**Option A – estebanuri/face_recognition (recommended — exact filename match)**
 
+Direct raw download (verified working):
 ```
-https://github.com/Shiming-Liang/FaceVerification/blob/master/models/mobile_face_net.tflite
+https://raw.githubusercontent.com/estebanuri/face_recognition/master/android/app/src/main/assets/mobile_face_net.tflite
 ```
 
 Download and place the file at:
-
 ```
 assets/models/mobile_face_net.tflite
 ```
 
-**Option B – TensorFlow Hub**
+**Option B – syaringan357 (InsightFace/ArcFace training)**
 
-Search for "MobileFaceNet" on https://tfhub.dev and download a
-128-dimensional embedding model in TFLite format.
+```
+https://raw.githubusercontent.com/syaringan357/Android-MobileFaceNet-MTCNN-FaceAntiSpoofing/master/app/src/main/assets/MobileFaceNet.tflite
+```
+Rename the downloaded file to `mobile_face_net.tflite` before placing it in `assets/models/`.
+
+**Option C – MCarlomagno/FaceRecognitionAuth (archived Flutter app)**
+
+```
+https://raw.githubusercontent.com/MCarlomagno/FaceRecognitionAuth/refs/heads/master/assets/mobilefacenet.tflite
+```
+Rename to `mobile_face_net.tflite` before placing in `assets/models/`.
 
 ## Model Spec
 

@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import '../../core/theme.dart';
 import '../../models/facility.dart';
 import '../../models/form_schema.dart';
+import '../../models/inspection.dart';
 import '../../services/geolocation_service.dart';
 import '../../services/scoring_engine.dart';
 import '../inspection_form/inspection_form_notifier.dart';
