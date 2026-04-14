@@ -36,3 +36,31 @@ class AssignmentRepository {
 final assignmentRepositoryProvider = Provider<AssignmentRepository>(
   (ref) => AssignmentRepository(),
 );
+
+/// Mutable in-memory list of assignments, seeded from fixtures.
+class AssignmentListNotifier extends StateNotifier<List<Assignment>> {
+  final AssignmentRepository _repo;
+  bool _loaded = false;
+
+  AssignmentListNotifier(this._repo) : super([]);
+
+  Future<void> _ensureLoaded() async {
+    if (_loaded) return;
+    _loaded = true;
+    state = await _repo.loadAll();
+  }
+
+  Future<void> load() => _ensureLoaded();
+
+  void add(Assignment a) {
+    state = [...state, a];
+  }
+}
+
+final assignmentListProvider =
+    StateNotifierProvider<AssignmentListNotifier, List<Assignment>>((ref) {
+  final repo = ref.read(assignmentRepositoryProvider);
+  final notifier = AssignmentListNotifier(repo);
+  notifier.load();
+  return notifier;
+});

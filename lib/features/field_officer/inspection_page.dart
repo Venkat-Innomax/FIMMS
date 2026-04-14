@@ -107,6 +107,29 @@ class _InspectionPageState extends ConsumerState<InspectionPage> {
     final geofencePass =
         distance != null && distance <= AppConstants.geofenceRadiusMeters;
 
+    // Compute section completion for progress indicator.
+    final totalSections = schema.sections.length;
+    int completedSections = 0;
+    for (final section in schema.sections) {
+      if (state.skippedSections.contains(section.id)) {
+        completedSections++;
+        continue;
+      }
+      final sectionFields = section.fields
+          .where((f) => f.isVisibleFor(facility.subType))
+          .toList();
+      if (sectionFields.isEmpty) {
+        completedSections++;
+        continue;
+      }
+      final allAnswered = sectionFields.every(
+        (f) => state.responses.containsKey('${section.id}.${f.id}'),
+      );
+      if (allAnswered) completedSections++;
+    }
+    final progress =
+        totalSections > 0 ? completedSections / totalSections : 0.0;
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -114,6 +137,18 @@ class _InspectionPageState extends ConsumerState<InspectionPage> {
           onPressed: () => context.go('/officer'),
         ),
         title: Text(facility.name),
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(6),
+          child: LinearProgressIndicator(
+            value: progress,
+            minHeight: 4,
+            backgroundColor: FimmsColors.primary.withValues(alpha: 0.2),
+            valueColor:
+                AlwaysStoppedAnimation<Color>(completedSections == totalSections
+                    ? FimmsColors.gradeExcellent
+                    : FimmsColors.secondary),
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.fromLTRB(16, 16, 16, 120),

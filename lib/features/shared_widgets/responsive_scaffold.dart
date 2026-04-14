@@ -44,6 +44,15 @@ class ResponsiveScaffold extends ConsumerWidget {
     final isMobile = Responsive.isMobile(context);
     final user = ref.watch(authStateProvider);
 
+    // Smooth fade when switching between tab bodies.
+    final animatedBody = AnimatedSwitcher(
+      duration: const Duration(milliseconds: 300),
+      child: KeyedSubtree(
+        key: ValueKey(currentIndex),
+        child: body,
+      ),
+    );
+
     final signOut = IconButton(
       tooltip: 'Sign out',
       icon: const Icon(Icons.logout),
@@ -78,7 +87,7 @@ class ResponsiveScaffold extends ConsumerWidget {
     if (isMobile) {
       return Scaffold(
         appBar: appBar,
-        body: body,
+        body: animatedBody,
         floatingActionButton: floatingActionButton,
         bottomNavigationBar: NavigationBar(
           selectedIndex: currentIndex,
@@ -116,7 +125,7 @@ class ResponsiveScaffold extends ConsumerWidget {
             ],
           ),
           const VerticalDivider(width: 1, thickness: 1),
-          Expanded(child: body),
+          Expanded(child: animatedBody),
         ],
       ),
     );

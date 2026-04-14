@@ -5,6 +5,7 @@ import '../../../core/theme.dart';
 import '../../../models/facility.dart';
 import '../../../models/inspection.dart';
 import '../../../models/user.dart';
+import '../../shared_widgets/empty_state.dart';
 import '../../shared_widgets/grade_chip.dart';
 
 class ReportsTable extends StatefulWidget {
@@ -69,7 +70,13 @@ class _ReportsTableState extends State<ReportsTable> {
           ),
         ),
         Expanded(
-          child: SingleChildScrollView(
+          child: filtered.isEmpty
+              ? const EmptyState(
+                  icon: Icons.table_chart_outlined,
+                  title: 'No inspection reports found',
+                  subtitle: 'Try adjusting your search criteria.',
+                )
+              : SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: SingleChildScrollView(
               child: DataTable(
@@ -126,3 +133,4 @@ class _ReportsTableState extends State<ReportsTable> {
     );
   }
 }
+

@@ -76,7 +76,7 @@ class MandalBars extends StatelessWidget {
   }
 }
 
-class _Bar extends StatelessWidget {
+class _Bar extends StatefulWidget {
   final Mandal mandal;
   final double score;
   final bool highlight;
@@ -87,63 +87,88 @@ class _Bar extends StatelessWidget {
   });
 
   @override
+  State<_Bar> createState() => _BarState();
+}
+
+class _BarState extends State<_Bar> {
+  bool _hovered = false;
+
+  @override
   Widget build(BuildContext context) {
-    final grade = GradeX.fromScore(score);
+    final grade = GradeX.fromScore(widget.score);
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(6),
-        onTap: () => context.go('/mandal/${mandal.id}'),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 4),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
+      child: MouseRegion(
+        onEnter: (_) => setState(() => _hovered = true),
+        onExit: (_) => setState(() => _hovered = false),
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          curve: Curves.easeInOut,
+          transform: _hovered
+              ? (Matrix4.identity()..setEntry(0, 0, 1.02)..setEntry(1, 1, 1.02))
+              : Matrix4.identity(),
+          transformAlignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: _hovered
+                ? FimmsColors.outline.withValues(alpha: 0.18)
+                : Colors.transparent,
+            borderRadius: BorderRadius.circular(6),
+          ),
+          child: InkWell(
+            borderRadius: BorderRadius.circular(6),
+            onTap: () => context.go('/mandal/${widget.mandal.id}'),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 4),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(
-                    child: Text(
-                      mandal.name,
-                      style: TextStyle(
-                        fontSize: 13,
-                        fontWeight:
-                            highlight ? FontWeight.w700 : FontWeight.w500,
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          widget.mandal.name,
+                          style: TextStyle(
+                            fontSize: 13,
+                            fontWeight:
+                                widget.highlight ? FontWeight.w700 : FontWeight.w500,
+                          ),
+                        ),
                       ),
-                    ),
+                      Text(
+                        widget.score.round().toString(),
+                        style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w700,
+                          color: grade.color,
+                        ),
+                      ),
+                    ],
                   ),
-                  Text(
-                    score.round().toString(),
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w700,
-                      color: grade.color,
+                  const SizedBox(height: 5),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(3),
+                    child: Stack(
+                      children: [
+                        Container(
+                          height: 6,
+                          color: FimmsColors.surface,
+                        ),
+                        FractionallySizedBox(
+                          widthFactor: (widget.score / 100).clamp(0, 1).toDouble(),
+                          child: Container(
+                            height: 6,
+                            decoration: BoxDecoration(
+                              color: grade.color,
+                              borderRadius: BorderRadius.circular(3),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: 5),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(3),
-                child: Stack(
-                  children: [
-                    Container(
-                      height: 6,
-                      color: FimmsColors.surface,
-                    ),
-                    FractionallySizedBox(
-                      widthFactor: (score / 100).clamp(0, 1).toDouble(),
-                      child: Container(
-                        height: 6,
-                        decoration: BoxDecoration(
-                          color: grade.color,
-                          borderRadius: BorderRadius.circular(3),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
+            ),
           ),
         ),
       ),

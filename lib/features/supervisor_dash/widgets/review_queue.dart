@@ -9,6 +9,7 @@ import '../../../data/repositories/user_repository.dart';
 import '../../../models/facility.dart';
 import '../../../models/inspection.dart';
 import '../../../models/user.dart';
+import '../../shared_widgets/empty_state.dart';
 import '../../shared_widgets/grade_chip.dart';
 import 'inspection_review_card.dart';
 import 'reinspect_dialog.dart';
@@ -39,16 +40,10 @@ class ReviewQueue extends ConsumerWidget {
           ..sort((a, b) => b.datetime.compareTo(a.datetime));
 
         if (pending.isEmpty) {
-          return const Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(Icons.inbox, size: 48, color: FimmsColors.textMuted),
-                SizedBox(height: 12),
-                Text('Review queue is empty',
-                    style: TextStyle(color: FimmsColors.textMuted)),
-              ],
-            ),
+          return const EmptyState(
+            icon: Icons.inbox_outlined,
+            title: 'Review queue is empty',
+            subtitle: 'No inspections are awaiting review.',
           );
         }
 

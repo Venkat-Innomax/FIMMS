@@ -89,7 +89,7 @@ class StatCardRow extends StatelessWidget {
   }
 }
 
-class _StatCard extends StatelessWidget {
+class _StatCard extends StatefulWidget {
   final String label;
   final String value;
   final String? suffix;
@@ -103,23 +103,44 @@ class _StatCard extends StatelessWidget {
   });
 
   @override
+  State<_StatCard> createState() => _StatCardState();
+}
+
+class _StatCardState extends State<_StatCard> {
+  bool _hovered = false;
+
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: FimmsColors.surfaceAlt,
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: FimmsColors.outline),
-      ),
-      clipBehavior: Clip.antiAlias,
-      // IntrinsicHeight forces the Row to measure its intrinsic height
-      // first (from the text column) before laying out children, so the
-      // left accent stripe can match the card's content height without
-      // the Row inheriting unbounded-height constraints from its parents.
-      child: IntrinsicHeight(
-        child: Row(
+    return MouseRegion(
+      onEnter: (_) => setState(() => _hovered = true),
+      onExit: (_) => setState(() => _hovered = false),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        curve: Curves.easeInOut,
+        decoration: BoxDecoration(
+          color: FimmsColors.surfaceAlt,
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: FimmsColors.outline),
+          boxShadow: _hovered
+              ? [
+                  BoxShadow(
+                    color: Colors.black.withValues(alpha: 0.10),
+                    blurRadius: 8,
+                    offset: const Offset(0, 2),
+                  ),
+                ]
+              : [],
+        ),
+        clipBehavior: Clip.antiAlias,
+        // IntrinsicHeight forces the Row to measure its intrinsic height
+        // first (from the text column) before laying out children, so the
+        // left accent stripe can match the card's content height without
+        // the Row inheriting unbounded-height constraints from its parents.
+        child: IntrinsicHeight(
+          child: Row(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(width: 4, color: accent),
+            Container(width: 4, color: widget.accent),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(14, 16, 16, 16),
@@ -129,7 +150,7 @@ class _StatCard extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      label.toUpperCase(),
+                      widget.label.toUpperCase(),
                       style: const TextStyle(
                         fontSize: 11,
                         fontWeight: FontWeight.w600,
@@ -143,7 +164,7 @@ class _StatCard extends StatelessWidget {
                       textBaseline: TextBaseline.alphabetic,
                       children: [
                         Text(
-                          value,
+                          widget.value,
                           style: const TextStyle(
                             fontSize: 26,
                             fontWeight: FontWeight.w700,
@@ -151,10 +172,10 @@ class _StatCard extends StatelessWidget {
                             height: 1.1,
                           ),
                         ),
-                        if (suffix != null) ...[
+                        if (widget.suffix != null) ...[
                           const SizedBox(width: 4),
                           Text(
-                            suffix!,
+                            widget.suffix!,
                             style: const TextStyle(
                               fontSize: 13,
                               color: FimmsColors.textMuted,
@@ -170,6 +191,7 @@ class _StatCard extends StatelessWidget {
             ),
           ],
         ),
+      ),
       ),
     );
   }

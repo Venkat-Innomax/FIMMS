@@ -15,8 +15,31 @@ class LoginPage extends ConsumerStatefulWidget {
   ConsumerState<LoginPage> createState() => _LoginPageState();
 }
 
-class _LoginPageState extends ConsumerState<LoginPage> {
+class _LoginPageState extends ConsumerState<LoginPage>
+    with SingleTickerProviderStateMixin {
   User? _selected;
+  late final AnimationController _fadeController;
+  late final Animation<double> _fadeAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _fadeController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 600),
+    );
+    _fadeAnimation = CurvedAnimation(
+      parent: _fadeController,
+      curve: Curves.easeIn,
+    );
+    _fadeController.forward();
+  }
+
+  @override
+  void dispose() {
+    _fadeController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,98 +47,101 @@ class _LoginPageState extends ConsumerState<LoginPage> {
     final usersAsync = ref.watch(demoUsersProvider);
 
     final left = _HeroPanel();
-    final right = SingleChildScrollView(
-      child: Center(
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 440),
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(
-              32,
-              isMobile ? 32 + MediaQuery.paddingOf(context).top : 32,
-              32,
-              32 + MediaQuery.paddingOf(context).bottom,
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-              if (isMobile) ...[
-                const FimmsBrandMark(fontSize: 20),
-                const SizedBox(height: 24),
-              ],
-              Text(
-                'Sign in',
-                style: Theme.of(context)
-                    .textTheme
-                    .displaySmall
-                    ?.copyWith(fontWeight: FontWeight.w700),
+    final right = FadeTransition(
+      opacity: _fadeAnimation,
+      child: SingleChildScrollView(
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 440),
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(
+                32,
+                isMobile ? 32 + MediaQuery.paddingOf(context).top : 32,
+                32,
+                32 + MediaQuery.paddingOf(context).bottom,
               ),
-              const SizedBox(height: 4),
-              Text(
-                'Demo build — pick a preset role to continue',
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: FimmsColors.textMuted,
-                    ),
-              ),
-              const SizedBox(height: 28),
-              usersAsync.when(
-                loading: () => const Padding(
-                  padding: EdgeInsets.all(24),
-                  child: Center(child: CircularProgressIndicator()),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                if (isMobile) ...[
+                  const FimmsBrandMark(fontSize: 20),
+                  const SizedBox(height: 24),
+                ],
+                Text(
+                  'Sign in',
+                  style: Theme.of(context)
+                      .textTheme
+                      .displaySmall
+                      ?.copyWith(fontWeight: FontWeight.w700),
                 ),
-                error: (e, _) => Text('Failed to load users: $e'),
-                data: (users) => _UserList(
-                  users: users,
-                  selected: _selected,
-                  onSelect: (u) => setState(() => _selected = u),
-                ),
-              ),
-              const SizedBox(height: 24),
-              SizedBox(
-                width: double.infinity,
-                child: FilledButton.icon(
-                  onPressed: _selected == null
-                      ? null
-                      : () {
-                          // Flipping the auth state fires the router's
-                          // refresh listenable; go_router's redirect
-                          // callback handles the actual navigation to
-                          // the right role home.
-                          ref
-                              .read(authStateProvider.notifier)
-                              .signIn(_selected!);
-                        },
-                  icon: const Icon(Icons.login),
-                  label: const Text('Continue'),
-                ),
-              ),
-              const SizedBox(height: 18),
-              Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: FimmsColors.surface,
-                  border: Border.all(color: FimmsColors.outline),
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Row(
-                  children: [
-                    const Icon(Icons.info_outline,
-                        size: 18, color: FimmsColors.textMuted),
-                    const SizedBox(width: 8),
-                    Expanded(
-                      child: Text(
-                        'This is a pre-bid demo build. Authentication, audit '
-                        'trails, and session management are stubbed.',
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodySmall
-                            ?.copyWith(color: FimmsColors.textMuted),
+                const SizedBox(height: 4),
+                Text(
+                  'Demo build — pick a preset role to continue',
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: FimmsColors.textMuted,
                       ),
-                    ),
-                  ],
                 ),
+                const SizedBox(height: 28),
+                usersAsync.when(
+                  loading: () => const Padding(
+                    padding: EdgeInsets.all(24),
+                    child: Center(child: CircularProgressIndicator()),
+                  ),
+                  error: (e, _) => Text('Failed to load users: $e'),
+                  data: (users) => _GroupedUserList(
+                    users: users,
+                    selected: _selected,
+                    onSelect: (u) => setState(() => _selected = u),
+                  ),
+                ),
+                const SizedBox(height: 24),
+                SizedBox(
+                  width: double.infinity,
+                  child: FilledButton.icon(
+                    onPressed: _selected == null
+                        ? null
+                        : () {
+                            // Flipping the auth state fires the router's
+                            // refresh listenable; go_router's redirect
+                            // callback handles the actual navigation to
+                            // the right role home.
+                            ref
+                                .read(authStateProvider.notifier)
+                                .signIn(_selected!);
+                          },
+                    icon: const Icon(Icons.login),
+                    label: const Text('Continue'),
+                  ),
+                ),
+                const SizedBox(height: 18),
+                Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: FimmsColors.surface,
+                    border: Border.all(color: FimmsColors.outline),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.info_outline,
+                          size: 18, color: FimmsColors.textMuted),
+                      const SizedBox(width: 8),
+                      Expanded(
+                        child: Text(
+                          'This is a pre-bid demo build. Authentication, audit '
+                          'trails, and session management are stubbed.',
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodySmall
+                              ?.copyWith(color: FimmsColors.textMuted),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                ],
               ),
-              ],
             ),
           ),
         ),
@@ -239,12 +265,63 @@ class _FeatureRow extends StatelessWidget {
   }
 }
 
-class _UserList extends StatelessWidget {
+// ---------------------------------------------------------------------------
+// Role category definitions for grouping users
+// ---------------------------------------------------------------------------
+
+class _RoleCategory {
+  final String title;
+  final String description;
+  final Set<Role> roles;
+  final bool initiallyExpanded;
+
+  const _RoleCategory({
+    required this.title,
+    required this.description,
+    required this.roles,
+    this.initiallyExpanded = false,
+  });
+}
+
+const _roleCategories = <_RoleCategory>[
+  _RoleCategory(
+    title: 'District Administration',
+    description: 'Top-level district oversight and inspection cell management',
+    roles: {Role.collector, Role.admin},
+    initiallyExpanded: true,
+  ),
+  _RoleCategory(
+    title: 'Mandal Level',
+    description: 'Mandal-level coordination and nodal operations',
+    roles: {Role.mandalAdmin, Role.mandalOfficer},
+  ),
+  _RoleCategory(
+    title: 'Field Operations',
+    description: 'On-ground inspections, audits, and supervisory checks',
+    roles: {Role.fieldOfficer, Role.inspectionSupervisor},
+  ),
+  _RoleCategory(
+    title: 'Facility',
+    description: 'Hostel, hospital, and facility-side administration',
+    roles: {Role.facilityAdmin},
+  ),
+  _RoleCategory(
+    title: 'Public',
+    description: 'Citizen grievance filing and grievance review',
+    roles: {Role.publicUser, Role.grievanceOfficer},
+  ),
+];
+
+// ---------------------------------------------------------------------------
+// Grouped user list with expandable sections
+// ---------------------------------------------------------------------------
+
+class _GroupedUserList extends StatelessWidget {
   final List<User> users;
   final User? selected;
   final ValueChanged<User> onSelect;
 
-  const _UserList({
+  const _GroupedUserList({
     required this.users,
     required this.selected,
     required this.onSelect,
@@ -254,15 +331,75 @@ class _UserList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        for (final u in users) _UserRow(
-          user: u,
-          selected: selected?.id == u.id,
-          onTap: () => onSelect(u),
-        ),
+        for (final category in _roleCategories)
+          _buildSection(context, category),
       ],
     );
   }
+
+  Widget _buildSection(BuildContext context, _RoleCategory category) {
+    final categoryUsers =
+        users.where((u) => category.roles.contains(u.role)).toList();
+    if (categoryUsers.isEmpty) return const SizedBox.shrink();
+
+    final hasSelection =
+        selected != null && category.roles.contains(selected!.role);
+
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: Material(
+        color: FimmsColors.surfaceAlt,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+          side: BorderSide(
+            color: hasSelection ? FimmsColors.primary : FimmsColors.outline,
+            width: hasSelection ? 1.5 : 1,
+          ),
+        ),
+        clipBehavior: Clip.antiAlias,
+        child: Theme(
+          // Remove the default divider line that ExpansionTile draws.
+          data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+          child: ExpansionTile(
+            initiallyExpanded: category.initiallyExpanded,
+            tilePadding:
+                const EdgeInsets.symmetric(horizontal: 14, vertical: 2),
+            childrenPadding:
+                const EdgeInsets.only(left: 14, right: 14, bottom: 10),
+            title: Text(
+              category.title,
+              style: const TextStyle(
+                fontSize: 13,
+                fontWeight: FontWeight.w700,
+                color: FimmsColors.textPrimary,
+                letterSpacing: 0.2,
+              ),
+            ),
+            subtitle: Text(
+              category.description,
+              style: const TextStyle(
+                fontSize: 11,
+                color: FimmsColors.textMuted,
+              ),
+            ),
+            children: [
+              for (final u in categoryUsers)
+                _UserRow(
+                  user: u,
+                  selected: selected?.id == u.id,
+                  onTap: () => onSelect(u),
+                ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 }
+
+// ---------------------------------------------------------------------------
+// Individual user row — selected state now shows a prominent checkmark
+// ---------------------------------------------------------------------------
 
 class _UserRow extends StatelessWidget {
   final User user;
@@ -287,34 +424,35 @@ class _UserRow extends StatelessWidget {
         .join();
 
     return Padding(
-      padding: const EdgeInsets.only(bottom: 8),
+      padding: const EdgeInsets.only(bottom: 6),
       child: Material(
         color: selected
             ? FimmsColors.primary.withValues(alpha: 0.06)
-            : FimmsColors.surfaceAlt,
+            : FimmsColors.surface,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(8),
           side: BorderSide(
-            color:
-                selected ? FimmsColors.primary : FimmsColors.outline,
+            color: selected ? FimmsColors.primary : FimmsColors.outline,
             width: selected ? 1.5 : 1,
           ),
         ),
         child: InkWell(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(8),
           onTap: onTap,
           child: Padding(
             padding:
-                const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+                const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
             child: Row(
               children: [
                 Container(
-                  width: 38,
-                  height: 38,
+                  width: 36,
+                  height: 36,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                    color: FimmsColors.primary.withValues(alpha: 0.1),
-                    borderRadius: BorderRadius.circular(20),
+                    color: selected
+                        ? FimmsColors.primary.withValues(alpha: 0.15)
+                        : FimmsColors.primary.withValues(alpha: 0.08),
+                    borderRadius: BorderRadius.circular(18),
                   ),
                   child: Text(
                     initials.toUpperCase(),
@@ -325,49 +463,64 @@ class _UserRow extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(width: 12),
+                const SizedBox(width: 10),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         user.name,
-                        style: const TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
+                        style: TextStyle(
+                          fontSize: 13,
+                          fontWeight:
+                              selected ? FontWeight.w700 : FontWeight.w600,
+                          color: selected
+                              ? FimmsColors.primary
+                              : FimmsColors.textPrimary,
                         ),
                       ),
                       Text(
                         user.designation,
                         style: const TextStyle(
-                          fontSize: 12,
+                          fontSize: 11,
                           color: FimmsColors.textMuted,
                         ),
                       ),
                     ],
                   ),
                 ),
-                Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                  decoration: BoxDecoration(
-                    color: selected
-                        ? FimmsColors.primary
-                        : FimmsColors.surface,
-                    borderRadius: BorderRadius.circular(6),
-                    border: Border.all(color: FimmsColors.outline),
-                  ),
-                  child: Text(
-                    user.role.label,
-                    style: TextStyle(
-                      color: selected
-                          ? Colors.white
-                          : FimmsColors.textMuted,
-                      fontSize: 11,
-                      fontWeight: FontWeight.w600,
+                if (selected)
+                  Container(
+                    width: 24,
+                    height: 24,
+                    decoration: BoxDecoration(
+                      color: FimmsColors.primary,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: const Icon(
+                      Icons.check,
+                      size: 16,
+                      color: Colors.white,
+                    ),
+                  )
+                else
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 7, vertical: 3),
+                    decoration: BoxDecoration(
+                      color: FimmsColors.surface,
+                      borderRadius: BorderRadius.circular(6),
+                      border: Border.all(color: FimmsColors.outline),
+                    ),
+                    child: Text(
+                      user.role.label,
+                      style: const TextStyle(
+                        color: FimmsColors.textMuted,
+                        fontSize: 10,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
-                ),
               ],
             ),
           ),

@@ -16,6 +16,10 @@ class SupervisorDashboardPage extends ConsumerWidget {
         appBar: AppBar(
           title: const Text('Inspection Supervisor'),
           bottom: const TabBar(
+            labelColor: Colors.black,
+            unselectedLabelColor: Colors.white70,
+            indicatorColor: Colors.white,
+            dividerColor: Colors.transparent,
             tabs: [
               Tab(icon: Icon(Icons.rate_review), text: 'Review Queue'),
               Tab(icon: Icon(Icons.analytics), text: 'Performance'),

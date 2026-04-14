@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/theme.dart';
 import '../../../models/compliance_item.dart';
+import '../../shared_widgets/empty_state.dart';
 import 'observation_card.dart';
 
 class ComplianceItemList extends StatelessWidget {
@@ -17,17 +17,9 @@ class ComplianceItemList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (items.isEmpty) {
-      return Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Icon(Icons.check_circle_outline,
-                size: 48, color: FimmsColors.textMuted),
-            const SizedBox(height: 12),
-            Text(emptyMessage,
-                style: const TextStyle(color: FimmsColors.textMuted)),
-          ],
-        ),
+      return EmptyState(
+        icon: Icons.check_circle_outline,
+        title: emptyMessage,
       );
     }
 
