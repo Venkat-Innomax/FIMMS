@@ -122,9 +122,8 @@ class _CollectorDashboardPageState
       }
     }
 
-    // Apply filter.
+    // Apply filter (facility type is controlled by the module toggle, not here).
     bool matches(Facility f) {
-      if (filter.type != null && f.type != filter.type) return false;
       final insp = insByFacility[f.id];
       if (filter.urgentOnly && (insp?.urgentFlag != true)) return false;
       if (filter.grades.isNotEmpty) {

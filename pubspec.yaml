@@ -32,6 +32,10 @@ dependencies:
   # Face verification (mobile only; no-op / blocked on web)
   tflite_flutter: ^0.12.1
 
+  # Export (PDF generation + share/download)
+  pdf: ^3.11.1
+  printing: ^5.13.2
+
   # Typography
   google_fonts: ^6.2.1
 

@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../core/export_utils.dart';
 import '../../../core/theme.dart';
 import '../../../data/repositories/facility_repository.dart';
 import '../../../data/repositories/inspection_repository.dart';
+import '../../../data/repositories/user_repository.dart';
 import '../../../models/facility.dart';
 import '../../../models/inspection.dart';
+import '../../../models/user.dart';
 
 // ---------------------------------------------------------------------------
 // Mock monthly report data
@@ -51,53 +54,147 @@ class MandalReportsPage extends ConsumerStatefulWidget {
 }
 
 class _MandalReportsPageState extends ConsumerState<MandalReportsPage> {
-  String _filterType = 'All'; // All | Hostel | Hospital
+  bool _exporting = false;
+
+  Future<void> _export(
+    BuildContext context,
+    String format,
+    List<Facility> facilities,
+    List<Inspection> inspections,
+    Map<String, User> userMap,
+  ) async {
+    setState(() => _exporting = true);
+    try {
+      final facilityIds = {for (final f in facilities) f.id};
+      final myInspections =
+          inspections.where((i) => facilityIds.contains(i.facilityId)).toList();
+
+      final facilityMap = {for (final f in facilities) f.id: f};
+      final rows = myInspections
+          .map((i) =>
+              InspectionReportRow.fromInspection(i, facilityMap, userMap))
+          .toList();
+
+      final mandalLabel = widget.mandalId.isEmpty
+          ? 'Mandal'
+          : '${widget.mandalId[0].toUpperCase()}${widget.mandalId.substring(1)}';
+      final title = 'FIMMS Mandal Report — $mandalLabel';
+      final subtitle =
+          '${rows.length} inspections  ·  ${facilities.length} facilities';
+      final filename =
+          'fimms_mandal_${widget.mandalId}_${DateTime.now().millisecondsSinceEpoch}';
+
+      if (format == 'csv') {
+        final csv = buildInspectionCsv(rows, title);
+        await downloadCsv(csv, '$filename.csv');
+      } else {
+        final pdf =
+            await buildInspectionPdf(rows, title, subtitle);
+        await downloadPdf(pdf, '$filename.pdf');
+      }
+    } finally {
+      if (mounted) setState(() => _exporting = false);
+    }
+  }
+
+  void _showExportSheet(
+    BuildContext context,
+    List<Facility> facilities,
+    List<Inspection> inspections,
+    Map<String, User> userMap,
+  ) {
+    showModalBottomSheet(
+      context: context,
+      builder: (_) => SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text('Download Report',
+                  style: TextStyle(
+                      fontSize: 16, fontWeight: FontWeight.w700)),
+              const SizedBox(height: 4),
+              const Text('Choose a format to export the inspection data.',
+                  style: TextStyle(
+                      fontSize: 12, color: FimmsColors.textMuted)),
+              const SizedBox(height: 20),
+              Row(
+                children: [
+                  Expanded(
+                    child: _FormatButton(
+                      icon: Icons.table_chart_outlined,
+                      label: 'CSV',
+                      sublabel: 'Spreadsheet',
+                      color: FimmsColors.success,
+                      onTap: () {
+                        Navigator.pop(context);
+                        _export(context, 'csv', facilities,
+                            inspections, userMap);
+                      },
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: _FormatButton(
+                      icon: Icons.picture_as_pdf_outlined,
+                      label: 'PDF',
+                      sublabel: 'Document',
+                      color: FimmsColors.danger,
+                      onTap: () {
+                        Navigator.pop(context);
+                        _export(context, 'pdf', facilities,
+                            inspections, userMap);
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     final facilitiesAsync = ref.watch(moduleFacilitiesProvider);
     final inspectionsAsync = ref.watch(inspectionsProvider);
+    final usersAsync = ref.watch(usersProvider);
 
     return Column(
       children: [
-        // Filter + export bar
+        // Export bar
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           color: FimmsColors.surface,
           child: Row(
             children: [
-              const Text('Type:',
-                  style: TextStyle(
-                      fontSize: 12, color: FimmsColors.textMuted)),
-              const SizedBox(width: 8),
-              for (final t in ['All', 'Hostel', 'Hospital'])
-                Padding(
-                  padding: const EdgeInsets.only(right: 6),
-                  child: ChoiceChip(
-                    label: Text(t),
-                    selected: _filterType == t,
-                    onSelected: (_) => setState(() => _filterType = t),
-                    labelStyle: TextStyle(
-                      fontSize: 11,
-                      color: _filterType == t
-                          ? Colors.white
-                          : FimmsColors.textMuted,
-                    ),
-                    selectedColor: FimmsColors.primary,
-                  ),
-                ),
               const Spacer(),
               OutlinedButton.icon(
-                onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                        content: Text(
-                            'Export triggered (demo — no file generated)'),
-                        backgroundColor: FimmsColors.primary),
-                  );
-                },
-                icon: const Icon(Icons.download_outlined, size: 14),
-                label: const Text('Export'),
+                onPressed: _exporting
+                    ? null
+                    : () {
+                        final facilities =
+                            facilitiesAsync.valueOrNull ?? <Facility>[];
+                        final inspections =
+                            inspectionsAsync.valueOrNull ?? <Inspection>[];
+                        final userMap = {
+                          for (final u in usersAsync.valueOrNull ?? <User>[])
+                            u.id: u
+                        };
+                        _showExportSheet(
+                            context, facilities, inspections, userMap);
+                      },
+                icon: _exporting
+                    ? const SizedBox(
+                        width: 12,
+                        height: 12,
+                        child: CircularProgressIndicator(strokeWidth: 2))
+                    : const Icon(Icons.download_outlined, size: 14),
+                label: Text(_exporting ? 'Exporting…' : 'Export'),
                 style: OutlinedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 10, vertical: 6),
@@ -114,16 +211,10 @@ class _MandalReportsPageState extends ConsumerState<MandalReportsPage> {
                 const Center(child: CircularProgressIndicator()),
             error: (e, _) => Center(child: Text('Error: $e')),
             data: (facilities) {
-              final mandal = facilities
+              // moduleFacilitiesProvider already filters by active module.
+              final filtered = facilities
                   .where((f) => f.mandalId == widget.mandalId)
                   .toList();
-              final filtered = _filterType == 'All'
-                  ? mandal
-                  : mandal
-                      .where((f) =>
-                          f.type.label.toLowerCase() ==
-                          _filterType.toLowerCase())
-                      .toList();
 
               return inspectionsAsync.when(
                 loading: () =>
@@ -350,6 +441,51 @@ class _MonthRowWidget extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _FormatButton extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final String sublabel;
+  final Color color;
+  final VoidCallback onTap;
+  const _FormatButton({
+    required this.icon,
+    required this.label,
+    required this.sublabel,
+    required this.color,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(10),
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 16),
+        decoration: BoxDecoration(
+          color: color.withValues(alpha: 0.07),
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(color: color.withValues(alpha: 0.3)),
+        ),
+        child: Column(
+          children: [
+            Icon(icon, size: 28, color: color),
+            const SizedBox(height: 6),
+            Text(label,
+                style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w800,
+                    color: color)),
+            Text(sublabel,
+                style: const TextStyle(
+                    fontSize: 11, color: FimmsColors.textMuted)),
+          ],
+        ),
       ),
     );
   }

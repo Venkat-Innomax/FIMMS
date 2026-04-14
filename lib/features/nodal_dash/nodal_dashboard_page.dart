@@ -12,20 +12,25 @@ class NodalDashboardPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final module = ref.watch(moduleProvider);
+    final isHostel = module == AppModule.hostel;
     return DefaultTabController(
       length: 4,
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Nodal Officer Dashboard'),
-          bottom: const TabBar(
+          bottom: TabBar(
             isScrollable: true,
             tabs: [
-              Tab(icon: Icon(Icons.warning_amber), text: 'Escalations'),
-              Tab(icon: Icon(Icons.gpp_bad), text: 'Non-Compliant'),
-              Tab(icon: Icon(Icons.approval), text: 'Approvals'),
+              const Tab(icon: Icon(Icons.warning_amber), text: 'Escalations'),
+              const Tab(icon: Icon(Icons.gpp_bad), text: 'Non-Compliant'),
+              const Tab(icon: Icon(Icons.approval), text: 'Approvals'),
               Tab(
-                  icon: Icon(Icons.local_hospital_outlined),
-                  text: 'Facility Summary'),
+                icon: Icon(isHostel
+                    ? Icons.house_outlined
+                    : Icons.local_hospital_outlined),
+                text: 'Facility Summary',
+              ),
             ],
           ),
           actions: [

@@ -7,6 +7,7 @@ import '../../../data/repositories/facility_repository.dart';
 import '../../../data/repositories/inspection_repository.dart';
 import '../../../models/facility.dart';
 import '../../../models/inspection.dart';
+import '../../../services/mock_auth_service.dart';
 
 class DyDmhoFacilitySummary extends ConsumerStatefulWidget {
   const DyDmhoFacilitySummary({super.key});
@@ -18,12 +19,18 @@ class DyDmhoFacilitySummary extends ConsumerStatefulWidget {
 
 class _DyDmhoFacilitySummaryState
     extends ConsumerState<DyDmhoFacilitySummary> {
-  String _filterSubType = 'All'; // All | DH | CHC | PHC | UPHC
+  String _filterSubType = 'All';
+
+  static const _hospitalSubTypes = ['All', 'DH', 'CHC', 'PHC', 'UPHC'];
+  static const _hostelSubTypes = ['All', 'SW', 'BC', 'MIN', 'TW', 'URS'];
 
   @override
   Widget build(BuildContext context) {
     final facilitiesAsync = ref.watch(moduleFacilitiesProvider);
     final inspectionsAsync = ref.watch(inspectionsProvider);
+    final module = ref.watch(moduleProvider);
+    final isHostel = module == AppModule.hostel;
+    final subTypeOptions = isHostel ? _hostelSubTypes : _hospitalSubTypes;
 
     return Column(
       children: [
@@ -31,29 +38,35 @@ class _DyDmhoFacilitySummaryState
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           color: FimmsColors.surface,
-          child: Row(
-            children: [
-              const Text('Facility Type: ',
-                  style: TextStyle(fontSize: 12, color: FimmsColors.textMuted)),
-              const SizedBox(width: 4),
-              for (final t in ['All', 'DH', 'CHC', 'PHC', 'UPHC'])
-                Padding(
-                  padding: const EdgeInsets.only(right: 6),
-                  child: ChoiceChip(
-                    label: Text(t),
-                    selected: _filterSubType == t,
-                    onSelected: (_) =>
-                        setState(() => _filterSubType = t),
-                    labelStyle: TextStyle(
-                      fontSize: 11,
-                      color: _filterSubType == t
-                          ? Colors.white
-                          : FimmsColors.textMuted,
-                    ),
-                    selectedColor: FimmsColors.primary,
-                  ),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                Text(
+                  isHostel ? 'Hostel Type: ' : 'Facility Type: ',
+                  style: const TextStyle(
+                      fontSize: 12, color: FimmsColors.textMuted),
                 ),
-            ],
+                const SizedBox(width: 4),
+                for (final t in subTypeOptions)
+                  Padding(
+                    padding: const EdgeInsets.only(right: 6),
+                    child: ChoiceChip(
+                      label: Text(t),
+                      selected: _filterSubType == t,
+                      onSelected: (_) =>
+                          setState(() => _filterSubType = t),
+                      labelStyle: TextStyle(
+                        fontSize: 11,
+                        color: _filterSubType == t
+                            ? Colors.white
+                            : FimmsColors.textMuted,
+                      ),
+                      selectedColor: FimmsColors.primary,
+                    ),
+                  ),
+              ],
+            ),
           ),
         ),
         Expanded(
@@ -62,8 +75,9 @@ class _DyDmhoFacilitySummaryState
                 const Center(child: CircularProgressIndicator()),
             error: (e, _) => Center(child: Text('Error: $e')),
             data: (facilities) {
-              final hospitals = facilities
-                  .where((f) => f.type == FacilityType.hospital)
+              // moduleFacilitiesProvider already returns only the active
+              // module's facilities — no secondary type filter needed.
+              final filtered = facilities
                   .where((f) =>
                       _filterSubType == 'All' ||
                       f.subType.toUpperCase() == _filterSubType)
@@ -72,7 +86,7 @@ class _DyDmhoFacilitySummaryState
               return inspectionsAsync.when(
                 loading: () =>
                     const Center(child: CircularProgressIndicator()),
-                error: (_, __) => _buildList(context, hospitals, {}),
+                error: (_, __) => _buildList(context, filtered, {}, isHostel),
                 data: (inspections) {
                   final latest = <String, Inspection>{};
                   for (final i in inspections) {
@@ -82,7 +96,7 @@ class _DyDmhoFacilitySummaryState
                       latest[i.facilityId] = i;
                     }
                   }
-                  return _buildList(context, hospitals, latest);
+                  return _buildList(context, filtered, latest, isHostel);
                 },
               );
             },
@@ -96,18 +110,22 @@ class _DyDmhoFacilitySummaryState
     BuildContext context,
     List<Facility> facilities,
     Map<String, Inspection> latestMap,
+    bool isHostel,
   ) {
     if (facilities.isEmpty) {
       return Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(Icons.local_hospital_outlined,
-                size: 48, color: FimmsColors.textMuted),
+            Icon(
+              isHostel ? Icons.house_outlined : Icons.local_hospital_outlined,
+              size: 48,
+              color: FimmsColors.textMuted,
+            ),
             const SizedBox(height: 12),
             Text(
               _filterSubType == 'All'
-                  ? 'No hospital facilities found'
+                  ? 'No ${isHostel ? 'hostel' : 'hospital'} facilities found'
                   : 'No $_filterSubType facilities found',
               style: const TextStyle(color: FimmsColors.textMuted),
             ),

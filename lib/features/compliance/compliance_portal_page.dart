@@ -7,6 +7,7 @@ import '../../models/compliance_item.dart';
 import '../../services/mock_auth_service.dart';
 import 'widgets/compliance_item_list.dart';
 import 'widgets/compliance_status_card.dart';
+import 'widgets/status_history_tab.dart';
 import 'widgets/welfare_institutions_tab.dart';
 import 'widgets/welfare_issues_tab.dart';
 
@@ -31,7 +32,7 @@ class _CompliancePortalPageState extends ConsumerState<CompliancePortalPage>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 5, vsync: this);
+    _tabController = TabController(length: 6, vsync: this);
   }
 
   @override
@@ -74,6 +75,7 @@ class _CompliancePortalPageState extends ConsumerState<CompliancePortalPage>
             Tab(text: 'All Items'),
             Tab(text: 'Institutions'),
             Tab(text: 'Issues'),
+            Tab(text: 'Status History'),
           ],
           isScrollable: true,
         ),
@@ -116,6 +118,7 @@ class _CompliancePortalPageState extends ConsumerState<CompliancePortalPage>
                     ),
                     const WelfareInstitutionsTab(),
                     const WelfareIssuesTab(),
+                    const StatusHistoryTab(),
                   ],
                 ),
               ),

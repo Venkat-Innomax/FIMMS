@@ -2,29 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/theme.dart';
-import '../../../models/facility.dart';
 import '../../../models/inspection.dart';
 
-/// Dashboard filter state (facility type + grade set).
+/// Dashboard filter state (grade set + urgent flag).
+/// Facility type is controlled by the module toggle on the login screen —
+/// it is not a per-dashboard filter.
 class DashboardFilter {
-  final FacilityType? type; // null = all
-  final Set<Grade> grades;  // empty = all
+  final Set<Grade> grades; // empty = all
   final bool urgentOnly;
 
   const DashboardFilter({
-    this.type,
     this.grades = const {},
     this.urgentOnly = false,
   });
 
   DashboardFilter copyWith({
-    FacilityType? type,
-    bool clearType = false,
     Set<Grade>? grades,
     bool? urgentOnly,
   }) {
     return DashboardFilter(
-      type: clearType ? null : (type ?? this.type),
       grades: grades ?? this.grades,
       urgentOnly: urgentOnly ?? this.urgentOnly,
     );
@@ -33,10 +29,6 @@ class DashboardFilter {
 
 class DashboardFilterNotifier extends StateNotifier<DashboardFilter> {
   DashboardFilterNotifier() : super(const DashboardFilter());
-
-  void setType(FacilityType? t) {
-    state = state.copyWith(type: t, clearType: t == null);
-  }
 
   void toggleGrade(Grade g) {
     final next = {...state.grades};
@@ -86,9 +78,7 @@ class FilterPanel extends ConsumerWidget {
                     ),
               ),
               const Spacer(),
-              if (filter.type != null ||
-                  filter.grades.isNotEmpty ||
-                  filter.urgentOnly)
+              if (filter.grades.isNotEmpty || filter.urgentOnly)
                 TextButton(
                   onPressed: notifier.reset,
                   child: const Text('Clear'),
@@ -96,29 +86,6 @@ class FilterPanel extends ConsumerWidget {
             ],
           ),
           const SizedBox(height: 12),
-          const _Label('Facility Type'),
-          const SizedBox(height: 6),
-          Wrap(
-            spacing: 6,
-            children: [
-              _Radio(
-                label: 'All',
-                selected: filter.type == null,
-                onTap: () => notifier.setType(null),
-              ),
-              _Radio(
-                label: 'Hostels',
-                selected: filter.type == FacilityType.hostel,
-                onTap: () => notifier.setType(FacilityType.hostel),
-              ),
-              _Radio(
-                label: 'Hospitals',
-                selected: filter.type == FacilityType.hospital,
-                onTap: () => notifier.setType(FacilityType.hospital),
-              ),
-            ],
-          ),
-          const SizedBox(height: 14),
           const _Label('Grade'),
           const SizedBox(height: 6),
           Wrap(
@@ -171,44 +138,7 @@ class _Label extends StatelessWidget {
   }
 }
 
-class _Radio extends StatelessWidget {
-  final String label;
-  final bool selected;
-  final VoidCallback onTap;
-  const _Radio({
-    required this.label,
-    required this.selected,
-    required this.onTap,
-  });
 
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(6),
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-        decoration: BoxDecoration(
-          color: selected
-              ? FimmsColors.primary
-              : FimmsColors.surface,
-          borderRadius: BorderRadius.circular(6),
-          border: Border.all(
-            color: selected ? FimmsColors.primary : FimmsColors.outline,
-          ),
-        ),
-        child: Text(
-          label,
-          style: TextStyle(
-            fontSize: 13,
-            fontWeight: FontWeight.w600,
-            color: selected ? Colors.white : FimmsColors.textPrimary,
-          ),
-        ),
-      ),
-    );
-  }
-}
 
 class _GradeChip extends StatelessWidget {
   final Grade grade;
