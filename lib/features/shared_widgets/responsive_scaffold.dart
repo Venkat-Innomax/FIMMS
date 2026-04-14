@@ -8,6 +8,45 @@ import '../../core/theme.dart';
 import '../../models/user.dart';
 import '../../services/mock_auth_service.dart';
 
+// Shared module badge shown in app bars
+class ModuleBadge extends ConsumerWidget {
+  const ModuleBadge({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final module = ref.watch(moduleProvider);
+    final isHostel = module == AppModule.hostel;
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 4),
+      decoration: BoxDecoration(
+        color: Colors.white.withValues(alpha: 0.15),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: Colors.white.withValues(alpha: 0.3)),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(
+            isHostel ? Icons.house_outlined : Icons.local_hospital_outlined,
+            size: 12,
+            color: Colors.white,
+          ),
+          const SizedBox(width: 5),
+          Text(
+            module.label.toUpperCase(),
+            style: const TextStyle(
+              fontSize: 10,
+              fontWeight: FontWeight.w800,
+              color: Colors.white,
+              letterSpacing: 0.8,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class NavItem {
   final String label;
   final IconData icon;
@@ -79,6 +118,8 @@ class ResponsiveScaffold extends ConsumerWidget {
               ),
             ),
           ),
+        const ModuleBadge(),
+        const SizedBox(width: 4),
         ...?actions,
         signOut,
       ],
@@ -203,6 +244,8 @@ class DashboardScaffold extends ConsumerWidget {
                 ),
               ),
             ),
+          const ModuleBadge(),
+          const SizedBox(width: 4),
           ...?actions,
           IconButton(
             tooltip: 'Sign out',

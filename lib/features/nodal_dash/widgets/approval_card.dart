@@ -17,7 +17,7 @@ class ApprovalList extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final inspectionsAsync = ref.watch(inspectionsProvider);
-    final facilitiesAsync = ref.watch(facilitiesProvider);
+    final facilitiesAsync = ref.watch(moduleFacilitiesProvider);
     final usersAsync = ref.watch(usersProvider);
 
     return inspectionsAsync.when(

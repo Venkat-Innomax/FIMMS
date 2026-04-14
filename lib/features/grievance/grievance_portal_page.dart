@@ -59,7 +59,7 @@ class _MyComplaints extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final complaintsAsync = ref.watch(_userComplaintsProvider(userId));
-    final facilitiesAsync = ref.watch(facilitiesProvider);
+    final facilitiesAsync = ref.watch(moduleFacilitiesProvider);
 
     return complaintsAsync.when(
       loading: () => const Center(child: CircularProgressIndicator()),

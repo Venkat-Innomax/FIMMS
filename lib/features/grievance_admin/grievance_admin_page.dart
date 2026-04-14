@@ -30,7 +30,7 @@ class _GrievanceAdminPageState extends ConsumerState<GrievanceAdminPage> {
   @override
   Widget build(BuildContext context) {
     final complaints = ref.watch(complaintListProvider);
-    final facilitiesAsync = ref.watch(facilitiesProvider);
+    final facilitiesAsync = ref.watch(moduleFacilitiesProvider);
     final isWide = MediaQuery.sizeOf(context).width >= 800;
 
     Widget body;

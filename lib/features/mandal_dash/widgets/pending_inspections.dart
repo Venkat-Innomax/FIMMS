@@ -28,7 +28,7 @@ class _PendingInspectionsState extends ConsumerState<PendingInspections> {
 
   @override
   Widget build(BuildContext context) {
-    final facilitiesAsync = ref.watch(facilitiesProvider);
+    final facilitiesAsync = ref.watch(moduleFacilitiesProvider);
     final inspectionsAsync = ref.watch(inspectionsProvider);
     final usersAsync = ref.watch(usersProvider);
 

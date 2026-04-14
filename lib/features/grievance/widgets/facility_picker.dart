@@ -24,7 +24,7 @@ class _FacilityPickerState extends ConsumerState<FacilityPicker> {
 
   @override
   Widget build(BuildContext context) {
-    final facilitiesAsync = ref.watch(facilitiesProvider);
+    final facilitiesAsync = ref.watch(moduleFacilitiesProvider);
 
     return facilitiesAsync.when(
       loading: () => const Center(child: CircularProgressIndicator()),

@@ -16,7 +16,7 @@ class MandalGrievances extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final complaints = ref.watch(complaintListProvider);
-    final facilitiesAsync = ref.watch(facilitiesProvider);
+    final facilitiesAsync = ref.watch(moduleFacilitiesProvider);
     final facilities = facilitiesAsync.valueOrNull ?? <Facility>[];
     final facilityMap = {for (final f in facilities) f.id: f};
 

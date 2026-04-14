@@ -3,6 +3,24 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../data/repositories/user_repository.dart';
 import '../models/user.dart';
 
+// ---------------------------------------------------------------------------
+// Module context — set at login, persists for the session
+// ---------------------------------------------------------------------------
+
+enum AppModule { hostel, hospital }
+
+extension AppModuleX on AppModule {
+  String get label => this == AppModule.hostel ? 'Hostel' : 'Hospital';
+  String get fullLabel =>
+      this == AppModule.hostel ? 'Hostel Module' : 'Hospital Module';
+}
+
+/// Holds the active module chosen on the login screen.
+/// Defaults to hostel. Updated before/during sign-in.
+final moduleProvider = StateProvider<AppModule>((ref) => AppModule.hostel);
+
+// ---------------------------------------------------------------------------
+
 /// Holds the current signed-in user. Null when logged out.
 class AuthStateNotifier extends StateNotifier<User?> {
   AuthStateNotifier() : super(null);

@@ -20,7 +20,7 @@ class _NonCompliantListState extends ConsumerState<NonCompliantList> {
 
   @override
   Widget build(BuildContext context) {
-    final facilitiesAsync = ref.watch(facilitiesProvider);
+    final facilitiesAsync = ref.watch(moduleFacilitiesProvider);
     final inspectionsAsync = ref.watch(inspectionsProvider);
     final mandalsAsync = ref.watch(mandalsProvider);
 

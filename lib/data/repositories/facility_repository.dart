@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../models/facility.dart';
 import '../../models/mandal.dart';
+import '../../services/mock_auth_service.dart';
 
 /// Repository for facility + mandal master data. Reads static JSON fixtures
 /// today; swapping to an HTTP client later is a one-function change.
@@ -57,4 +58,15 @@ final facilitiesProvider = FutureProvider<List<Facility>>((ref) async {
 
 final mandalsProvider = FutureProvider<List<Mandal>>((ref) async {
   return ref.read(facilityRepositoryProvider).loadMandals();
+});
+
+/// Facilities filtered to the active module (hostel or hospital).
+/// Re-computes whenever the user switches modules.
+final moduleFacilitiesProvider = FutureProvider<List<Facility>>((ref) async {
+  final all = await ref.watch(facilitiesProvider.future);
+  final module = ref.watch(moduleProvider);
+  final targetType = module == AppModule.hostel
+      ? FacilityType.hostel
+      : FacilityType.hospital;
+  return all.where((f) => f.type == targetType).toList();
 });

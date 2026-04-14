@@ -13,6 +13,7 @@ import '../../models/user.dart';
 import '../shared_widgets/responsive_scaffold.dart';
 import 'widgets/alerts_panel.dart';
 import 'widgets/district_map.dart';
+import 'widgets/escalation_tracker.dart';
 import 'widgets/facility_popup.dart';
 import 'widgets/filter_panel.dart';
 import 'widgets/mandal_bars.dart';
@@ -35,7 +36,7 @@ class CollectorDashboardPage extends ConsumerStatefulWidget {
       _CollectorDashboardPageState();
 }
 
-enum _ViewMode { map, reports, trends, alerts }
+enum _ViewMode { map, reports, trends, alerts, escalations }
 
 class _CollectorDashboardPageState
     extends ConsumerState<CollectorDashboardPage> {
@@ -44,7 +45,7 @@ class _CollectorDashboardPageState
 
   @override
   Widget build(BuildContext context) {
-    final facilitiesAsync = ref.watch(facilitiesProvider);
+    final facilitiesAsync = ref.watch(moduleFacilitiesProvider);
     final inspectionsAsync = ref.watch(inspectionsProvider);
     final mandalsAsync = ref.watch(mandalsProvider);
     final usersAsync = ref.watch(usersProvider);
@@ -208,6 +209,10 @@ class _CollectorDashboardPageState
                     value: _ViewMode.alerts,
                     icon: Icon(Icons.warning_amber, size: 16),
                     label: Text('Alerts')),
+                ButtonSegment(
+                    value: _ViewMode.escalations,
+                    icon: Icon(Icons.north_east, size: 16),
+                    label: Text('Escalations')),
               ],
               selected: {_viewMode},
               onSelectionChanged: (s) =>
@@ -233,6 +238,8 @@ class _CollectorDashboardPageState
           facilities: filtered,
           latestByFacility: insByFacility,
         );
+      case _ViewMode.escalations:
+        mainContent = const EscalationTracker();
     }
 
     // Wrap in AnimatedSwitcher for smooth fade between map/reports/trends.

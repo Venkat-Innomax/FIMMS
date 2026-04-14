@@ -22,7 +22,7 @@ class _FacilityListViewState extends ConsumerState<FacilityListView> {
 
   @override
   Widget build(BuildContext context) {
-    final facilitiesAsync = ref.watch(facilitiesProvider);
+    final facilitiesAsync = ref.watch(moduleFacilitiesProvider);
     final inspectionsAsync = ref.watch(inspectionsProvider);
 
     return facilitiesAsync.when(

@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../features/admin_dash/admin_dashboard_page.dart';
+import '../features/auth/forgot_password_page.dart';
 import '../features/auth/login_page.dart';
 import '../features/grievance/grievance_portal_page.dart';
 import '../features/grievance_admin/grievance_admin_page.dart';
@@ -11,10 +12,13 @@ import '../features/collector_dash/collector_dashboard_page.dart';
 import '../features/compliance/compliance_portal_page.dart';
 import '../features/collector_dash/widgets/facility_detail_page.dart';
 import '../features/field_officer/inspection_page.dart';
+import '../features/field_officer/institution_preview_page.dart';
 import '../features/field_officer/officer_home_page.dart';
 import '../features/field_officer/score_summary_page.dart';
 import '../features/mandal_dash/mandal_dashboard_page.dart';
 import '../features/nodal_dash/nodal_dashboard_page.dart';
+import '../features/notifications/notifications_page.dart';
+import '../features/profile/profile_page.dart';
 import '../features/supervisor_dash/supervisor_dashboard_page.dart';
 import '../models/user.dart';
 import '../services/mock_auth_service.dart';
@@ -46,16 +50,29 @@ final routerProvider = Provider<GoRouter>((ref) {
     redirect: (context, state) {
       final auth = ref.read(authStateProvider);
       final signedIn = auth != null;
-      final atLogin = state.matchedLocation == '/login';
+      final loc = state.matchedLocation;
+      final isPublicRoute = loc == '/login' || loc == '/forgot-password';
 
-      if (!signedIn && !atLogin) return '/login';
-      if (signedIn && atLogin) return _homeFor(auth);
+      if (!signedIn && !isPublicRoute) return '/login';
+      if (signedIn && loc == '/login') return _homeFor(auth);
       return null;
     },
     routes: [
       GoRoute(
         path: '/login',
         builder: (context, state) => const LoginPage(),
+      ),
+      GoRoute(
+        path: '/forgot-password',
+        builder: (context, state) => const ForgotPasswordPage(),
+      ),
+      GoRoute(
+        path: '/profile',
+        builder: (context, state) => const ProfilePage(),
+      ),
+      GoRoute(
+        path: '/notifications',
+        builder: (context, state) => const NotificationsPage(),
       ),
 
       // ── Government Internal ──────────────────────────────────
@@ -92,6 +109,11 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/officer',
         builder: (context, state) => const OfficerHomePage(),
         routes: [
+          GoRoute(
+            path: 'institution/:id',
+            builder: (context, state) => InstitutionPreviewPage(
+                facilityId: state.pathParameters['id']!),
+          ),
           GoRoute(
             path: 'inspect/:id',
             builder: (context, state) =>

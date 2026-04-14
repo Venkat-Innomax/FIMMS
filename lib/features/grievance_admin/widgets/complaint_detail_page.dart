@@ -4,11 +4,30 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/theme.dart';
 import '../../../data/repositories/complaint_repository.dart';
 import '../../../models/complaint.dart';
+import '../../../models/user.dart';
 import '../../../services/mock_auth_service.dart';
 import '../../grievance/widgets/complaint_timeline.dart';
 import 'escalation_dialog.dart';
 import 'merge_dialog.dart';
 import 'resolution_form.dart';
+
+// ---------------------------------------------------------------------------
+// Identity masking utilities
+// ---------------------------------------------------------------------------
+
+String _maskName(String name) {
+  final parts = name.trim().split(RegExp(r'\s+'));
+  return parts.map((p) {
+    if (p.length <= 1) return p;
+    return '${p[0]}${'*' * (p.length - 2)}${p[p.length - 1]}';
+  }).join(' ');
+}
+
+
+bool _canViewIdentity(Role? role) =>
+    role == Role.grievanceOfficer || role == Role.collector || role == Role.admin;
+
+// ---------------------------------------------------------------------------
 
 class ComplaintDetailPage extends ConsumerWidget {
   final Complaint complaint;
@@ -22,6 +41,8 @@ class ComplaintDetailPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final currentUser = ref.watch(authStateProvider);
+    final showIdentity = _canViewIdentity(currentUser?.role);
     return Scaffold(
       appBar: AppBar(title: Text('Complaint ${complaint.id}')),
       body: SingleChildScrollView(
@@ -64,7 +85,13 @@ class ComplaintDetailPage extends ConsumerWidget {
                             value: complaint.priority.label),
                         _InfoChip(
                             label: 'By',
-                            value: complaint.submittedBy),
+                            value: showIdentity
+                                ? complaint.submittedBy
+                                : _maskName(complaint.submittedBy)),
+                        if (!showIdentity)
+                          const _InfoChip(
+                              label: 'Identity',
+                              value: '🔒 Restricted'),
                       ],
                     ),
                   ],

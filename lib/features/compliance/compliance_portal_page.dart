@@ -7,6 +7,8 @@ import '../../models/compliance_item.dart';
 import '../../services/mock_auth_service.dart';
 import 'widgets/compliance_item_list.dart';
 import 'widgets/compliance_status_card.dart';
+import 'widgets/welfare_institutions_tab.dart';
+import 'widgets/welfare_issues_tab.dart';
 
 final _complianceItemsProvider =
     FutureProvider.family<List<ComplianceItem>, String>(
@@ -29,7 +31,7 @@ class _CompliancePortalPageState extends ConsumerState<CompliancePortalPage>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(length: 5, vsync: this);
   }
 
   @override
@@ -51,7 +53,7 @@ class _CompliancePortalPageState extends ConsumerState<CompliancePortalPage>
       );
     }
 
-    final facilityAsync = ref.watch(facilitiesProvider);
+    final facilityAsync = ref.watch(moduleFacilitiesProvider);
     final itemsAsync = ref.watch(_complianceItemsProvider(facilityId));
 
     final facilityName = facilityAsync.whenOrNull(
@@ -70,7 +72,10 @@ class _CompliancePortalPageState extends ConsumerState<CompliancePortalPage>
             Tab(text: 'Pending'),
             Tab(text: 'Submitted'),
             Tab(text: 'All Items'),
+            Tab(text: 'Institutions'),
+            Tab(text: 'Issues'),
           ],
+          isScrollable: true,
         ),
         actions: [
           IconButton(
@@ -109,6 +114,8 @@ class _CompliancePortalPageState extends ConsumerState<CompliancePortalPage>
                       items: items,
                       emptyMessage: 'No compliance items',
                     ),
+                    const WelfareInstitutionsTab(),
+                    const WelfareIssuesTab(),
                   ],
                 ),
               ),

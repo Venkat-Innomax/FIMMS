@@ -64,7 +64,7 @@ class _AssignmentsTab extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final facilities = ref.watch(facilitiesProvider);
+    final facilities = ref.watch(moduleFacilitiesProvider);
     final inspections = ref.watch(inspectionsProvider);
 
     return facilities.when(
@@ -143,7 +143,7 @@ class _AssignmentCard extends StatelessWidget {
       ),
       child: InkWell(
         borderRadius: BorderRadius.circular(12),
-        onTap: () => context.go('/officer/inspect/${facility.id}'),
+        onTap: () => context.push('/officer/institution/${facility.id}'),
         child: Padding(
           padding: const EdgeInsets.all(14),
           child: Column(
@@ -250,7 +250,7 @@ class _HistoryTab extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final inspections = ref.watch(inspectionsProvider);
-    final facilities = ref.watch(facilitiesProvider);
+    final facilities = ref.watch(moduleFacilitiesProvider);
 
     return inspections.when(
       loading: () => const Center(child: CircularProgressIndicator()),

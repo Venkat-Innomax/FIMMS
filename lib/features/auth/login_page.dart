@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../core/constants.dart';
 import '../../core/responsive.dart';
@@ -77,7 +78,10 @@ class _LoginPageState extends ConsumerState<LoginPage>
                       .displaySmall
                       ?.copyWith(fontWeight: FontWeight.w700),
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: 20),
+                // Module selector
+                _ModuleSelector(),
+                const SizedBox(height: 20),
                 // Tab toggle
                 Container(
                   decoration: BoxDecoration(
@@ -182,6 +186,136 @@ class _LoginPageState extends ConsumerState<LoginPage>
                 Expanded(flex: 6, child: right),
               ],
             ),
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Module selector — Hostel / Hospital
+// ---------------------------------------------------------------------------
+
+class _ModuleSelector extends ConsumerWidget {
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final selected = ref.watch(moduleProvider);
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Select Module',
+          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                color: FimmsColors.textMuted,
+                fontWeight: FontWeight.w700,
+                letterSpacing: 0.4,
+              ),
+        ),
+        const SizedBox(height: 8),
+        Row(
+          children: [
+            Expanded(
+              child: _ModuleCard(
+                icon: Icons.house_outlined,
+                label: 'Hostel',
+                sublabel: 'Welfare Hostels',
+                color: FimmsColors.primary,
+                selected: selected == AppModule.hostel,
+                onTap: () => ref.read(moduleProvider.notifier).state =
+                    AppModule.hostel,
+              ),
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: _ModuleCard(
+                icon: Icons.local_hospital_outlined,
+                label: 'Hospital',
+                sublabel: 'Health Facilities',
+                color: Colors.teal,
+                selected: selected == AppModule.hospital,
+                onTap: () => ref.read(moduleProvider.notifier).state =
+                    AppModule.hospital,
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class _ModuleCard extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final String sublabel;
+  final Color color;
+  final bool selected;
+  final VoidCallback onTap;
+
+  const _ModuleCard({
+    required this.icon,
+    required this.label,
+    required this.sublabel,
+    required this.color,
+    required this.selected,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+        decoration: BoxDecoration(
+          color: selected ? color.withValues(alpha: 0.08) : FimmsColors.surface,
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(
+            color: selected ? color : FimmsColors.outline,
+            width: selected ? 2 : 1,
+          ),
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: 34,
+              height: 34,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: selected
+                    ? color.withValues(alpha: 0.12)
+                    : FimmsColors.surfaceAlt,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Icon(icon,
+                  size: 18, color: selected ? color : FimmsColors.textMuted),
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    label,
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w700,
+                      color: selected ? color : FimmsColors.textPrimary,
+                    ),
+                  ),
+                  Text(
+                    sublabel,
+                    style: const TextStyle(
+                        fontSize: 10, color: FimmsColors.textMuted),
+                  ),
+                ],
+              ),
+            ),
+            if (selected)
+              Icon(Icons.check_circle, size: 16, color: color),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -328,6 +462,20 @@ class _OfficerLoginFormState extends ConsumerState<_OfficerLoginForm> {
                   )
                 : const Icon(Icons.login),
             label: Text(_loading ? 'Signing in...' : 'Login'),
+          ),
+        ),
+        const SizedBox(height: 8),
+        Align(
+          alignment: Alignment.centerRight,
+          child: TextButton(
+            onPressed: () => context.go('/forgot-password'),
+            style: TextButton.styleFrom(
+                padding: EdgeInsets.zero,
+                minimumSize: const Size(0, 32)),
+            child: const Text(
+              'Forgot password?',
+              style: TextStyle(fontSize: 13),
+            ),
           ),
         ),
       ],

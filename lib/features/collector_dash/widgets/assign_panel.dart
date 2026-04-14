@@ -72,7 +72,7 @@ class _AssignPanelState extends ConsumerState<AssignPanel> {
 
   @override
   Widget build(BuildContext context) {
-    final facilitiesAsync = ref.watch(facilitiesProvider);
+    final facilitiesAsync = ref.watch(moduleFacilitiesProvider);
     final usersAsync = ref.watch(usersProvider);
     final assignments = ref.watch(assignmentListProvider);
 
