@@ -18,6 +18,7 @@ import '../../services/scoring_engine.dart';
 import '../inspection_form/inspection_form_notifier.dart';
 import '../inspection_form/section_card.dart';
 import '../inspection_form/widgets/selfie_gate.dart';
+import 'inspection_preview_page.dart';
 
 /// Full inspection flow: header (auto-captured fields), urgent toggle,
 /// section stepper rendered by the schema-driven engine, and submit.
@@ -214,7 +215,7 @@ class _InspectionPageState extends ConsumerState<InspectionPage> {
                       const SizedBox(height: 16),
                       _SubmitBar(
                         onSubmit: () =>
-                            _submit(facility, schema, geofencePass, user?.id),
+                            _showPreview(facility, schema, geofencePass, user),
                       ),
                     ],
                   ),
@@ -264,12 +265,12 @@ class _InspectionPageState extends ConsumerState<InspectionPage> {
     );
   }
 
-  Future<void> _submit(
+  void _showPreview(
     Facility facility,
     FormSchema schema,
     bool geofencePass,
-    String? officerId,
-  ) async {
+    dynamic user,
+  ) {
     final state = ref.read(inspectionFormProvider(schema));
     final validation = InspectionValidator.validate(
       schema: schema,
@@ -287,6 +288,31 @@ class _InspectionPageState extends ConsumerState<InspectionPage> {
       _showIssues(validation.issues);
       return;
     }
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => InspectionPreviewPage(
+          facility: facility,
+          schema: schema,
+          formState: state,
+          gpsFix: _gpsFix,
+          geofencePass: geofencePass,
+          officerName: user?.name ?? '—',
+          onConfirmSubmit: () =>
+              _submit(facility, schema, geofencePass, user?.id),
+        ),
+      ),
+    );
+  }
+
+  Future<void> _submit(
+    Facility facility,
+    FormSchema schema,
+    bool geofencePass,
+    String? officerId,
+  ) async {
+    final state = ref.read(inspectionFormProvider(schema));
 
     final scoring = ScoringEngine.compute(
       schema: schema,
@@ -711,10 +737,10 @@ class _SubmitBar extends StatelessWidget {
         Expanded(
           child: FilledButton.icon(
             onPressed: onSubmit,
-            icon: const Icon(Icons.check_circle_outline),
+            icon: const Icon(Icons.preview_outlined),
             label: const Padding(
               padding: EdgeInsets.symmetric(vertical: 4),
-              child: Text('Submit Inspection'),
+              child: Text('Review & Submit'),
             ),
           ),
         ),
