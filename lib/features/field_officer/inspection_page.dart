@@ -64,15 +64,21 @@ class _InspectionPageState extends ConsumerState<InspectionPage> {
       final schema = facility.type == FacilityType.hostel
           ? await schemaRepo.hostelSchema()
           : await schemaRepo.hospitalSchema();
-      final fix = await ref
-          .read(geolocationServiceProvider)
-          .currentFix(fallback: facility.location);
+      final geoSvc = ref.read(geolocationServiceProvider);
+      final fix = await geoSvc.currentFix(fallback: facility.location);
+      final distance = geoSvc.distanceMeters(fix.position, facility.location);
+      final geofencePass = distance <= AppConstants.geofenceRadiusMeters;
       setState(() {
         _facility = facility;
         _schema = schema;
         _gpsFix = fix;
         _loading = false;
       });
+      if (!geofencePass && mounted) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (mounted) _showGeofenceBlockedDialog(facility, distance);
+        });
+      }
     } catch (e) {
       setState(() {
         _loadError = '$e';
@@ -191,6 +197,43 @@ class _InspectionPageState extends ConsumerState<InspectionPage> {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  void _showGeofenceBlockedDialog(Facility facility, double distanceMeters) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (ctx) => AlertDialog(
+        icon: const Icon(
+          Icons.location_off,
+          color: FimmsColors.gradeCritical,
+          size: 44,
+        ),
+        title: const Text(
+          'Outside Geo-fence Area',
+          textAlign: TextAlign.center,
+        ),
+        content: Text(
+          'You are ${distanceMeters.round()} m away from ${facility.name}.\n\n'
+          'You must be within ${AppConstants.geofenceRadiusMeters.round().toInt()} m of the facility to open the inspection form.',
+          textAlign: TextAlign.center,
+        ),
+        actionsAlignment: MainAxisAlignment.center,
+        actions: [
+          FilledButton.icon(
+            style: FilledButton.styleFrom(
+              backgroundColor: FimmsColors.gradeCritical,
+            ),
+            onPressed: () {
+              Navigator.of(ctx).pop();
+              context.go('/officer');
+            },
+            icon: const Icon(Icons.arrow_back),
+            label: const Text('Go Back'),
+          ),
+        ],
       ),
     );
   }
