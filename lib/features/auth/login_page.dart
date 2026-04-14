@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/constants.dart';
 import '../../core/responsive.dart';
 import '../../core/theme.dart';
+import '../../data/repositories/user_repository.dart';
 import '../../models/user.dart';
 import '../../services/mock_auth_service.dart';
 import '../shared_widgets/responsive_scaffold.dart';
@@ -18,6 +19,7 @@ class LoginPage extends ConsumerStatefulWidget {
 class _LoginPageState extends ConsumerState<LoginPage>
     with SingleTickerProviderStateMixin {
   User? _selected;
+  int _tabIndex = 0; // 0 = Demo Access, 1 = Officer Login
   late final AnimationController _fadeController;
   late final Animation<double> _fadeAnimation;
 
@@ -75,45 +77,68 @@ class _LoginPageState extends ConsumerState<LoginPage>
                       .displaySmall
                       ?.copyWith(fontWeight: FontWeight.w700),
                 ),
-                const SizedBox(height: 4),
-                Text(
-                  'Demo build — pick a preset role to continue',
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: FimmsColors.textMuted,
+                const SizedBox(height: 16),
+                // Tab toggle
+                Container(
+                  decoration: BoxDecoration(
+                    color: FimmsColors.surfaceAlt,
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(color: FimmsColors.outline),
+                  ),
+                  child: Row(
+                    children: [
+                      _TabButton(
+                        label: 'Demo Access',
+                        selected: _tabIndex == 0,
+                        onTap: () => setState(() { _tabIndex = 0; }),
                       ),
-                ),
-                const SizedBox(height: 28),
-                usersAsync.when(
-                  loading: () => const Padding(
-                    padding: EdgeInsets.all(24),
-                    child: Center(child: CircularProgressIndicator()),
-                  ),
-                  error: (e, _) => Text('Failed to load users: $e'),
-                  data: (users) => _GroupedUserList(
-                    users: users,
-                    selected: _selected,
-                    onSelect: (u) => setState(() => _selected = u),
+                      _TabButton(
+                        label: 'Officer Login',
+                        selected: _tabIndex == 1,
+                        onTap: () => setState(() { _tabIndex = 1; }),
+                      ),
+                    ],
                   ),
                 ),
-                const SizedBox(height: 24),
-                SizedBox(
-                  width: double.infinity,
-                  child: FilledButton.icon(
-                    onPressed: _selected == null
-                        ? null
-                        : () {
-                            // Flipping the auth state fires the router's
-                            // refresh listenable; go_router's redirect
-                            // callback handles the actual navigation to
-                            // the right role home.
-                            ref
-                                .read(authStateProvider.notifier)
-                                .signIn(_selected!);
-                          },
-                    icon: const Icon(Icons.login),
-                    label: const Text('Continue'),
+                const SizedBox(height: 20),
+                if (_tabIndex == 0) ...[
+                  Text(
+                    'Pick a preset role to continue',
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: FimmsColors.textMuted,
+                        ),
                   ),
-                ),
+                  const SizedBox(height: 16),
+                  usersAsync.when(
+                    loading: () => const Padding(
+                      padding: EdgeInsets.all(24),
+                      child: Center(child: CircularProgressIndicator()),
+                    ),
+                    error: (e, _) => Text('Failed to load users: $e'),
+                    data: (users) => _GroupedUserList(
+                      users: users,
+                      selected: _selected,
+                      onSelect: (u) => setState(() => _selected = u),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  SizedBox(
+                    width: double.infinity,
+                    child: FilledButton.icon(
+                      onPressed: _selected == null
+                          ? null
+                          : () {
+                              ref
+                                  .read(authStateProvider.notifier)
+                                  .signIn(_selected!);
+                            },
+                      icon: const Icon(Icons.login),
+                      label: const Text('Continue'),
+                    ),
+                  ),
+                ] else ...[
+                  _OfficerLoginForm(),
+                ],
                 const SizedBox(height: 18),
                 Container(
                   padding: const EdgeInsets.all(12),
@@ -157,6 +182,155 @@ class _LoginPageState extends ConsumerState<LoginPage>
                 Expanded(flex: 6, child: right),
               ],
             ),
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Tab toggle button
+// ---------------------------------------------------------------------------
+
+class _TabButton extends StatelessWidget {
+  final String label;
+  final bool selected;
+  final VoidCallback onTap;
+
+  const _TabButton({
+    required this.label,
+    required this.selected,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: GestureDetector(
+        onTap: onTap,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 180),
+          margin: const EdgeInsets.all(3),
+          padding: const EdgeInsets.symmetric(vertical: 9),
+          decoration: BoxDecoration(
+            color: selected ? FimmsColors.primary : Colors.transparent,
+            borderRadius: BorderRadius.circular(6),
+          ),
+          alignment: Alignment.center,
+          child: Text(
+            label,
+            style: TextStyle(
+              fontSize: 13,
+              fontWeight: FontWeight.w600,
+              color: selected ? Colors.white : FimmsColors.textMuted,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Officer Login form — username (mobile) + password
+// ---------------------------------------------------------------------------
+
+class _OfficerLoginForm extends ConsumerStatefulWidget {
+  @override
+  ConsumerState<_OfficerLoginForm> createState() => _OfficerLoginFormState();
+}
+
+class _OfficerLoginFormState extends ConsumerState<_OfficerLoginForm> {
+  final _usernameCtrl = TextEditingController();
+  final _passwordCtrl = TextEditingController();
+  bool _loading = false;
+  bool _obscure = true;
+  String? _error;
+
+  @override
+  void dispose() {
+    _usernameCtrl.dispose();
+    _passwordCtrl.dispose();
+    super.dispose();
+  }
+
+  Future<void> _submit() async {
+    setState(() { _loading = true; _error = null; });
+    final repo = ref.read(userRepositoryProvider);
+    final user = await ref
+        .read(authStateProvider.notifier)
+        .signInWithCredentials(_usernameCtrl.text, _passwordCtrl.text, repo);
+    if (!mounted) return;
+    if (user == null) {
+      setState(() {
+        _loading = false;
+        _error = 'Invalid mobile number or password. Please try again.';
+      });
+    }
+    // On success, auth state change triggers router redirect automatically.
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Use your registered mobile number and password',
+          style: Theme.of(context)
+              .textTheme
+              .bodySmall
+              ?.copyWith(color: FimmsColors.textMuted),
+        ),
+        const SizedBox(height: 16),
+        TextField(
+          controller: _usernameCtrl,
+          keyboardType: TextInputType.phone,
+          decoration: const InputDecoration(
+            labelText: 'Mobile Number',
+            hintText: 'e.g. 9000368915',
+            prefixIcon: Icon(Icons.phone_outlined),
+            border: OutlineInputBorder(),
+          ),
+          onSubmitted: (_) => _submit(),
+        ),
+        const SizedBox(height: 12),
+        TextField(
+          controller: _passwordCtrl,
+          obscureText: _obscure,
+          decoration: InputDecoration(
+            labelText: 'Password',
+            prefixIcon: const Icon(Icons.lock_outline),
+            border: const OutlineInputBorder(),
+            suffixIcon: IconButton(
+              icon: Icon(_obscure ? Icons.visibility_off : Icons.visibility),
+              onPressed: () => setState(() => _obscure = !_obscure),
+            ),
+          ),
+          onSubmitted: (_) => _submit(),
+        ),
+        if (_error != null) ...[
+          const SizedBox(height: 10),
+          Text(
+            _error!,
+            style: const TextStyle(color: Colors.red, fontSize: 13),
+          ),
+        ],
+        const SizedBox(height: 20),
+        SizedBox(
+          width: double.infinity,
+          child: FilledButton.icon(
+            onPressed: _loading ? null : _submit,
+            icon: _loading
+                ? const SizedBox(
+                    width: 16,
+                    height: 16,
+                    child: CircularProgressIndicator(
+                        strokeWidth: 2, color: Colors.white),
+                  )
+                : const Icon(Icons.login),
+            label: Text(_loading ? 'Signing in...' : 'Login'),
+          ),
+        ),
+      ],
     );
   }
 }
@@ -383,12 +557,30 @@ class _GroupedUserList extends StatelessWidget {
               ),
             ),
             children: [
-              for (final u in categoryUsers)
-                _UserRow(
-                  user: u,
-                  selected: selected?.id == u.id,
-                  onTap: () => onSelect(u),
-                ),
+              if (categoryUsers.length > 5)
+                SizedBox(
+                  height: 260,
+                  child: SingleChildScrollView(
+                    padding: EdgeInsets.zero,
+                    child: Column(
+                      children: [
+                        for (final u in categoryUsers)
+                          _UserRow(
+                            user: u,
+                            selected: selected?.id == u.id,
+                            onTap: () => onSelect(u),
+                          ),
+                      ],
+                    ),
+                  ),
+                )
+              else
+                for (final u in categoryUsers)
+                  _UserRow(
+                    user: u,
+                    selected: selected?.id == u.id,
+                    onTap: () => onSelect(u),
+                  ),
             ],
           ),
         ),

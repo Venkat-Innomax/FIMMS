@@ -73,6 +73,8 @@ class User {
   final Role role;
   final String? mandalId;
   final String? facilityId;
+  final String? username;
+  final String? password;
 
   const User({
     required this.id,
@@ -81,6 +83,8 @@ class User {
     required this.role,
     this.mandalId,
     this.facilityId,
+    this.username,
+    this.password,
   });
 
   factory User.fromJson(Map<String, dynamic> json) {
@@ -91,6 +95,8 @@ class User {
       role: RoleX.fromString(json['role'] as String),
       mandalId: json['mandal_id'] as String?,
       facilityId: json['facility_id'] as String?,
+      username: json['username'] as String?,
+      password: json['password'] as String?,
     );
   }
 }

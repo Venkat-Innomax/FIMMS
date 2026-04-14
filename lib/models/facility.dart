@@ -49,6 +49,9 @@ class Facility {
   final String village;
   final LatLng location;
   final String? lastInspectionId; // nullable — not all facilities inspected
+  final String? department; // e.g. "BC Welfare", "KGBV", "SC Welfare"
+  final String? specialOfficerName;
+  final String? specialOfficerPhone;
 
   const Facility({
     required this.id,
@@ -60,6 +63,9 @@ class Facility {
     required this.location,
     this.gender,
     this.lastInspectionId,
+    this.department,
+    this.specialOfficerName,
+    this.specialOfficerPhone,
   });
 
   String get subTypeLabel => SubTypeLabels.labelFor(subType);
@@ -77,5 +83,8 @@ class Facility {
           (json['lng'] as num).toDouble(),
         ),
         lastInspectionId: json['last_inspection_id'] as String?,
+        department: json['department'] as String?,
+        specialOfficerName: json['special_officer_name'] as String?,
+        specialOfficerPhone: json['special_officer_phone'] as String?,
       );
 }

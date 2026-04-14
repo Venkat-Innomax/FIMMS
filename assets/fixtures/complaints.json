@@ -1,7 +1,7 @@
 [
   {
     "id": "g01",
-    "facility_id": "f_h01",
+    "facility_id": "f_h001",
     "submitted_by": "u_public_1",
     "category": "food",
     "description": "Food quality has deteriorated significantly in the past two weeks. Rice is undercooked and dal is watery. Students are skipping meals.",
@@ -33,7 +33,7 @@
   },
   {
     "id": "g02",
-    "facility_id": "f_h03",
+    "facility_id": "f_h003",
     "submitted_by": "u_public_2",
     "category": "infrastructure",
     "description": "Bathroom taps in girls' wing are broken — no running water after 6 PM. Students forced to store water in buckets during daytime.",
@@ -72,7 +72,7 @@
   },
   {
     "id": "g03",
-    "facility_id": "f_h05",
+    "facility_id": "f_h005",
     "submitted_by": "u_public_1",
     "category": "hygiene",
     "description": "Drinking water has bad smell and yellowish colour. Multiple students reported stomach illness last week.",
@@ -97,7 +97,7 @@
   },
   {
     "id": "g04",
-    "facility_id": "f_h02",
+    "facility_id": "f_h002",
     "submitted_by": "u_public_2",
     "category": "safety",
     "description": "Main gate lock is broken. Hostel compound is accessible to outsiders at night. No security guard posted after 9 PM.",
@@ -116,7 +116,7 @@
   },
   {
     "id": "g05",
-    "facility_id": "f_h01",
+    "facility_id": "f_h001",
     "submitted_by": "u_public_1",
     "category": "staff",
     "description": "Warden is frequently absent during evening study hours. No supervision for students between 5 PM and 8 PM.",
@@ -135,7 +135,7 @@
   },
   {
     "id": "g06",
-    "facility_id": "f_h04",
+    "facility_id": "f_h004",
     "submitted_by": "u_public_2",
     "category": "infrastructure",
     "description": "Ceiling fan in dormitory room 3 is wobbling dangerously. Electrical wiring exposed near washroom entrance.",
@@ -167,7 +167,7 @@
   },
   {
     "id": "g07",
-    "facility_id": "f_h01",
+    "facility_id": "f_h001",
     "submitted_by": "u_public_1",
     "category": "food",
     "description": "Menu served does not match the weekly diet chart displayed on the notice board. Students report receiving the same meal three days in a row.",
@@ -207,7 +207,7 @@
   },
   {
     "id": "g08",
-    "facility_id": "f_h03",
+    "facility_id": "f_h003",
     "submitted_by": "u_public_2",
     "category": "safety",
     "description": "Fire extinguishers in the dormitory wing are expired. Emergency exit door on first floor is permanently locked from outside.",
@@ -247,7 +247,7 @@
   },
   {
     "id": "g09",
-    "facility_id": "f_h02",
+    "facility_id": "f_h002",
     "submitted_by": "u_public_1",
     "category": "hygiene",
     "description": "Water tank has not been cleaned in over 3 months. Green algae visible inside the overhead tank. Students complaining of skin rashes.",
