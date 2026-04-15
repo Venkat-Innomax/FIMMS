@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../core/theme.dart';
 import '../../../data/repositories/assignment_repository.dart';
@@ -387,9 +388,36 @@ class _VerifyResultsDialog extends StatelessWidget {
     );
   }
 
+  // Officer IDs that pass face verification in demo mode
+  static const _demoPassIds = {
+    'u_field_1',
+    'u_so_001', 'u_so_003', 'u_so_005', 'u_so_007', 'u_so_009',
+    'u_so_011', 'u_so_013', 'u_so_015', 'u_so_017', 'u_so_019',
+    'u_so_021', 'u_so_023', 'u_so_025', 'u_so_027', 'u_so_029',
+    'u_so_031', 'u_so_033',
+  };
+
+  Future<void> _openMapsUrl(double lat, double lng) async {
+    // Opens the exact GPS location in Google Maps
+    final uri = Uri.parse(
+        'https://www.google.com/maps/search/?api=1&query=$lat,$lng');
+    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+      // Try generic maps: fallback URL
+      await launchUrl(
+        Uri.parse('https://maps.google.com/maps?q=$lat,$lng'),
+        mode: LaunchMode.externalApplication,
+      );
+    }
+  }
+
   Widget _buildInspectionResults(BuildContext context) {
     final insp = inspection!;
     final df = DateFormat('dd MMM yyyy, hh:mm a');
+    final isVerified = _demoPassIds.contains(assignment.officerId);
+
+    // Use facility location if available; else fall back to inspection GPS
+    final mapLat = facilityLocation?.latitude ?? insp.gps.latitude;
+    final mapLng = facilityLocation?.longitude ?? insp.gps.longitude;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -484,6 +512,156 @@ class _VerifyResultsDialog extends StatelessWidget {
         ),
         const SizedBox(height: 18),
 
+        // ── Officer Selfie & Location Proof (Demo) ──────────────────────────
+        _SectionHeader(
+          icon: Icons.face_retouching_natural,
+          title: 'Officer Selfie & Location Proof',
+        ),
+        const SizedBox(height: 4),
+        // Demo badge
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+          decoration: BoxDecoration(
+            color: Colors.orange.withValues(alpha: 0.12),
+            borderRadius: BorderRadius.circular(4),
+            border: Border.all(color: Colors.orange.withValues(alpha: 0.3)),
+          ),
+          child: const Text(
+            '⚠ DEMO VERSION — Selfie is illustrative; photo metadata GPS is embedded',
+            style: TextStyle(
+              fontSize: 10,
+              color: Colors.orange,
+              fontStyle: FontStyle.italic,
+            ),
+          ),
+        ),
+        const SizedBox(height: 10),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Dummy selfie frame
+            _DemoSelfiePanel(
+              officerName: officerName,
+              timestamp: insp.datetime,
+              lat: insp.gps.latitude,
+              lng: insp.gps.longitude,
+            ),
+            const SizedBox(width: 14),
+            // Verification status + map button
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Face Verification',
+                    style: TextStyle(
+                      fontSize: 11,
+                      fontWeight: FontWeight.w600,
+                      color: FimmsColors.textMuted,
+                    ),
+                  ),
+                  const SizedBox(height: 6),
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 12, vertical: 8),
+                    decoration: BoxDecoration(
+                      color: isVerified
+                          ? FimmsColors.success.withValues(alpha: 0.1)
+                          : FimmsColors.danger.withValues(alpha: 0.1),
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(
+                        color: isVerified
+                            ? FimmsColors.success.withValues(alpha: 0.4)
+                            : FimmsColors.danger.withValues(alpha: 0.4),
+                      ),
+                    ),
+                    child: Row(
+                      children: [
+                        Icon(
+                          isVerified
+                              ? Icons.verified_user
+                              : Icons.gpp_bad,
+                          size: 18,
+                          color: isVerified
+                              ? FimmsColors.success
+                              : FimmsColors.danger,
+                        ),
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                isVerified
+                                    ? 'Identity Verified'
+                                    : 'Identity Mismatch',
+                                style: TextStyle(
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w700,
+                                  color: isVerified
+                                      ? FimmsColors.success
+                                      : FimmsColors.danger,
+                                ),
+                              ),
+                              Text(
+                                isVerified
+                                    ? 'Selfie matches registered profile photo'
+                                    : 'Selfie does NOT match registered profile',
+                                style: const TextStyle(
+                                  fontSize: 10,
+                                  color: FimmsColors.textMuted,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  const Text(
+                    'Photo GPS Metadata',
+                    style: TextStyle(
+                      fontSize: 11,
+                      fontWeight: FontWeight.w600,
+                      color: FimmsColors.textMuted,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    '${mapLat.toStringAsFixed(6)}, ${mapLng.toStringAsFixed(6)}',
+                    style: const TextStyle(
+                      fontSize: 11,
+                      fontFamily: 'monospace',
+                      color: FimmsColors.textPrimary,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  // Google Maps button
+                  SizedBox(
+                    width: double.infinity,
+                    child: OutlinedButton.icon(
+                      onPressed: () => _openMapsUrl(mapLat, mapLng),
+                      icon: const Icon(Icons.map_outlined, size: 15),
+                      label: const Text('View Location on Google Maps'),
+                      style: OutlinedButton.styleFrom(
+                        foregroundColor: const Color(0xFF1A73E8),
+                        side: const BorderSide(
+                            color: Color(0xFF1A73E8), width: 1.2),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 12, vertical: 10),
+                        textStyle: const TextStyle(
+                            fontSize: 12, fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 18),
+
         // Section-wise results
         _SectionHeader(icon: Icons.grading, title: 'Section-wise Results'),
         const SizedBox(height: 8),
@@ -511,6 +689,123 @@ class _VerifyResultsDialog extends StatelessWidget {
     );
   }
 }
+
+/// Realistic-looking dummy selfie widget for demo purposes.
+class _DemoSelfiePanel extends StatelessWidget {
+  final String officerName;
+  final DateTime timestamp;
+  final double lat;
+  final double lng;
+
+  const _DemoSelfiePanel({
+    required this.officerName,
+    required this.timestamp,
+    required this.lat,
+    required this.lng,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final tf = DateFormat('dd/MM/yy HH:mm:ss');
+    return Container(
+      width: 120,
+      height: 148,
+      decoration: BoxDecoration(
+        color: const Color(0xFF1C2333),
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(
+            color: FimmsColors.primary.withValues(alpha: 0.5), width: 1.5),
+      ),
+      child: Stack(
+        children: [
+          // Simulated camera-captured face
+          Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  width: 56,
+                  height: 56,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.grey.shade700,
+                    border: Border.all(
+                        color: Colors.white.withValues(alpha: 0.3), width: 1),
+                  ),
+                  child: const Icon(Icons.person,
+                      size: 38, color: Colors.white70),
+                ),
+                const SizedBox(height: 6),
+                Text(
+                  officerName.split(' ').take(2).join(' '),
+                  style: const TextStyle(
+                    color: Colors.white60,
+                    fontSize: 9,
+                    fontWeight: FontWeight.w500,
+                  ),
+                  textAlign: TextAlign.center,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
+            ),
+          ),
+          // Timestamp overlay (like camera apps)
+          Positioned(
+            bottom: 6,
+            left: 5,
+            right: 5,
+            child: Text(
+              tf.format(timestamp),
+              style: const TextStyle(
+                  fontSize: 7.5,
+                  color: Color(0xFFFFCC00),
+                  fontFamily: 'monospace',
+                  fontWeight: FontWeight.w600),
+            ),
+          ),
+          // DEMO badge
+          Positioned(
+            top: 6,
+            right: 6,
+            child: Container(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 4, vertical: 1.5),
+              decoration: BoxDecoration(
+                color: Colors.orange.shade700,
+                borderRadius: BorderRadius.circular(3),
+              ),
+              child: const Text('DEMO',
+                  style: TextStyle(
+                      fontSize: 7,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w800,
+                      letterSpacing: 0.5)),
+            ),
+          ),
+          // GPS tag (top-left)
+          Positioned(
+            top: 6,
+            left: 5,
+            child: Row(
+              children: [
+                const Icon(Icons.location_on,
+                    size: 8, color: Color(0xFF4CAF50)),
+                Text(
+                  'GPS',
+                  style: TextStyle(
+                      fontSize: 7.5,
+                      color: Colors.green.shade400,
+                      fontWeight: FontWeight.w700),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
 
 class _SectionHeader extends StatelessWidget {
   final IconData icon;

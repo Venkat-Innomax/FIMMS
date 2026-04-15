@@ -40,15 +40,17 @@ class ProfilePhotoState {
       );
 }
 
-// ── SharedPreferences keys ────────────────────────────────────────────────
+// ── SharedPreferences keys (per-user, keyed by userId) ──────────────────
 
-const _kIsSet = 'profile_photo_is_set';
-const _kPhotoPath = 'profile_photo_path';
+String _kIsSet(String userId) => 'profile_photo_is_set_$userId';
+String _kPhotoPath(String userId) => 'profile_photo_path_$userId';
 
 // ── Notifier ──────────────────────────────────────────────────────────────
 
 class ProfilePhotoNotifier extends StateNotifier<ProfilePhotoState> {
-  ProfilePhotoNotifier() : super(const ProfilePhotoState.initial()) {
+  final String userId;
+
+  ProfilePhotoNotifier(this.userId) : super(const ProfilePhotoState.initial()) {
     _restore();
   }
 
@@ -59,8 +61,8 @@ class ProfilePhotoNotifier extends StateNotifier<ProfilePhotoState> {
   Future<void> _restore() async {
     try {
       final prefs = await SharedPreferences.getInstance();
-      final isSet = prefs.getBool(_kIsSet) ?? false;
-      final path = prefs.getString(_kPhotoPath);
+      final isSet = prefs.getBool(_kIsSet(userId)) ?? false;
+      final path = prefs.getString(_kPhotoPath(userId));
       if (isSet) {
         state = ProfilePhotoState(
           photoPath: path,
@@ -91,8 +93,8 @@ class ProfilePhotoNotifier extends StateNotifier<ProfilePhotoState> {
     // Persist the lock flag so the UI stays read-only after app restart.
     try {
       final prefs = await SharedPreferences.getInstance();
-      await prefs.setBool(_kIsSet, true);
-      await prefs.setString(_kPhotoPath, path);
+      await prefs.setBool(_kIsSet(userId), true);
+      await prefs.setString(_kPhotoPath(userId), path);
     } catch (_) {
       // Ignore — in-memory state is still correct.
     }
@@ -106,9 +108,10 @@ class ProfilePhotoNotifier extends StateNotifier<ProfilePhotoState> {
   }
 }
 
-// ── Provider ─────────────────────────────────────────────────────────────
+// ── Provider (family — one instance per officer userId) ─────────────────
 
-final profilePhotoProvider =
-    StateNotifierProvider<ProfilePhotoNotifier, ProfilePhotoState>(
-  (ref) => ProfilePhotoNotifier(),
+/// Usage: `ref.watch(profilePhotoProvider(user.id))`
+final profilePhotoProvider = StateNotifierProviderFamily<
+    ProfilePhotoNotifier, ProfilePhotoState, String>(
+  (ref, userId) => ProfilePhotoNotifier(userId),
 );

@@ -349,7 +349,7 @@ class _ProfileTabState extends ConsumerState<_ProfileTab> {
   @override
   Widget build(BuildContext context) {
     final o = widget.officer;
-    final profileState = ref.watch(profilePhotoProvider);
+    final profileState = ref.watch(profilePhotoProvider(o?.id ?? ''));
 
     final roleLabel = o?.role.label ?? '—';
     String mandalLabel = '—';
@@ -622,7 +622,7 @@ class _ProfileTabState extends ConsumerState<_ProfileTab> {
 
       if (!mounted) return;
 
-      await ref.read(profilePhotoProvider.notifier).setPhoto(
+      await ref.read(profilePhotoProvider(widget.officer?.id ?? '').notifier).setPhoto(
             path: path,
             embedding: embedding,
           );

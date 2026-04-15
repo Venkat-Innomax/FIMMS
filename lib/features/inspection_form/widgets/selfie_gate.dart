@@ -7,6 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/constants.dart';
 import '../../../core/theme.dart';
 import '../../../services/face_verification_service.dart';
+import '../../../services/mock_auth_service.dart';
 import '../../../services/photo_capture_service.dart';
 import '../../../services/profile_photo_provider.dart';
 
@@ -71,7 +72,8 @@ class _SelfieGateState extends ConsumerState<SelfieGate> {
     // the gate updates.
     if (_state != _GateState.webUnsupported &&
         _state != _GateState.hardBlocked) {
-      final profile = ref.watch(profilePhotoProvider);
+      final user = ref.watch(authStateProvider);
+      final profile = ref.watch(profilePhotoProvider(user?.id ?? ''));
       if (!profile.isSet) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
           if (mounted && _state != _GateState.noProfilePhoto) {
@@ -179,14 +181,32 @@ class _SelfieGateState extends ConsumerState<SelfieGate> {
     }
   }
 
-  // ── Capture & verify flow ─────────────────────────────────────────────────
+  // ── Capture & verify flow (DEMO MODE) ─────────────────────────────────────
+
+  /// Officer IDs that always produce a successful verification in demo mode.
+  /// First officer → match; second officer → no match.
+  static const _demoPassIds = {
+    'u_field_1',
+    'u_so_001', 'u_so_003', 'u_so_005', 'u_so_007', 'u_so_009',
+    'u_so_011', 'u_so_013', 'u_so_015', 'u_so_017', 'u_so_019',
+    'u_so_021', 'u_so_023', 'u_so_025', 'u_so_027', 'u_so_029',
+    'u_so_031', 'u_so_033',
+  };
+
+  /// Simulates AI face-matching with a short delay for realism.
+  Future<FaceVerificationResult> _demoVerify(String userId) async {
+    await Future.delayed(const Duration(milliseconds: 1500));
+    return _demoPassIds.contains(userId)
+        ? FaceVerificationResult.match
+        : FaceVerificationResult.noMatch;
+  }
 
   Future<void> _startCapture() async {
     if (_state == _GateState.hardBlocked || _state == _GateState.verified) return;
 
     setState(() => _state = _GateState.capturing);
 
-    // 1. Take selfie
+    // 1. Take selfie — real camera, keeps demo flow authentic
     final captureSvc = ref.read(photoCaptureServiceProvider);
     final path = await captureSvc.capture();
 
@@ -199,28 +219,11 @@ class _SelfieGateState extends ConsumerState<SelfieGate> {
 
     setState(() => _state = _GateState.verifying);
 
-    // 2. Extract embedding from selfie
-    final faceSvc = ref.read(faceVerificationServiceProvider);
-    final selfieEmb = await faceSvc.extractEmbedding(path);
+    // 2. Dummy verification: determined by the logged-in officer's user ID
+    final userId = ref.read(authStateProvider)?.id ?? '';
+    final result = await _demoVerify(userId);
 
     if (!mounted) return;
-
-    // 3. Get profile embedding (compute from path if not yet in state)
-    final profileState = ref.read(profilePhotoProvider);
-    List<double> profileEmb = profileState.embedding ?? [];
-
-    if (profileEmb.isEmpty && profileState.photoPath != null) {
-      // Re-compute embedding from the stored photo path (e.g. after app restart)
-      profileEmb = await faceSvc.extractEmbedding(profileState.photoPath!);
-      if (mounted) {
-        ref.read(profilePhotoProvider.notifier).setEmbedding(profileEmb);
-      }
-    }
-
-    if (!mounted) return;
-
-    // 4. Compare
-    final result = faceSvc.compare(selfieEmb, profileEmb);
 
     _attempts++;
 
@@ -235,7 +238,6 @@ class _SelfieGateState extends ConsumerState<SelfieGate> {
         break;
 
       case FaceVerificationResult.modelNotLoaded:
-        // Don't burn attempts — model is just missing from the APK.
         _attempts--;
         setState(() => _state = _GateState.modelMissing);
         break;
@@ -251,6 +253,7 @@ class _SelfieGateState extends ConsumerState<SelfieGate> {
         break;
     }
   }
+
 
   void _showHardBlockAlert() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
