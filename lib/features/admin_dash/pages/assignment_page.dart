@@ -367,6 +367,72 @@ class _VerifyResultsDialog extends StatelessWidget {
     );
   }
 
+  void _openGoogleMaps() {
+    final lat = 17.491294;
+    final lng = 78.393504;
+    final mapsUrl = 'https://www.google.com/maps/?q=$lat,$lng';
+    
+    launchUrl(
+      Uri.parse(mapsUrl),
+      mode: LaunchMode.externalApplication,
+    ).catchError((e) {
+      print('Error launching Maps: $e');
+    });
+  }
+
+  Widget _buildWebMapsLink(BuildContext context) {
+    const lat = 17.491294;
+    const lng = 78.393504;
+    final mapsUrl = 'https://www.google.com/maps/?q=$lat,$lng';
+    
+    return GestureDetector(
+      onTap: () async {
+        // For web, try to launch the URL directly
+        try {
+          await launchUrl(Uri.parse(mapsUrl), mode: LaunchMode.platformDefault);
+        } catch (e) {
+          // If that fails, just log it  - user can see the URL and copy if needed
+          print('Could not open Maps: $e');
+          // Show a snackbar with the URL
+          if (context.mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: const Text('Click the link or search "Manjeera Majestic Homes" in Google Maps'),
+                action: SnackBarAction(label: 'View Map', onPressed: () {}),
+              ),
+            );
+          }
+        }
+      },
+      child: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+        decoration: BoxDecoration(
+          color: Colors.blue,
+          borderRadius: BorderRadius.circular(4),
+          border: Border.all(color: Colors.blue.shade900, width: 1),
+        ),
+        child: Row(
+          children: [
+            const Icon(Icons.location_on, color: Colors.white, size: 20),
+            const SizedBox(width: 12),
+            const Expanded(
+              child: Text(
+                'View Location in Google Maps',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+            const Icon(Icons.open_in_new, color: Colors.white70, size: 16),
+          ],
+        ),
+      ),
+    );
+  }
+
   Widget _buildNoInspection() {
     return Container(
       padding: const EdgeInsets.all(24),
@@ -522,41 +588,22 @@ class _VerifyResultsDialog extends StatelessWidget {
               const SizedBox(height: 8),
               SizedBox(
                 width: double.infinity,
-                child: ElevatedButton.icon(
-                  onPressed: () async {
-                    // Open Google Maps to Manjeera Majestic Homes
-                    final lat = 17.491294;
-                    final lng = 78.393504;
-                    final mapsUrl = 'https://www.google.com/maps/?q=$lat,$lng';
-                    
-                    try {
-                      final uri = Uri.parse(mapsUrl);
-                      // Directly launch without checking - works better across platforms
-                      await launchUrl(
-                        uri,
-                        mode: kIsWeb ? LaunchMode.platformDefault : LaunchMode.externalApplication,
-                        webOnlyWindowName: '_blank',
-                      );
-                    } catch (e) {
-                      print('Error opening Maps: $e');
-                      if (context.mounted) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text('Error opening Maps: $e'),
-                            backgroundColor: FimmsColors.danger,
-                          ),
-                        );
-                      }
-                    }
-                  },
-                  icon: const Icon(Icons.location_on),
-                  label: const Text('View Location in Google Maps'),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
-                    foregroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                  ),
-                ),
+                child: kIsWeb
+                    ? // On web, create an actual hyperlink
+                    _buildWebMapsLink(context)
+                    : // On mobile, use the button with url_launcher
+                    ElevatedButton.icon(
+                        onPressed: () {
+                          _openGoogleMaps();
+                        },
+                        icon: const Icon(Icons.location_on),
+                        label: const Text('View Location in Google Maps'),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.blue,
+                          foregroundColor: Colors.white,
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                        ),
+                      ),
               ),
             ],
           ),
