@@ -4,63 +4,81 @@
     "name": "Sri. Anuraag Jayanti, IAS",
     "designation": "District Collector",
     "role": "collector",
-    "mandal_id": null
+    "mandal_id": null,
+    "username": "collector",
+    "password": "Admin@2026"
   },
   {
     "id": "u_admin",
     "name": "Sri K. Srinivasa Rao",
     "designation": "District Inspection Cell Admin",
     "role": "admin",
-    "mandal_id": null
+    "mandal_id": null,
+    "username": "u_admin",
+    "password": "Admin@2026"
   },
   {
     "id": "u_nodal",
     "name": "Sri B. Ramesh Kumar",
     "designation": "Additional Collector / Nodal Officer",
     "role": "mandal_admin",
-    "mandal_id": null
+    "mandal_id": null,
+    "username": "u_nodal",
+    "password": "Admin@2026"
   },
   {
     "id": "u_supervisor",
     "name": "Sri T. Narasimha Rao",
     "designation": "Inspection Supervisor — Bhongir Zone",
     "role": "inspection_supervisor",
-    "mandal_id": "bhongir"
+    "mandal_id": "bhongir",
+    "username": "u_supervisor",
+    "password": "Admin@2026"
   },
   {
     "id": "u_mandal_bhongir",
     "name": "Sri Venkat Reddy",
     "designation": "Mandal Officer — Bhongir",
     "role": "mandal_officer",
-    "mandal_id": "bhongir"
+    "mandal_id": "bhongir",
+    "username": "u_mandal_bhongir",
+    "password": "Admin@2026"
   },
   {
     "id": "u_mandal_choutuppal",
     "name": "Sri D. Prasad Rao",
     "designation": "Mandal Officer — Choutuppal",
     "role": "mandal_officer",
-    "mandal_id": "choutuppal"
+    "mandal_id": "choutuppal",
+    "username": "u_mandal_choutuppal",
+    "password": "Admin@2026"
   },
   {
     "id": "u_field_1",
     "name": "Sri M. Kishore",
     "designation": "Field Inspection Officer — Bhongir",
     "role": "field_officer",
-    "mandal_id": "bhongir"
+    "mandal_id": "bhongir",
+    "username": "u_field_1",
+    "password": "Admin@2026"
   },
   {
     "id": "u_field_2",
     "name": "Smt. G. Lakshmi",
     "designation": "Field Inspection Officer — Choutuppal",
     "role": "field_officer",
-    "mandal_id": "choutuppal"
+    "mandal_id": "choutuppal",
+    "username": "u_field_2",
+    "password": "Admin@2026"
   },
   {
     "id": "u_field_3",
     "name": "Sri R. Nagaraju",
     "designation": "Field Inspection Officer — Alair",
     "role": "field_officer",
-    "mandal_id": "alair"
+    "mandal_id": "alair",
+    "username": "u_field_3",
+    "password": "Admin@2026"
   },
   {
     "id": "u_warden_1",
@@ -68,7 +86,9 @@
     "designation": "Hostel Warden — SW Boys Hostel, Bhongir",
     "role": "facility_admin",
     "mandal_id": "bhongir",
-    "facility_id": "f_h01"
+    "facility_id": "f_h001",
+    "username": "u_warden_1",
+    "password": "Admin@2026"
   },
   {
     "id": "u_warden_2",
@@ -76,7 +96,9 @@
     "designation": "Hostel Warden — SW Girls Hostel, Choutuppal",
     "role": "facility_admin",
     "mandal_id": "choutuppal",
-    "facility_id": "f_h03"
+    "facility_id": "f_h003",
+    "username": "u_warden_2",
+    "password": "Admin@2026"
   },
   {
     "id": "u_hospital_admin",
@@ -84,27 +106,800 @@
     "designation": "Medical Superintendent — District Hospital, Bhongir",
     "role": "facility_admin",
     "mandal_id": "bhongir",
-    "facility_id": "f_p01"
+    "facility_id": "f_p01",
+    "username": "u_hospital_admin",
+    "password": "Admin@2026"
   },
   {
     "id": "u_public_1",
     "name": "Sri A. Ravi Kumar",
     "designation": "Parent / Guardian",
     "role": "public_user",
-    "mandal_id": null
+    "mandal_id": null,
+    "username": "u_public_1",
+    "password": "Admin@2026"
   },
   {
     "id": "u_public_2",
     "name": "Smt. B. Padmavathi",
     "designation": "Parent / Guardian",
     "role": "public_user",
-    "mandal_id": null
+    "mandal_id": null,
+    "username": "u_public_2",
+    "password": "Admin@2026"
   },
   {
     "id": "u_grievance_officer",
     "name": "Sri V. Suresh",
     "designation": "Grievance Review Officer",
     "role": "grievance_officer",
-    "mandal_id": null
+    "mandal_id": null,
+    "username": "u_grievance_officer",
+    "password": "Admin@2026"
+  },
+  {
+    "id": "u_so_001",
+    "name": "M Raja Ram",
+    "designation": "District Fisheries Officer",
+    "role": "field_officer",
+    "mandal_id": "mothkur",
+    "username": "9000368915",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_002",
+    "name": "C. Jagan Mohan Prasad",
+    "designation": "Tahsildar Bhongir",
+    "role": "field_officer",
+    "mandal_id": "bhongir",
+    "username": "8331997020",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_003",
+    "name": "M Shiva Kumar",
+    "designation": "EE, TSEWIDC",
+    "role": "field_officer",
+    "mandal_id": "bhongir",
+    "username": "9440080240",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_004",
+    "name": "P Shankaraiah",
+    "designation": "MPDO Addagudur",
+    "role": "field_officer",
+    "mandal_id": "addagudur",
+    "username": "8374507979",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_005",
+    "name": "Sheshagiri Rao",
+    "designation": "Tahsildar Addaguduru",
+    "role": "field_officer",
+    "mandal_id": "addagudur",
+    "username": "8331997017",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_006",
+    "name": "M Satyanjaneya Prasad",
+    "designation": "MPDO Alair",
+    "role": "field_officer",
+    "mandal_id": "alair",
+    "username": "9849903271",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_007",
+    "name": "PV. Ramana Reddy",
+    "designation": "MSO, District Agriculture Officer",
+    "role": "field_officer",
+    "mandal_id": "alair",
+    "username": "8977756419",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_008",
+    "name": "V. Anjameyulu",
+    "designation": "Tahasildar Alair",
+    "role": "field_officer",
+    "mandal_id": "alair",
+    "username": "8331997018",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_009",
+    "name": "K. Srinivas Reddy",
+    "designation": "MC Alair",
+    "role": "field_officer",
+    "mandal_id": "alair",
+    "username": "9849292771",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_010",
+    "name": "N. Sridhar",
+    "designation": "District Co-Operative Officer",
+    "role": "field_officer",
+    "mandal_id": "alair",
+    "username": "9100115660",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_011",
+    "name": "Anuradha",
+    "designation": "MPO",
+    "role": "field_officer",
+    "mandal_id": "alair",
+    "username": "8978280036",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_012",
+    "name": "M. Roja Rani",
+    "designation": "District Civil Supply Officer",
+    "role": "field_officer",
+    "mandal_id": "alair",
+    "username": "8008534196",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_013",
+    "name": "J. Ramulu Nayak",
+    "designation": "MPDO Athmakur",
+    "role": "field_officer",
+    "mandal_id": "athmakur",
+    "username": "9989059002",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_014",
+    "name": "Padmavathi",
+    "designation": "MPO",
+    "role": "field_officer",
+    "mandal_id": "athmakur",
+    "username": "9347172896",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_015",
+    "name": "M. Rajaram",
+    "designation": "MSO Athmakur",
+    "role": "field_officer",
+    "mandal_id": "athmakur",
+    "username": "9000368915",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_016",
+    "name": "V. Lavanya",
+    "designation": "Tahasildar",
+    "role": "field_officer",
+    "mandal_id": "athmakur",
+    "username": "8331997019",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_017",
+    "name": "Mahadeva Reddy",
+    "designation": "MEO",
+    "role": "field_officer",
+    "mandal_id": "athmakur",
+    "username": "9848290705",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_018",
+    "name": "G. Ramalingam",
+    "designation": "MC Bhongiri",
+    "role": "field_officer",
+    "mandal_id": "bhongir",
+    "username": "9392205913",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_019",
+    "name": "Ch. Srinivas",
+    "designation": "MPDO Bhongiri",
+    "role": "field_officer",
+    "mandal_id": "bhongir",
+    "username": "9849903270",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_020",
+    "name": "Neelima",
+    "designation": "ADA",
+    "role": "field_officer",
+    "mandal_id": "bhongir",
+    "username": "9440141834",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_021",
+    "name": "Ramakrishna",
+    "designation": "LDM",
+    "role": "field_officer",
+    "mandal_id": "bhongir",
+    "username": "8333979578",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_022",
+    "name": "B. Sai Krishna",
+    "designation": "Dist Transport Officer",
+    "role": "field_officer",
+    "mandal_id": "bhongir",
+    "username": "9676667799",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_023",
+    "name": "M. Krishna Reddy",
+    "designation": "RDO Bhongiri",
+    "role": "field_officer",
+    "mandal_id": "bhongir",
+    "username": "8331997004",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_024",
+    "name": "M.R. Venkat Ramma",
+    "designation": "CPO",
+    "role": "field_officer",
+    "mandal_id": "bhongir",
+    "username": "9390013435",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_025",
+    "name": "K. Sathyanarayana",
+    "designation": "DEO",
+    "role": "field_officer",
+    "mandal_id": "bhongir",
+    "username": "7995087630",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_026",
+    "name": "Radha Krishna",
+    "designation": "Excise CI",
+    "role": "field_officer",
+    "mandal_id": "bhongir",
+    "username": "8712658961",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_027",
+    "name": "P Karunakar",
+    "designation": "EERWS",
+    "role": "field_officer",
+    "mandal_id": "bhongir",
+    "username": "9100120915",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_028",
+    "name": "K. Janga Reddy",
+    "designation": "ADRDO (Serp)",
+    "role": "field_officer",
+    "mandal_id": "bhongir",
+    "username": "9000404253",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_029",
+    "name": "I Padmaja Rani",
+    "designation": "IFS DFO",
+    "role": "field_officer",
+    "mandal_id": "bhongir",
+    "username": "9177789925",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_030",
+    "name": "N. Sridhar",
+    "designation": "District Co-Operative Officer",
+    "role": "field_officer",
+    "mandal_id": "bhongir",
+    "username": "9100115661",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_031",
+    "name": "M. Manohar",
+    "designation": "DMHO",
+    "role": "field_officer",
+    "mandal_id": "bhongir",
+    "username": "8106805080",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_032",
+    "name": "T. Nagireddy",
+    "designation": "DRDO",
+    "role": "field_officer",
+    "mandal_id": "bhongir",
+    "username": "9281489661",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_033",
+    "name": "E. Narsimha",
+    "designation": "Dist Irrigation Officer",
+    "role": "field_officer",
+    "mandal_id": "bhongir",
+    "username": "9000901023",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_034",
+    "name": "Y Srinivas Reddy",
+    "designation": "MPDO",
+    "role": "field_officer",
+    "mandal_id": "bibinagar",
+    "username": "9989059004",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_035",
+    "name": "G Suresh Reddy",
+    "designation": "MEO Bibinagar",
+    "role": "field_officer",
+    "mandal_id": "bibinagar",
+    "username": "9490555276",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_036",
+    "name": "D. Harikrishna",
+    "designation": "District Civil Supply Officer",
+    "role": "field_officer",
+    "mandal_id": "bibinagar",
+    "username": "9281423622",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_037",
+    "name": "P. Shyam Sundar Reddy",
+    "designation": "Tahasildar Bibinagar",
+    "role": "field_officer",
+    "mandal_id": "bibinagar",
+    "username": "8331997021",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_038",
+    "name": "V. RajaTrivikram",
+    "designation": "MPDO Bommalaramaram",
+    "role": "field_officer",
+    "mandal_id": "bommalaramaram",
+    "username": "9989059005",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_039",
+    "name": "P SrinivasRao",
+    "designation": "Tahasildar Bommalaramaram",
+    "role": "field_officer",
+    "mandal_id": "bommalaramaram",
+    "username": "8331997022",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_040",
+    "name": "P. Jyothi Kumar",
+    "designation": "District Ground Water Officer MSO",
+    "role": "field_officer",
+    "mandal_id": "bommalaramaram",
+    "username": "7032982008",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_041",
+    "name": "G. Venkat Ram Reddy",
+    "designation": "MC Choutuppal",
+    "role": "field_officer",
+    "mandal_id": "choutuppal",
+    "username": "9849990415",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_042",
+    "name": "P. Ravindar",
+    "designation": "General Manager Industries MSO",
+    "role": "field_officer",
+    "mandal_id": "choutuppal",
+    "username": "9848156183",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_043",
+    "name": "Veerabhai",
+    "designation": "Tahasildar Choutuppal",
+    "role": "field_officer",
+    "mandal_id": "choutuppal",
+    "username": "8331997029",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_044",
+    "name": "M. Shoba Rani",
+    "designation": "ZP CEO",
+    "role": "field_officer",
+    "mandal_id": "choutuppal",
+    "username": "8374589555",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_045",
+    "name": "V Shekhar Reddy",
+    "designation": "RDO Choutuppal",
+    "role": "field_officer",
+    "mandal_id": "choutuppal",
+    "username": "8331997005",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_046",
+    "name": "K. Nasimha Rao",
+    "designation": "District Welfare Officer",
+    "role": "field_officer",
+    "mandal_id": "choutuppal",
+    "username": "9703332896",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_047",
+    "name": "V. Venkataramana",
+    "designation": "CDPO",
+    "role": "field_officer",
+    "mandal_id": "choutuppal",
+    "username": "7013405415",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_048",
+    "name": "A. Srinivas",
+    "designation": "AD Handlooms",
+    "role": "field_officer",
+    "mandal_id": "gundala",
+    "username": "9603712199",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_049",
+    "name": "S. Hari Krishna",
+    "designation": "Tahasildar Gundala",
+    "role": "field_officer",
+    "mandal_id": "gundala",
+    "username": "8331997034",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_050",
+    "name": "GS. Jyotsna",
+    "designation": "CDPO",
+    "role": "field_officer",
+    "mandal_id": "gundala",
+    "username": "8096291719",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_051",
+    "name": "Chandeerani",
+    "designation": "MPDO",
+    "role": "field_officer",
+    "mandal_id": "gundala",
+    "username": "9989059016",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_052",
+    "name": "M Indira",
+    "designation": "MPDO Motakondur",
+    "role": "field_officer",
+    "mandal_id": "motakondur",
+    "username": "8309141549",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_053",
+    "name": "Jayalaxmi",
+    "designation": "Tahasildar (FAC)",
+    "role": "field_officer",
+    "mandal_id": "motakondur",
+    "username": "8331997023",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_054",
+    "name": "Satish",
+    "designation": "MC Mothkur",
+    "role": "field_officer",
+    "mandal_id": "mothkur",
+    "username": "8886883666",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_055",
+    "name": "Sahiti",
+    "designation": "DEO",
+    "role": "field_officer",
+    "mandal_id": "mothkur",
+    "username": "8106721415",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_056",
+    "name": "G. Suresh",
+    "designation": "Addl DRDO-MSO",
+    "role": "field_officer",
+    "mandal_id": "mothkur",
+    "username": "9281489662",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_057",
+    "name": "T. Gopla Reddy",
+    "designation": "MEO Mothkur",
+    "role": "field_officer",
+    "mandal_id": "mothkur",
+    "username": "9885254014",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_058",
+    "name": "P. Jyothi",
+    "designation": "Tahasildar Mothkur",
+    "role": "field_officer",
+    "mandal_id": "mothkur",
+    "username": "8331997024",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_059",
+    "name": "D. Balaji",
+    "designation": "MPDO Mothkur",
+    "role": "field_officer",
+    "mandal_id": "mothkur",
+    "username": "9989059028",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_060",
+    "name": "Sumathi Rekha",
+    "designation": "Asst Pay & Accounts Officer",
+    "role": "field_officer",
+    "mandal_id": "narayanapur",
+    "username": "9866777983",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_061",
+    "name": "G. Srinivasulu",
+    "designation": "MEO Narayanapur",
+    "role": "field_officer",
+    "mandal_id": "narayanapur",
+    "username": "9652298399",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_062",
+    "name": "B. Jayasri",
+    "designation": "Special Deputy Collector",
+    "role": "field_officer",
+    "mandal_id": "narayanapur",
+    "username": "9121300313",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_063",
+    "name": "D. Vishnuvardhan Reddy",
+    "designation": "Dy CEO",
+    "role": "field_officer",
+    "mandal_id": "narayanapur",
+    "username": "8179509558",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_064",
+    "name": "K. Pramod",
+    "designation": "MPDO Narayanapur",
+    "role": "field_officer",
+    "mandal_id": "narayanapur",
+    "username": "9989059033",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_065",
+    "name": "P. Srinivas Reddy",
+    "designation": "Tahasildar Narayanapur",
+    "role": "field_officer",
+    "mandal_id": "narayanapur",
+    "username": "8331997031",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_066",
+    "name": "R Bhaskar",
+    "designation": "MPDO Pochampally",
+    "role": "field_officer",
+    "mandal_id": "pochampally",
+    "username": "9989059040",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_067",
+    "name": "P. Srinivas Reddy",
+    "designation": "Tahasildar Pochampalli",
+    "role": "field_officer",
+    "mandal_id": "pochampally",
+    "username": "8331997028",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_068",
+    "name": "Majid",
+    "designation": "MPO Pochampalli",
+    "role": "field_officer",
+    "mandal_id": "pochampally",
+    "username": "8978280085",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_069",
+    "name": "Ramani",
+    "designation": "DIEO (Nodal Officer)",
+    "role": "field_officer",
+    "mandal_id": "pochampally",
+    "username": "7997994361",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_070",
+    "name": "Dhanunjeyulu",
+    "designation": "DYSO",
+    "role": "field_officer",
+    "mandal_id": "pochampally",
+    "username": "8309992451",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_071",
+    "name": "P. Prabhaker",
+    "designation": "MEO Pochampally",
+    "role": "field_officer",
+    "mandal_id": "pochampally",
+    "username": "9441562162",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_072",
+    "name": "A. Ramulu",
+    "designation": "MPDO Ramannapet",
+    "role": "field_officer",
+    "mandal_id": "ramannapet",
+    "username": "9989059042",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_073",
+    "name": "K. Raghava Reddy",
+    "designation": "AD Mines MSO",
+    "role": "field_officer",
+    "mandal_id": "ramannapet",
+    "username": "9849924626",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_074",
+    "name": "C LalBahadur",
+    "designation": "Tahasildar Ramannapet",
+    "role": "field_officer",
+    "mandal_id": "ramannapet",
+    "username": "8331997030",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_075",
+    "name": "Swathi",
+    "designation": "Food Safety Officer",
+    "role": "field_officer",
+    "mandal_id": "ramannapet",
+    "username": "9515706280",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_076",
+    "name": "Kathula Nagaveni",
+    "designation": "MPDO Rajapet",
+    "role": "field_officer",
+    "mandal_id": "rajapet",
+    "username": "9989059041",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_077",
+    "name": "L. Geeta Reddy",
+    "designation": "MPDO Thurkapally",
+    "role": "field_officer",
+    "mandal_id": "thurkapally",
+    "username": "9989059046",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_078",
+    "name": "V. Malathi",
+    "designation": "MEO Thurkapally",
+    "role": "field_officer",
+    "mandal_id": "thurkapally",
+    "username": "9848245369",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_079",
+    "name": "P. Janaiayya",
+    "designation": "DVHO-MSO",
+    "role": "field_officer",
+    "mandal_id": "thurkapally",
+    "username": "9989997697",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_080",
+    "name": "P Ravi Kumar",
+    "designation": "Tahasildar Thurkapally",
+    "role": "field_officer",
+    "mandal_id": "thurkapally",
+    "username": "8331997026",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_081",
+    "name": "P Dasharada Nayak",
+    "designation": "Tahasildar Valligonda",
+    "role": "field_officer",
+    "mandal_id": "valigonda",
+    "username": "8331997032",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_082",
+    "name": "G. Jalenderreddy",
+    "designation": "MPDO Valigonda",
+    "role": "field_officer",
+    "mandal_id": "valigonda",
+    "username": "9989059049",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_083",
+    "name": "A. Sabitha",
+    "designation": "Dist Marketing Officer MSO",
+    "role": "field_officer",
+    "mandal_id": "yadagirigutta",
+    "username": "7330733616",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_084",
+    "name": "K. Naveen Kumar",
+    "designation": "MPDO Yadadgirigutta",
+    "role": "field_officer",
+    "mandal_id": "yadagirigutta",
+    "username": "9989059050",
+    "password": "Welcome@2026"
+  },
+  {
+    "id": "u_so_085",
+    "name": "Shailaja",
+    "designation": "CDPO",
+    "role": "field_officer",
+    "mandal_id": "bhuvanagiri",
+    "username": "7013405416",
+    "password": "Welcome@2026"
   }
 ]

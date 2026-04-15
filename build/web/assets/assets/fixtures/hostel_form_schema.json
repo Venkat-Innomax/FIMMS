@@ -1,106 +1,148 @@
 {
   "id": "hostel",
-  "title": "Government Hostel Inspection",
+  "title": "Inspection Report of Welfare Hostels / Residential Institutions — Yadadri Bhuvanagiri District",
   "sections": [
     {
-      "id": "s1_infra",
-      "title": "Infrastructure",
-      "max_score": 15,
+      "id": "s3_hwo",
+      "title": "Functioning of Hostel Welfare Officer",
+      "max_score": 10,
       "fields": [
-        { "id": "building_condition", "label": "Building structural condition", "type": "good_avg_poor", "scored": true, "weight": 2 },
-        { "id": "rooms_sanctioned", "label": "Rooms — sanctioned capacity", "type": "number", "scored": false },
-        { "id": "rooms_occupied",   "label": "Rooms — actual occupancy",      "type": "number", "scored": false },
-        { "id": "beds_functional",  "label": "Beds available and functional", "type": "avail_partial_na", "scored": true, "weight": 2 },
-        { "id": "mattresses",       "label": "Mattresses condition",          "type": "good_avg_poor",    "scored": true, "weight": 2 },
-        { "id": "study_tables",     "label": "Study tables and chairs",       "type": "avail_partial_na", "scored": true, "weight": 2 },
-        { "id": "cupboards",        "label": "Cupboards / storage",           "type": "avail_partial_na", "scored": true, "weight": 2 },
-        { "id": "lighting",         "label": "Lighting in rooms",             "type": "good_avg_poor",    "scored": true, "weight": 1.5 },
-        { "id": "ventilation",      "label": "Ventilation in rooms",          "type": "good_avg_poor",    "scored": true, "weight": 1.5 },
-        { "id": "common_area",      "label": "Common area condition",         "type": "good_avg_poor",    "scored": true, "weight": 2 }
-      ]
-    },
-    {
-      "id": "s2_sanitation",
-      "title": "Sanitation & Hygiene",
-      "max_score": 20,
-      "fields": [
-        { "id": "toilets_count", "label": "Number of toilets available", "type": "number", "scored": false },
-        { "id": "toilets_clean", "label": "Toilets functional and clean", "type": "good_avg_poor", "scored": true, "weight": 3 },
-        { "id": "bathrooms_count", "label": "Number of bathrooms available", "type": "number", "scored": false },
-        { "id": "bathrooms_clean", "label": "Bathrooms functional and clean", "type": "good_avg_poor", "scored": true, "weight": 3 },
-        { "id": "drinking_water_avail", "label": "Drinking water availability", "type": "yes_no", "scored": true, "weight": 2 },
-        { "id": "drinking_water_source", "label": "Drinking water source", "type": "dropdown", "scored": false, "options": ["Municipal", "Borewell", "Tank", "Other"] },
-        { "id": "drinking_water_quality", "label": "Drinking water quality (visual)", "type": "good_avg_poor", "scored": true, "weight": 3 },
-        { "id": "drainage", "label": "Drainage system condition", "type": "good_avg_poor", "scored": true, "weight": 3 },
-        { "id": "waste_disposal", "label": "Waste disposal arrangement", "type": "good_avg_poor", "scored": true, "weight": 3 },
-        { "id": "campus_cleanliness", "label": "Overall campus cleanliness", "type": "good_avg_poor", "scored": true, "weight": 3 }
-      ]
-    },
-    {
-      "id": "s3_kitchen",
-      "title": "Kitchen & Mess",
-      "max_score": 15,
-      "notes": "Skipped if this hostel has no mess. Weight redistributes to other sections.",
-      "skip_trigger_field": "mess_available",
-      "skip_trigger_value": "no",
-      "fields": [
-        { "id": "mess_available", "label": "Mess available at this hostel", "type": "yes_no", "scored": false, "helper": "Select 'No' to skip this section" },
-        { "id": "kitchen_operational", "label": "Kitchen operational", "type": "yes_no", "scored": true, "weight": 1.5 },
-        { "id": "kitchen_clean", "label": "Kitchen cleanliness", "type": "good_avg_poor", "scored": true, "weight": 2 },
-        { "id": "food_quality", "label": "Food quality compliance", "type": "yes_no", "scored": true, "weight": 2 },
-        { "id": "menu_displayed", "label": "Monthly menu displayed", "type": "yes_no", "scored": true, "weight": 1.5 },
-        { "id": "food_storage", "label": "Food storage condition", "type": "good_avg_poor", "scored": true, "weight": 2 },
-        { "id": "cooking_fuel", "label": "Cooking fuel / gas safety", "type": "good_avg_poor", "scored": true, "weight": 2 },
-        { "id": "utensils", "label": "Utensil cleanliness", "type": "good_avg_poor", "scored": true, "weight": 2 },
-        { "id": "mess_attendance", "label": "Mess attendance record maintained", "type": "yes_no", "scored": true, "weight": 2 }
+        { "id": "hwo_name",        "label": "Name of the HWO / Principal / Special Officer", "type": "text",   "scored": false },
+        { "id": "hwo_type",        "label": "Whether Regular or Incharge",                   "type": "dropdown","scored": false, "options": ["Regular", "Incharge"] },
+        { "id": "hwo_present",     "label": "Whether the HWO / Principal / Special Officer is present", "type": "yes_no", "scored": true, "weight": 3 },
+        { "id": "students_roll",   "label": "No. of Students on Roll",                       "type": "number", "scored": false },
+        { "id": "students_present","label": "No. Present at the Time of Inspection",          "type": "number", "scored": false },
+        { "id": "records_maintained","label": "Is HWO / Principal maintaining records regularly", "type": "yes_no", "scored": true, "weight": 3 },
+        { "id": "meetings_regular","label": "Is HWO / Principal convening meetings regularly", "type": "yes_no", "scored": true, "weight": 2 },
+        { "id": "parent_meeting",  "label": "Parent Committee meeting held on (date)",        "type": "text",   "scored": false },
+        { "id": "police_patrolling","label": "Whether Police Patrolling is conducted regularly and point book is maintained", "type": "yes_no", "scored": true, "weight": 2 }
       ]
     },
     {
       "id": "s4_staff",
-      "title": "Staff & Availability",
-      "max_score": 25,
+      "title": "Staff Details",
+      "max_score": 15,
       "fields": [
         {
           "id": "staff_table",
-          "label": "Staff roster — sanctioned vs present",
+          "label": "Staff on Pay Roll — sanctioned vs present",
           "type": "staff_table",
           "scored": true,
-          "weight": 25,
+          "weight": 15,
           "dynamic_rows": true,
           "staff_roles": [
-            { "id": "warden", "label": "Warden" },
-            { "id": "asst_warden", "label": "Assistant Warden" },
-            { "id": "cook", "label": "Cook / Head Cook" },
-            { "id": "asst_cook", "label": "Assistant Cook" },
-            { "id": "cleaning", "label": "Cleaning Staff / Sweeper" },
-            { "id": "security", "label": "Security / Watchman" },
-            { "id": "store_keeper", "label": "Store Keeper" }
+            { "id": "cook",      "label": "Cook" },
+            { "id": "kamati",    "label": "Kamati" },
+            { "id": "watchman",  "label": "Watchmen / Attender" }
           ]
-        }
+        },
+        { "id": "vacancies", "label": "Are there any vacancies? Specify the number", "type": "number", "scored": false }
       ]
     },
     {
-      "id": "s5_safety",
-      "title": "Safety & Security",
-      "max_score": 15,
+      "id": "s5_facilities",
+      "title": "Facilities in the Hostel",
+      "max_score": 20,
       "fields": [
-        { "id": "guard_present", "label": "Security guard present", "type": "yes_no", "scored": true, "weight": 2.5 },
-        { "id": "cctv_functional", "label": "CCTV cameras functional", "type": "yes_no_na", "scored": true, "weight": 2.5 },
-        { "id": "fire_ext", "label": "Fire extinguisher available", "type": "yes_no", "scored": true, "weight": 2.5 },
-        { "id": "fire_ext_valid", "label": "Fire extinguisher within validity", "type": "yes_no", "scored": true, "weight": 2.5 },
-        { "id": "first_aid", "label": "First aid kit available and stocked", "type": "yes_no", "scored": true, "weight": 2.5 },
-        { "id": "emergency_contacts", "label": "Emergency contact list displayed", "type": "yes_no", "scored": true, "weight": 2.5 }
+        { "id": "hostel_type",        "label": "Whether hostel is Govt or Private",            "type": "dropdown", "scored": false, "options": ["Govt", "Private"] },
+        { "id": "private_rent",       "label": "If Private — Monthly rent",                    "type": "number",   "scored": false },
+        { "id": "living_rooms",       "label": "No. of living rooms",                          "type": "number",   "scored": false },
+        { "id": "accommodation",      "label": "Whether accommodation is sufficient",           "type": "yes_no",   "scored": true, "weight": 2 },
+        { "id": "lighting",           "label": "Whether proper lighting arrangements are made", "type": "yes_no",   "scored": true, "weight": 2 },
+        { "id": "inverter",           "label": "Is Inverter available",                         "type": "yes_no",   "scored": true, "weight": 1 },
+        { "id": "dormitories_clean",  "label": "Whether the dormitories are clean and mesh fixed", "type": "yes_no","scored": true, "weight": 2 },
+        { "id": "premises_neat",      "label": "Is the premises maintained neatly",             "type": "yes_no",   "scored": true, "weight": 2 },
+        { "id": "premises_clear",     "label": "Is the premises free from bushes / ditches and trash", "type": "yes_no", "scored": true, "weight": 2 },
+        { "id": "cctv",               "label": "Are CC cameras available",                      "type": "yes_no",   "scored": true, "weight": 1 },
+        { "id": "cctv_count",         "label": "If Yes — No. of CC Cameras Functional",        "type": "number",   "scored": false },
+        { "id": "entry_restricted",   "label": "Is the entry of outsiders restricted",          "type": "yes_no",   "scored": true, "weight": 2 },
+        { "id": "visitors_register",  "label": "Is there a visitors register maintained",       "type": "yes_no",   "scored": true, "weight": 1 },
+        { "id": "water_source",       "label": "Source of Drinking water",                      "type": "dropdown", "scored": false, "options": ["Tap", "Open Well", "Bore Well", "RO Plant"] },
+        { "id": "repairs_identified", "label": "If any repairs (Minor / Major) identified",     "type": "yes_no",   "scored": false },
+        { "id": "repairs_details",    "label": "If Yes — specify repair details",               "type": "text",     "scored": false }
       ]
     },
     {
-      "id": "s6_utilities",
-      "title": "Utilities",
+      "id": "s6_sanitation",
+      "title": "Sanitation",
+      "max_score": 20,
+      "fields": [
+        { "id": "soak_pits",       "label": "Are there any soak pits in the hostel",                        "type": "yes_no", "scored": true, "weight": 2 },
+        { "id": "drainage",        "label": "Is the waste water and drain water properly drained out",       "type": "yes_no", "scored": true, "weight": 3 },
+        { "id": "toilets_count",   "label": "No. of Toilets available",                                     "type": "number", "scored": false },
+        { "id": "bathrooms_count", "label": "No. of Bathrooms available",                                   "type": "number", "scored": false },
+        { "id": "toilet_doors",    "label": "Are there doors to all the existing bathrooms and toilets",     "type": "yes_no", "scored": true, "weight": 3 },
+        { "id": "napkin_disposal", "label": "Is there a facility to dispose sanitary napkins every day",     "type": "yes_no", "scored": true, "weight": 3 },
+        { "id": "septic_tank",     "label": "Is the septic tank cleaned regularly",                          "type": "yes_no", "scored": true, "weight": 3 },
+        { "id": "toilets_clean",   "label": "Overall cleanliness of sanitation areas",                       "type": "good_avg_poor", "scored": true, "weight": 6 }
+      ]
+    },
+    {
+      "id": "s7_medical",
+      "title": "Medical Care",
       "max_score": 10,
       "fields": [
-        { "id": "electricity", "label": "Electricity availability", "type": "regular_interrupted_na", "scored": true, "weight": 3 },
-        { "id": "generator", "label": "Generator / backup power", "type": "avail_partial_na", "scored": true, "weight": 3 },
-        { "id": "water_supply", "label": "Regular water supply", "type": "yes_no", "scored": true, "weight": 4 },
-        { "id": "solar", "label": "Solar / alternative energy", "type": "yes_no_na", "scored": false }
+        { "id": "anm_available",    "label": "Is the ANM available in the hostel (if applicable)", "type": "yes_no_na", "scored": true, "weight": 4 },
+        { "id": "medical_officer",  "label": "Is the Medical Officer making regular visits",        "type": "yes_no",    "scored": true, "weight": 4 },
+        { "id": "sick_boarders",    "label": "Are there any sick boarders in the hostel at time of visit", "type": "yes_no", "scored": false },
+        { "id": "sick_details",     "label": "If Yes — furnish details",                            "type": "text",      "scored": false }
+      ]
+    },
+    {
+      "id": "s8_food",
+      "title": "Food Provisions",
+      "max_score": 15,
+      "fields": [
+        { "id": "rice_storage",    "label": "Whether rice is stored properly and clean in a dry area", "type": "yes_no", "scored": true, "weight": 2 },
+        { "id": "rice_worms",      "label": "Are there any worms in the rice",                         "type": "yes_no", "scored": false },
+        { "id": "provisions_stored","label": "Whether provisions like dal, oil, ravva, snacks etc stored properly", "type": "yes_no", "scored": true, "weight": 2 },
+        { "id": "cooking_hygienic","label": "Whether cooking material is hygienic / branded",          "type": "yes_no", "scored": true, "weight": 3 },
+        { "id": "rice_freq",       "label": "Rice — supply frequency",      "type": "dropdown", "scored": false, "options": ["Daily", "Weekly", "Fortnightly", "Monthly"] },
+        { "id": "tuvar_dal_freq",  "label": "Tuvar Dal — supply frequency", "type": "dropdown", "scored": false, "options": ["Daily", "Weekly", "Fortnightly", "Monthly"] },
+        { "id": "moong_dal_freq",  "label": "Moong Dal — supply frequency", "type": "dropdown", "scored": false, "options": ["Daily", "Weekly", "Fortnightly", "Monthly"] },
+        { "id": "oil_freq",        "label": "Sweet Oil — supply frequency", "type": "dropdown", "scored": false, "options": ["Daily", "Weekly", "Fortnightly", "Monthly"] },
+        { "id": "vegetables_freq", "label": "Vegetables — supply frequency","type": "dropdown", "scored": false, "options": ["Daily", "Weekly", "Fortnightly", "Monthly"] },
+        { "id": "milk_freq",       "label": "Milk — supply frequency",      "type": "dropdown", "scored": false, "options": ["Daily", "Weekly", "Fortnightly", "Monthly"] },
+        { "id": "egg_freq",        "label": "Egg — supply frequency",       "type": "dropdown", "scored": false, "options": ["Daily", "Weekly", "Fortnightly", "Monthly"] },
+        { "id": "chicken_freq",    "label": "Chicken — supply frequency",   "type": "dropdown", "scored": false, "options": ["Daily", "Weekly", "Fortnightly", "Monthly"] },
+        { "id": "ragi_freq",       "label": "Ragi Malt — supply frequency", "type": "dropdown", "scored": false, "options": ["Daily", "Weekly", "Fortnightly", "Monthly"] },
+        { "id": "food_score",      "label": "Overall food quality and hygiene", "type": "good_avg_poor", "scored": true, "weight": 8 }
+      ]
+    },
+    {
+      "id": "s9_education",
+      "title": "Education Facilities",
+      "max_score": 10,
+      "fields": [
+        { "id": "textbooks",     "label": "Text books supplied to boarders",   "type": "yes_no", "scored": true, "weight": 1 },
+        { "id": "notebooks",     "label": "Note books supplied",               "type": "yes_no", "scored": true, "weight": 1 },
+        { "id": "dresses",       "label": "Dresses supplied",                  "type": "yes_no", "scored": true, "weight": 1 },
+        { "id": "trunk_boxes",   "label": "Trunk boxes supplied",              "type": "yes_no", "scored": true, "weight": 1 },
+        { "id": "plates_glasses","label": "Plates and glasses supplied",       "type": "yes_no", "scored": true, "weight": 1 },
+        { "id": "school_bags",   "label": "School bags supplied",              "type": "yes_no", "scored": true, "weight": 1 },
+        { "id": "bedding",       "label": "Bedding material supplied",         "type": "yes_no", "scored": true, "weight": 2 },
+        { "id": "budget_control","label": "Whether budget control maintained properly", "type": "yes_no", "scored": true, "weight": 2 }
+      ]
+    },
+    {
+      "id": "s10_kitchen",
+      "title": "Kitchen & Dining",
+      "max_score": 0,
+      "fields": [
+        { "id": "cooking_fuel",    "label": "Nature of Cooking",                            "type": "dropdown", "scored": false, "options": ["LPG", "Fire Wood"] },
+        { "id": "menu_displayed",  "label": "Whether the Menu Chart is displayed",          "type": "yes_no",   "scored": false },
+        { "id": "menu_followed",   "label": "Whether the Menu is followed on the day of visit", "type": "yes_no","scored": false },
+        { "id": "kitchen_clean",   "label": "Whether Kitchen and Dining areas are cleaned", "type": "yes_no",   "scored": false },
+        { "id": "kitchen_wash",    "label": "Whether kitchen wash area is clean and free from algae and foul smell", "type": "yes_no", "scored": false }
+      ]
+    },
+    {
+      "id": "s13_findings",
+      "title": "Findings of the Inspecting Officer",
+      "max_score": 0,
+      "requires_remarks": true,
+      "fields": [
+        { "id": "findings", "label": "Detailed findings and observations", "type": "text", "scored": false, "helper": "Record all observations, issues found, and recommendations" }
       ]
     }
   ]

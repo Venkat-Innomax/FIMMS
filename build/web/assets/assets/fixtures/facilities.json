@@ -1,183 +1,598 @@
 [
   {
-    "id": "f_h01",
-    "name": "TSWREIS Boys Hostel — Rajapet",
-    "type": "hostel",
-    "sub_type": "sw",
-    "gender": "Boys",
-    "mandal_id": "bhongir",
-    "village": "Rajapet",
-    "lat": 17.4980,
-    "lng": 78.8810,
+    "id": "f_h001", "name": "Govt BC BH Mothkur (B)", "type": "hostel", "sub_type": "bc",
+    "department": "BC Welfare", "gender": "Boys", "mandal_id": "mothkur",
+    "village": "Mothkur Town", "lat": 17.4380, "lng": 79.3100,
+    "special_officer_name": "M Raja Ram", "special_officer_phone": "9000368915",
     "last_inspection_id": "i01"
   },
   {
-    "id": "f_h02",
-    "name": "TSWREIS Boys Hostel — Bhongir",
-    "type": "hostel",
-    "sub_type": "sw",
-    "gender": "Boys",
-    "mandal_id": "bhongir",
-    "village": "Bhongir Town",
-    "lat": 17.5160,
-    "lng": 78.8940,
+    "id": "f_h002", "name": "KGBV Bhongir", "type": "hostel", "sub_type": "kgbv",
+    "department": "KGBV", "gender": "Girls", "mandal_id": "bhongir",
+    "village": "Bhongir", "lat": 17.5130, "lng": 78.8900,
+    "special_officer_name": "C. Jagan Mohan Prasad", "special_officer_phone": "8331997020",
     "last_inspection_id": "i02"
   },
   {
-    "id": "f_h03",
-    "name": "TSWREIS Girls Hostel — Choutuppal",
-    "type": "hostel",
-    "sub_type": "sw",
-    "gender": "Girls",
-    "mandal_id": "choutuppal",
-    "village": "Choutuppal",
-    "lat": 17.2620,
-    "lng": 78.9465,
+    "id": "f_h003", "name": "MJP Residential (BC) Boys School", "type": "hostel", "sub_type": "bc",
+    "department": "MJPTB CWREIS", "gender": "Boys", "mandal_id": "bhongir",
+    "village": "Anantharam", "lat": 17.5145, "lng": 78.8870,
+    "special_officer_name": "M Shiva Kumar", "special_officer_phone": "9440080240",
     "last_inspection_id": "i03"
   },
   {
-    "id": "f_h04",
-    "name": "TSWREIS Boys Hostel — Choutuppal",
-    "type": "hostel",
-    "sub_type": "sw",
-    "gender": "Boys",
-    "mandal_id": "choutuppal",
-    "village": "Choutuppal",
-    "lat": 17.2565,
-    "lng": 78.9380,
+    "id": "f_h004", "name": "KGBV Addagudur", "type": "hostel", "sub_type": "kgbv",
+    "department": "KGBV", "gender": "Girls", "mandal_id": "addagudur",
+    "village": "Addagudur", "lat": 17.3260, "lng": 79.0010,
+    "special_officer_name": "P Shankaraiah", "special_officer_phone": "8374507979",
     "last_inspection_id": "i04"
   },
   {
-    "id": "f_h05",
-    "name": "TSWREIS Boys Hostel — Addagudur",
-    "type": "hostel",
-    "sub_type": "sw",
-    "gender": "Boys",
-    "mandal_id": "mothkur",
-    "village": "Addagudur",
-    "lat": 17.4105,
-    "lng": 79.2890,
+    "id": "f_h005", "name": "TSWREIS (G) Addagudur", "type": "hostel", "sub_type": "sw",
+    "department": "TSSWR EIS", "gender": "Girls", "mandal_id": "addagudur",
+    "village": "Addagudur", "lat": 17.3240, "lng": 78.9990,
+    "special_officer_name": "Sheshagiri Rao", "special_officer_phone": "8331997017",
     "last_inspection_id": "i05"
   },
   {
-    "id": "f_h06",
-    "name": "TSWREIS Boys Hostel — Alair",
-    "type": "hostel",
-    "sub_type": "sw",
-    "gender": "Boys",
-    "mandal_id": "alair",
-    "village": "Alair",
-    "lat": 17.4325,
-    "lng": 79.1205,
+    "id": "f_h006", "name": "Govt BC BH College Alair", "type": "hostel", "sub_type": "bc",
+    "department": "BC Welfare", "gender": "Boys", "mandal_id": "alair",
+    "village": "Alair", "lat": 17.4300, "lng": 79.1175,
+    "special_officer_name": "M Satyanjaneya Prasad", "special_officer_phone": "9849903271",
     "last_inspection_id": "i06"
   },
   {
-    "id": "f_h07",
-    "name": "TSWREIS Boys Hostel — Mothkur",
-    "type": "hostel",
-    "sub_type": "sw",
-    "gender": "Boys",
-    "mandal_id": "mothkur",
-    "village": "Mothkur",
-    "lat": 17.4420,
-    "lng": 79.3180,
+    "id": "f_h007", "name": "Govt SCDD Boys Hostel Kolanpaka", "type": "hostel", "sub_type": "sc",
+    "department": "SC Welfare", "gender": "Boys", "mandal_id": "alair",
+    "village": "Alair", "lat": 17.4280, "lng": 79.1145,
+    "special_officer_name": "PV. Ramana Reddy", "special_officer_phone": "8977756419",
     "last_inspection_id": "i07"
   },
   {
-    "id": "f_h08",
-    "name": "MJPTBCWREIS — Cheekatimamidi",
-    "type": "hostel",
-    "sub_type": "bc",
-    "gender": "Boys",
-    "mandal_id": "alair",
-    "village": "Cheekatimamidi",
-    "lat": 17.4460,
-    "lng": 79.1320,
+    "id": "f_h008", "name": "Govt SCDD Girls Hostel Aler", "type": "hostel", "sub_type": "sc",
+    "department": "SC Welfare", "gender": "Girls", "mandal_id": "alair",
+    "village": "Alair", "lat": 17.4270, "lng": 79.1165,
+    "special_officer_name": "V. Anjameyulu", "special_officer_phone": "8331997018",
     "last_inspection_id": "i08"
   },
   {
-    "id": "f_h09",
-    "name": "MJPTBCWREIS — Moota Kondur",
-    "type": "hostel",
-    "sub_type": "bc",
-    "gender": "Girls",
-    "mandal_id": "yadagirigutta",
-    "village": "Moota Kondur",
-    "lat": 17.5925,
-    "lng": 78.9605,
+    "id": "f_h009", "name": "Govt ST Boys Hostel Alair", "type": "hostel", "sub_type": "st",
+    "department": "ST Welfare", "gender": "Boys", "mandal_id": "alair",
+    "village": "Alair", "lat": 17.4310, "lng": 79.1155,
+    "special_officer_name": "K. Srinivas Reddy", "special_officer_phone": "9849292771",
     "last_inspection_id": "i09"
   },
   {
-    "id": "f_h10",
-    "name": "TMREIS — Choutuppal",
-    "type": "hostel",
-    "sub_type": "min",
-    "gender": "Boys",
-    "mandal_id": "choutuppal",
-    "village": "Choutuppal",
-    "lat": 17.2700,
-    "lng": 78.9350,
+    "id": "f_h010", "name": "MJPTBCWREIS Alair", "type": "hostel", "sub_type": "bc",
+    "department": "MJPTB CWREIS", "gender": "Boys", "mandal_id": "alair",
+    "village": "Alair", "lat": 17.4295, "lng": 79.1180,
+    "special_officer_name": "N. Sridhar", "special_officer_phone": "9100115660",
     "last_inspection_id": "i10"
   },
   {
-    "id": "f_h11",
-    "name": "TMREIS — Bhongir",
-    "type": "hostel",
-    "sub_type": "min",
-    "gender": "Girls",
-    "mandal_id": "bhongir",
-    "village": "Bhongir",
-    "lat": 17.5050,
-    "lng": 78.8970,
+    "id": "f_h011", "name": "TMREIS (Girls) Alair", "type": "hostel", "sub_type": "min",
+    "department": "TMREIS", "gender": "Girls", "mandal_id": "alair",
+    "village": "Alair", "lat": 17.4285, "lng": 79.1135,
+    "special_officer_name": "Anuradha", "special_officer_phone": "8978280036",
     "last_inspection_id": "i11"
   },
   {
-    "id": "f_h12",
-    "name": "TMREIS — Alair",
-    "type": "hostel",
-    "sub_type": "min",
-    "gender": "Boys",
-    "mandal_id": "alair",
-    "village": "Alair",
-    "lat": 17.4255,
-    "lng": 79.1135,
+    "id": "f_h012", "name": "TSWREIS (G) RPRP Alair", "type": "hostel", "sub_type": "sw",
+    "department": "TSSWR EIS", "gender": "Girls", "mandal_id": "alair",
+    "village": "Alair", "lat": 17.4265, "lng": 79.1170,
+    "special_officer_name": "M. Roja Rani", "special_officer_phone": "8008534196",
     "last_inspection_id": "i12"
   },
   {
-    "id": "f_h13",
-    "name": "Tribal Welfare Girls Ashram — Bhongir",
-    "type": "hostel",
-    "sub_type": "tw",
-    "gender": "Girls",
-    "mandal_id": "bhongir",
-    "village": "Bhongir Rural",
-    "lat": 17.5210,
-    "lng": 78.8825,
+    "id": "f_h013", "name": "Govt BC BH Athmakur", "type": "hostel", "sub_type": "bc",
+    "department": "BC Welfare", "gender": "Boys", "mandal_id": "athmakur",
+    "village": "Athmakur", "lat": 17.4015, "lng": 78.7835,
+    "special_officer_name": "J. Ramulu Nayak", "special_officer_phone": "9989059002",
     "last_inspection_id": "i13"
   },
   {
-    "id": "f_h14",
-    "name": "Urban Residential School — Bhongir",
-    "type": "hostel",
-    "sub_type": "urs",
-    "gender": "Mixed",
-    "mandal_id": "bhongir",
-    "village": "Bhongir Urban",
-    "lat": 17.5145,
-    "lng": 78.8905,
+    "id": "f_h014", "name": "Govt BC GH Athmakur", "type": "hostel", "sub_type": "bc",
+    "department": "BC Welfare", "gender": "Girls", "mandal_id": "athmakur",
+    "village": "Athmakur", "lat": 17.4005, "lng": 78.7810,
+    "special_officer_name": "Padmavathi", "special_officer_phone": "9347172896",
     "last_inspection_id": "i14"
   },
   {
-    "id": "f_h15",
-    "name": "TSWREIS Boys Hostel — Yadagirigutta",
-    "type": "hostel",
-    "sub_type": "sw",
-    "gender": "Boys",
-    "mandal_id": "yadagirigutta",
-    "village": "Yadagirigutta",
-    "lat": 17.5865,
-    "lng": 78.9580,
+    "id": "f_h015", "name": "Govt SCDD Boys Hostel Athmakur (M)", "type": "hostel", "sub_type": "sc",
+    "department": "SC Welfare", "gender": "Boys", "mandal_id": "athmakur",
+    "village": "Athmakur", "lat": 17.4020, "lng": 78.7825,
+    "special_officer_name": "M. Rajaram", "special_officer_phone": "9000368915",
     "last_inspection_id": "i15"
+  },
+  {
+    "id": "f_h016", "name": "Govt SCDD Girls Hostel Athmakur (M)", "type": "hostel", "sub_type": "sc",
+    "department": "SC Welfare", "gender": "Girls", "mandal_id": "athmakur",
+    "village": "Athmakur", "lat": 17.4000, "lng": 78.7815,
+    "special_officer_name": "V. Lavanya", "special_officer_phone": "8331997019",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h017", "name": "KGBV Athmakur (M)", "type": "hostel", "sub_type": "kgbv",
+    "department": "KGBV", "gender": "Girls", "mandal_id": "athmakur",
+    "village": "Athmakur", "lat": 17.4030, "lng": 78.7800,
+    "special_officer_name": "Mahadeva Reddy", "special_officer_phone": "9848290705",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h018", "name": "Govt BC BH (Old) Bhongiri", "type": "hostel", "sub_type": "bc",
+    "department": "BC Welfare", "gender": "Boys", "mandal_id": "bhongir",
+    "village": "Bhongiri Town", "lat": 17.5110, "lng": 78.8860,
+    "special_officer_name": "G. Ramalingam", "special_officer_phone": "9392205913",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h019", "name": "Govt BC BH College Bhongiri", "type": "hostel", "sub_type": "bc",
+    "department": "BC Welfare", "gender": "Boys", "mandal_id": "bhongir",
+    "village": "Bhongir", "lat": 17.5135, "lng": 78.8910,
+    "special_officer_name": "Ch. Srinivas", "special_officer_phone": "9849903270",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h020", "name": "Govt BC GH College Bhongiri (Banjara Hills)", "type": "hostel", "sub_type": "bc",
+    "department": "BC Welfare", "gender": "Girls", "mandal_id": "bhongir",
+    "village": "Bhongir", "lat": 17.5155, "lng": 78.8925,
+    "special_officer_name": "Neelima", "special_officer_phone": "9440141834",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h021", "name": "Govt BC GH College Bhongiri (Reddywada)", "type": "hostel", "sub_type": "bc",
+    "department": "BC Welfare", "gender": "Girls", "mandal_id": "bhongir",
+    "village": "Bhongiri Town", "lat": 17.5105, "lng": 78.8875,
+    "special_officer_name": "Ramakrishna", "special_officer_phone": "8333979578",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h022", "name": "Govt SCDD BH A Bhongir", "type": "hostel", "sub_type": "sc",
+    "department": "SC Welfare", "gender": "Boys", "mandal_id": "bhongir",
+    "village": "Bhongiri", "lat": 17.5120, "lng": 78.8880,
+    "special_officer_name": "B. Sai Krishna", "special_officer_phone": "9676667799",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h023", "name": "Govt SCDD GH Bhongir", "type": "hostel", "sub_type": "sc",
+    "department": "SC Welfare", "gender": "Girls", "mandal_id": "bhongir",
+    "village": "Bhongir", "lat": 17.5115, "lng": 78.8895,
+    "special_officer_name": "M. Krishna Reddy", "special_officer_phone": "8331997004",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h024", "name": "Govt SCD College Boys Hostel Bhuvanagiri", "type": "hostel", "sub_type": "sc",
+    "department": "SC Welfare", "gender": "Boys", "mandal_id": "bhongir",
+    "village": "Bhuvanagiri", "lat": 17.5140, "lng": 78.8905,
+    "special_officer_name": "M.R. Venkat Ramma", "special_officer_phone": "9390013435",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h025", "name": "Govt SCD College Girls Hostel Bhuvanagiri", "type": "hostel", "sub_type": "sc",
+    "department": "SC Welfare", "gender": "Girls", "mandal_id": "bhongir",
+    "village": "Bhuvanagiri", "lat": 17.5125, "lng": 78.8920,
+    "special_officer_name": "K. Sathyanarayana", "special_officer_phone": "7995087630",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h026", "name": "Govt ST Boys Hostel Bhongir", "type": "hostel", "sub_type": "st",
+    "department": "ST Welfare", "gender": "Boys", "mandal_id": "bhongir",
+    "village": "Bhongir", "lat": 17.5100, "lng": 78.8870,
+    "special_officer_name": "Radha Krishna", "special_officer_phone": "8712658961",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h027", "name": "Govt ST Boys Hostel Bollepally", "type": "hostel", "sub_type": "st",
+    "department": "ST Welfare", "gender": "Boys", "mandal_id": "bhongir",
+    "village": "Bollepally", "lat": 17.5080, "lng": 78.8850,
+    "special_officer_name": "P Karunakar", "special_officer_phone": "9100120915",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h028", "name": "Govt ST College Boys Hostel Bhongir", "type": "hostel", "sub_type": "st",
+    "department": "ST Welfare", "gender": "Boys", "mandal_id": "bhongir",
+    "village": "Bhongir", "lat": 17.5160, "lng": 78.8930,
+    "special_officer_name": "K. Janga Reddy", "special_officer_phone": "9000404253",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h029", "name": "Govt ST College Girls Hostel Bhongir", "type": "hostel", "sub_type": "st",
+    "department": "ST Welfare", "gender": "Girls", "mandal_id": "bhongir",
+    "village": "Bhongir", "lat": 17.5150, "lng": 78.8945,
+    "special_officer_name": "I Padmaja Rani", "special_officer_phone": "9177789925",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h030", "name": "TSWREIS (B) Bhongir", "type": "hostel", "sub_type": "sw",
+    "department": "TSSWR EIS", "gender": "Boys", "mandal_id": "bhongir",
+    "village": "Bhongir", "lat": 17.5095, "lng": 78.8885,
+    "special_officer_name": "N. Sridhar", "special_officer_phone": "9100115660",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h031", "name": "TMREIS Kisan Nagar Bhongir", "type": "hostel", "sub_type": "min",
+    "department": "TMREIS", "gender": "Boys", "mandal_id": "bhongir",
+    "village": "Bhongir", "lat": 17.5170, "lng": 78.8955,
+    "special_officer_name": "M. Manohar", "special_officer_phone": "8106805080",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h032", "name": "TW Ashram HS (G) Bhongir", "type": "hostel", "sub_type": "tw",
+    "department": "ST Welfare", "gender": "Girls", "mandal_id": "bhongir",
+    "village": "Bhongir", "lat": 17.5090, "lng": 78.8860,
+    "special_officer_name": "T. Nagireddy", "special_officer_phone": "9281489661",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h033", "name": "URS Bhongiri", "type": "hostel", "sub_type": "urs",
+    "department": "URS", "gender": "Boys", "mandal_id": "bhongir",
+    "village": "Bhongiri", "lat": 17.5145, "lng": 78.8915,
+    "special_officer_name": "E. Narsimha", "special_officer_phone": "9000901023",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h034", "name": "Govt BC GH Bibinagar", "type": "hostel", "sub_type": "bc",
+    "department": "BC Welfare", "gender": "Girls", "mandal_id": "bibinagar",
+    "village": "Bibinagar", "lat": 17.4645, "lng": 78.8460,
+    "special_officer_name": "Y Srinivas Reddy", "special_officer_phone": "9989059004",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h035", "name": "Govt SCDD BH Bibinagar", "type": "hostel", "sub_type": "sc",
+    "department": "SC Welfare", "gender": "Boys", "mandal_id": "bibinagar",
+    "village": "Bibinagar", "lat": 17.4635, "lng": 78.8445,
+    "special_officer_name": "G Suresh Reddy", "special_officer_phone": "9490555276",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h036", "name": "MJPTBCWREIS Bibinagar", "type": "hostel", "sub_type": "bc",
+    "department": "MJPTB CWREIS", "gender": "Girls", "mandal_id": "bibinagar",
+    "village": "Bibinagar", "lat": 17.4650, "lng": 78.8470,
+    "special_officer_name": "D. Harikrishna", "special_officer_phone": "9281423622",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h037", "name": "TSSWREI Bibinagar", "type": "hostel", "sub_type": "sw",
+    "department": "TSSWR EIS", "gender": "Girls", "mandal_id": "bibinagar",
+    "village": "Bibinagar", "lat": 17.4625, "lng": 78.8435,
+    "special_officer_name": "P. Shyam Sundar Reddy", "special_officer_phone": "8331997021",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h038", "name": "KGBV Bommalaramaram", "type": "hostel", "sub_type": "kgbv",
+    "department": "KGBV", "gender": "Girls", "mandal_id": "bommalaramaram",
+    "village": "Bommalaramaram", "lat": 17.3110, "lng": 79.0210,
+    "special_officer_name": "V. RajaTrivikram", "special_officer_phone": "9989059005",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h039", "name": "Girls Hostel Attached to TSMS Bommalaramaram (Malyala)", "type": "hostel", "sub_type": "kgbv",
+    "department": "KGBV / TGMS", "gender": "Girls", "mandal_id": "bommalaramaram",
+    "village": "Malyala", "lat": 17.3090, "lng": 79.0190,
+    "special_officer_name": "P SrinivasRao", "special_officer_phone": "8331997022",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h040", "name": "MJPTBCWREIS Cheekatimamidi (Secunderabad)", "type": "hostel", "sub_type": "bc",
+    "department": "MJPTB CWREIS", "gender": "Boys", "mandal_id": "bommalaramaram",
+    "village": "Cheekatimamidi", "lat": 17.3120, "lng": 79.0220,
+    "special_officer_name": "P. Jyothi Kumar", "special_officer_phone": "7032982008",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h041", "name": "Govt SC DD Boys Hostel Nelapatla", "type": "hostel", "sub_type": "sc",
+    "department": "SC Welfare", "gender": "Boys", "mandal_id": "choutuppal",
+    "village": "Nelapatla", "lat": 17.2560, "lng": 78.9415,
+    "special_officer_name": "G. Venkat Ram Reddy", "special_officer_phone": "9849990415",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h042", "name": "KGBV Choutuppal", "type": "hostel", "sub_type": "kgbv",
+    "department": "KGBV", "gender": "Girls", "mandal_id": "choutuppal",
+    "village": "Choutuppal", "lat": 17.2545, "lng": 78.9390,
+    "special_officer_name": "P. Ravindar", "special_officer_phone": "9848156183",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h043", "name": "Girls Hostel Attached to TSMS Choutuppal", "type": "hostel", "sub_type": "kgbv",
+    "department": "KGBV / TGMS", "gender": "Girls", "mandal_id": "choutuppal",
+    "village": "Choutuppal", "lat": 17.2555, "lng": 78.9405,
+    "special_officer_name": "Veerabhai", "special_officer_phone": "8331997029",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h044", "name": "MJPTBCWREIS Girls Bhongir", "type": "hostel", "sub_type": "bc",
+    "department": "MJPTB CWREIS", "gender": "Girls", "mandal_id": "choutuppal",
+    "village": "Bhongir", "lat": 17.2540, "lng": 78.9380,
+    "special_officer_name": "M. Shoba Rani", "special_officer_phone": "8374589555",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h045", "name": "TMREIS Choutuppal (Boys)", "type": "hostel", "sub_type": "min",
+    "department": "TMREIS", "gender": "Boys", "mandal_id": "choutuppal",
+    "village": "Choutuppal", "lat": 17.2570, "lng": 78.9420,
+    "special_officer_name": "V Shekhar Reddy", "special_officer_phone": "8331997005",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h046", "name": "TSREIS (G) Choutuppal", "type": "hostel", "sub_type": "sw",
+    "department": "TSREIS", "gender": "Girls", "mandal_id": "choutuppal",
+    "village": "Choutuppal", "lat": 17.2535, "lng": 78.9370,
+    "special_officer_name": "K. Nasimha Rao", "special_officer_phone": "9703332896",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h047", "name": "TSWREIS (G) Choutuppal", "type": "hostel", "sub_type": "sw",
+    "department": "TSSWR EIS", "gender": "Girls", "mandal_id": "choutuppal",
+    "village": "Choutuppal", "lat": 17.2565, "lng": 78.9410,
+    "special_officer_name": "V. Venkataramana", "special_officer_phone": "7013405415",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h048", "name": "Govt BC BH Gundala", "type": "hostel", "sub_type": "bc",
+    "department": "BC Welfare", "gender": "Boys", "mandal_id": "gundala",
+    "village": "Gundala", "lat": 17.1810, "lng": 79.1510,
+    "special_officer_name": "A. Srinivas", "special_officer_phone": "9603712199",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h049", "name": "Govt SCDD BH Seetharampur AM", "type": "hostel", "sub_type": "sc",
+    "department": "SC Welfare", "gender": "Boys", "mandal_id": "gundala",
+    "village": "Seetharampur", "lat": 17.1790, "lng": 79.1490,
+    "special_officer_name": "S. Hari Krishna", "special_officer_phone": "8331997034",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h050", "name": "KGBV Gundala", "type": "hostel", "sub_type": "kgbv",
+    "department": "KGBV", "gender": "Girls", "mandal_id": "gundala",
+    "village": "Gundala", "lat": 17.1815, "lng": 79.1520,
+    "special_officer_name": "GS. Jyotsna", "special_officer_phone": "8096291719",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h051", "name": "Girls Hostel Attached to Model Schools Gundala", "type": "hostel", "sub_type": "kgbv",
+    "department": "KGBV / TGMS", "gender": "Girls", "mandal_id": "gundala",
+    "village": "Gundala", "lat": 17.1800, "lng": 79.1505,
+    "special_officer_name": "Chandeerani", "special_officer_phone": "9989059016",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h052", "name": "Govt SCDD BH Motakondur", "type": "hostel", "sub_type": "sc",
+    "department": "SC Welfare", "gender": "Boys", "mandal_id": "motakondur",
+    "village": "Motakondur", "lat": 17.2310, "lng": 78.9710,
+    "special_officer_name": "M Indira", "special_officer_phone": "8309141549",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h053", "name": "MJPTBCWREIS (G) Motakondur", "type": "hostel", "sub_type": "bc",
+    "department": "MJPTB CWREIS", "gender": "Girls", "mandal_id": "motakondur",
+    "village": "Motakondur", "lat": 17.2290, "lng": 78.9690,
+    "special_officer_name": "Jayalaxmi", "special_officer_phone": "8331997023",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h054", "name": "Govt BC BH Mothkur (A)", "type": "hostel", "sub_type": "bc",
+    "department": "BC Welfare", "gender": "Boys", "mandal_id": "mothkur",
+    "village": "Mothkur", "lat": 17.4360, "lng": 79.3080,
+    "special_officer_name": "Satish", "special_officer_phone": "8886883666",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h055", "name": "Govt BC GH Mothkur", "type": "hostel", "sub_type": "bc",
+    "department": "BC Welfare", "gender": "Girls", "mandal_id": "mothkur",
+    "village": "Mothkur Town", "lat": 17.4385, "lng": 79.3105,
+    "special_officer_name": "Sahiti", "special_officer_phone": "8106721415",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h056", "name": "Govt SCDD BH Mothkur", "type": "hostel", "sub_type": "sc",
+    "department": "SC Welfare", "gender": "Boys", "mandal_id": "mothkur",
+    "village": "Mothkur", "lat": 17.4375, "lng": 79.3095,
+    "special_officer_name": "G. Suresh", "special_officer_phone": "9281489662",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h057", "name": "Govt SCDD Girls Hostel Mothkur", "type": "hostel", "sub_type": "sc",
+    "department": "SC Welfare", "gender": "Girls", "mandal_id": "mothkur",
+    "village": "Mothkur", "lat": 17.4365, "lng": 79.3085,
+    "special_officer_name": "T. Gopla Reddy", "special_officer_phone": "9885254014",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h058", "name": "KGBV Mothkur", "type": "hostel", "sub_type": "kgbv",
+    "department": "KGBV", "gender": "Girls", "mandal_id": "mothkur",
+    "village": "Mothkur", "lat": 17.4390, "lng": 79.3115,
+    "special_officer_name": "P. Jyothi", "special_officer_phone": "8331997024",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h059", "name": "TSWREIS (B) Mothkur", "type": "hostel", "sub_type": "sw",
+    "department": "TSSWR EIS", "gender": "Boys", "mandal_id": "mothkur",
+    "village": "Mothkur", "lat": 17.4355, "lng": 79.3075,
+    "special_officer_name": "D. Balaji", "special_officer_phone": "9989059028",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h060", "name": "Govt SCDD Boys Hostel Narayanapur", "type": "hostel", "sub_type": "sc",
+    "department": "SC Welfare", "gender": "Boys", "mandal_id": "narayanapur",
+    "village": "Narayanapur", "lat": 17.5210, "lng": 79.1410,
+    "special_officer_name": "Sumathi Rekha", "special_officer_phone": "9866777983",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h061", "name": "Govt SCDD Girls Hostel Narayanapur", "type": "hostel", "sub_type": "sc",
+    "department": "SC Welfare", "gender": "Girls", "mandal_id": "narayanapur",
+    "village": "Narayanapur", "lat": 17.5195, "lng": 79.1395,
+    "special_officer_name": "G. Srinivasulu", "special_officer_phone": "9652298399",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h062", "name": "KGBV Narayanapur", "type": "hostel", "sub_type": "kgbv",
+    "department": "KGBV", "gender": "Girls", "mandal_id": "narayanapur",
+    "village": "Narayanapur", "lat": 17.5220, "lng": 79.1420,
+    "special_officer_name": "B. Jayasri", "special_officer_phone": "9121300313",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h063", "name": "Girls Hostel Attached to TSMS Narayanapur", "type": "hostel", "sub_type": "kgbv",
+    "department": "KGBV / TGMS", "gender": "Girls", "mandal_id": "narayanapur",
+    "village": "Narayanapur", "lat": 17.5205, "lng": 79.1405,
+    "special_officer_name": "D. Vishnuvardhan Reddy", "special_officer_phone": "8179509558",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h064", "name": "TS TWREIS School Boys Munugodu", "type": "hostel", "sub_type": "tw",
+    "department": "TSTWR EIS", "gender": "Boys", "mandal_id": "narayanapur",
+    "village": "Munugodu", "lat": 17.5185, "lng": 79.1385,
+    "special_officer_name": "K. Pramod", "special_officer_phone": "9989059033",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h065", "name": "TSREIS (B) JR College & High School Sarvail", "type": "hostel", "sub_type": "sw",
+    "department": "TSREIS", "gender": "Boys", "mandal_id": "narayanapur",
+    "village": "Sarvail", "lat": 17.5230, "lng": 79.1430,
+    "special_officer_name": "P. Srinivas Reddy", "special_officer_phone": "8331997031",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h066", "name": "Govt BC BH Pochampally", "type": "hostel", "sub_type": "bc",
+    "department": "BC Welfare", "gender": "Boys", "mandal_id": "pochampally",
+    "village": "Pochampally", "lat": 17.3710, "lng": 78.8210,
+    "special_officer_name": "R Bhaskar", "special_officer_phone": "9989059040",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h067", "name": "Govt BC BH College Deshmuki", "type": "hostel", "sub_type": "bc",
+    "department": "BC Welfare", "gender": "Boys", "mandal_id": "pochampally",
+    "village": "Deshmuki", "lat": 17.3690, "lng": 78.8190,
+    "special_officer_name": "P. Srinivas Reddy", "special_officer_phone": "8331997028",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h068", "name": "Govt SCDD GH Pochampally", "type": "hostel", "sub_type": "sc",
+    "department": "SC Welfare", "gender": "Girls", "mandal_id": "pochampally",
+    "village": "Pochampally", "lat": 17.3705, "lng": 78.8195,
+    "special_officer_name": "Majid", "special_officer_phone": "8978280085",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h069", "name": "KGBV Pochampally", "type": "hostel", "sub_type": "kgbv",
+    "department": "KGBV", "gender": "Girls", "mandal_id": "pochampally",
+    "village": "Pochampalli", "lat": 17.3720, "lng": 78.8215,
+    "special_officer_name": "Ramani", "special_officer_phone": "7997994361",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h070", "name": "Girls Hostel Attached to TSMS Pochampally", "type": "hostel", "sub_type": "kgbv",
+    "department": "KGBV / TGMS", "gender": "Girls", "mandal_id": "pochampally",
+    "village": "Pochampally", "lat": 17.3700, "lng": 78.8185,
+    "special_officer_name": "Dhanunjeyulu", "special_officer_phone": "8309992451",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h071", "name": "MJPTBCWREIS (B) Julur", "type": "hostel", "sub_type": "bc",
+    "department": "MJPTB CWREIS", "gender": "Boys", "mandal_id": "pochampally",
+    "village": "Julur", "lat": 17.3730, "lng": 78.8225,
+    "special_officer_name": "P. Prabhaker", "special_officer_phone": "9441562162",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h072", "name": "Govt BC GH Ramannapeta", "type": "hostel", "sub_type": "bc",
+    "department": "BC Welfare", "gender": "Girls", "mandal_id": "ramannapet",
+    "village": "Ramannapet", "lat": 17.2690, "lng": 79.0500,
+    "special_officer_name": "A. Ramulu", "special_officer_phone": "9989059042",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h073", "name": "Govt SCDD BH Ramannapet", "type": "hostel", "sub_type": "sc",
+    "department": "SC Welfare", "gender": "Boys", "mandal_id": "ramannapet",
+    "village": "Ramannapet", "lat": 17.2675, "lng": 79.0480,
+    "special_officer_name": "K. Raghava Reddy", "special_officer_phone": "9849924626",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h074", "name": "Govt SCDD Girls Hostel Ramannapet", "type": "hostel", "sub_type": "sc",
+    "department": "SC Welfare", "gender": "Girls", "mandal_id": "ramannapet",
+    "village": "Ramannapet", "lat": 17.2665, "lng": 79.0470,
+    "special_officer_name": "C LalBahadur", "special_officer_phone": "8331997030",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h075", "name": "TSREIS (G) Janampally", "type": "hostel", "sub_type": "sw",
+    "department": "TSREIS", "gender": "Girls", "mandal_id": "ramannapet",
+    "village": "Janampally", "lat": 17.2705, "lng": 79.0515,
+    "special_officer_name": "Swathi", "special_officer_phone": "9515706280",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h076", "name": "TSWREIS Rajapet", "type": "hostel", "sub_type": "sw",
+    "department": "TSSWR EIS", "gender": "Boys", "mandal_id": "rajapet",
+    "village": "Rajapet", "lat": 17.0710, "lng": 79.1510,
+    "special_officer_name": "Kathula Nagaveni", "special_officer_phone": "9989059041",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h077", "name": "KGBV Thurkapally", "type": "hostel", "sub_type": "kgbv",
+    "department": "KGBV", "gender": "Girls", "mandal_id": "thurkapally",
+    "village": "Thurkapally", "lat": 17.4510, "lng": 79.0510,
+    "special_officer_name": "L. Geeta Reddy", "special_officer_phone": "9989059046",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h078", "name": "Girls Hostel Attached to Model Schools Thurkapally", "type": "hostel", "sub_type": "kgbv",
+    "department": "KGBV / TGMS", "gender": "Girls", "mandal_id": "thurkapally",
+    "village": "Thurkapally", "lat": 17.4495, "lng": 79.0495,
+    "special_officer_name": "V. Malathi", "special_officer_phone": "9848245369",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h079", "name": "Govt ST Boys Hostel Thurkapally", "type": "hostel", "sub_type": "st",
+    "department": "ST Welfare", "gender": "Boys", "mandal_id": "thurkapally",
+    "village": "Thurkapally", "lat": 17.4505, "lng": 79.0505,
+    "special_officer_name": "P. Janaiayya", "special_officer_phone": "9989997697",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h080", "name": "Govt ST Boys Hostel Madhapur", "type": "hostel", "sub_type": "st",
+    "department": "ST Welfare", "gender": "Boys", "mandal_id": "thurkapally",
+    "village": "Madhapur", "lat": 17.4520, "lng": 79.0520,
+    "special_officer_name": "P Ravi Kumar", "special_officer_phone": "8331997026",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h081", "name": "KGBV Valigonda", "type": "hostel", "sub_type": "kgbv",
+    "department": "KGBV", "gender": "Girls", "mandal_id": "valigonda",
+    "village": "Valigonda", "lat": 17.2510, "lng": 79.0710,
+    "special_officer_name": "P Dasharada Nayak", "special_officer_phone": "8331997032",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h082", "name": "Girls Hostel Attached to Model Schools Valigonda", "type": "hostel", "sub_type": "kgbv",
+    "department": "KGBV / TGMS", "gender": "Girls", "mandal_id": "valigonda",
+    "village": "Valigonda", "lat": 17.2490, "lng": 79.0690,
+    "special_officer_name": "G. Jalenderreddy", "special_officer_phone": "9989059049",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h083", "name": "Govt BC BH College Yadagirigutta", "type": "hostel", "sub_type": "bc",
+    "department": "BC Welfare", "gender": "Boys", "mandal_id": "yadagirigutta",
+    "village": "Yadagirigutta", "lat": 17.5840, "lng": 78.9520,
+    "special_officer_name": "A. Sabitha", "special_officer_phone": "7330733616",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h084", "name": "Govt SCDD GH Yadagirigutta", "type": "hostel", "sub_type": "sc",
+    "department": "SC Welfare", "gender": "Girls", "mandal_id": "yadagirigutta",
+    "village": "Yadagirigutta", "lat": 17.5820, "lng": 78.9500,
+    "special_officer_name": "K. Naveen Kumar", "special_officer_phone": "9989059050",
+    "last_inspection_id": null
+  },
+  {
+    "id": "f_h085", "name": "Children Home Meenanagar Bhongir", "type": "hostel", "sub_type": "other",
+    "department": "Women & Child Welfare", "gender": "Mixed", "mandal_id": "bhuvanagiri",
+    "village": "Bhuvanagiri", "lat": 17.5118, "lng": 78.8895,
+    "special_officer_name": "Shailaja", "special_officer_phone": "7013405415",
+    "last_inspection_id": null
   },
   {
     "id": "f_p01",
@@ -288,5 +703,18 @@
     "lat": 17.5125,
     "lng": 78.8895,
     "last_inspection_id": "i25"
+  },
+  {
+    "id": "f_test_001",
+    "name": "Manjeera Majestic Homes",
+    "type": "hostel",
+    "sub_type": "bc",
+    "department": "BC Welfare",
+    "gender": "Mixed",
+    "mandal_id": "bhongir",
+    "village": "KPHB Phase 1, Kukatpally, Hyderabad",
+    "lat": 17.491294,
+    "lng": 78.393504,
+    "last_inspection_id": "i26"
   }
 ]

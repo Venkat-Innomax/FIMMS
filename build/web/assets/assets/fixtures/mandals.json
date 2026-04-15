@@ -1,9 +1,20 @@
 [
-  { "id": "bhongir",       "name": "Bhongir",       "lat": 17.5124, "lng": 78.8886 },
-  { "id": "choutuppal",    "name": "Choutuppal",    "lat": 17.2550, "lng": 78.9400 },
-  { "id": "alair",         "name": "Alair",         "lat": 17.4290, "lng": 79.1160 },
-  { "id": "yadagirigutta", "name": "Yadagirigutta", "lat": 17.5830, "lng": 78.9510 },
-  { "id": "mothkur",       "name": "Mothkur",       "lat": 17.4370, "lng": 79.3090 },
-  { "id": "ramannapet",    "name": "Ramannapet",    "lat": 17.2680, "lng": 79.0490 },
-  { "id": "bhuvanagiri",   "name": "Bhuvanagiri",   "lat": 17.5118, "lng": 78.8889 }
+  { "id": "bhongir",        "name": "Bhongir",        "lat": 17.5124, "lng": 78.8886 },
+  { "id": "choutuppal",     "name": "Choutuppal",     "lat": 17.2550, "lng": 78.9400 },
+  { "id": "alair",          "name": "Alair",           "lat": 17.4290, "lng": 79.1160 },
+  { "id": "yadagirigutta",  "name": "Yadagirigutta",  "lat": 17.5830, "lng": 78.9510 },
+  { "id": "mothkur",        "name": "Mothkur",         "lat": 17.4370, "lng": 79.3090 },
+  { "id": "ramannapet",     "name": "Ramannapet",     "lat": 17.2680, "lng": 79.0490 },
+  { "id": "bhuvanagiri",    "name": "Bhuvanagiri",    "lat": 17.5118, "lng": 78.8889 },
+  { "id": "addagudur",      "name": "Addagudur",      "lat": 17.3250, "lng": 79.0000 },
+  { "id": "athmakur",       "name": "Athmakur",       "lat": 17.4010, "lng": 78.7820 },
+  { "id": "bibinagar",      "name": "Bibinagar",      "lat": 17.4640, "lng": 78.8450 },
+  { "id": "bommalaramaram", "name": "Bommalaramaram", "lat": 17.3100, "lng": 79.0200 },
+  { "id": "gundala",        "name": "Gundala",        "lat": 17.1800, "lng": 79.1500 },
+  { "id": "motakondur",     "name": "Motakondur",     "lat": 17.2300, "lng": 78.9700 },
+  { "id": "narayanapur",    "name": "Narayanapur",    "lat": 17.5200, "lng": 79.1400 },
+  { "id": "pochampally",    "name": "Pochampally",    "lat": 17.3700, "lng": 78.8200 },
+  { "id": "rajapet",        "name": "Rajapet",        "lat": 17.0700, "lng": 79.1500 },
+  { "id": "thurkapally",    "name": "Thurkapally",    "lat": 17.4500, "lng": 79.0500 },
+  { "id": "valigonda",      "name": "Valigonda",      "lat": 17.2500, "lng": 79.0700 }
 ]
