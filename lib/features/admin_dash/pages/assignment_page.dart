@@ -366,21 +366,6 @@ class _VerifyResultsDialog extends StatelessWidget {
     );
   }
 
-  void _launchMapsUrl(String url) async {
-    try {
-      if (await canLaunchUrl(Uri.parse(url))) {
-        await launchUrl(
-          Uri.parse(url),
-          mode: LaunchMode.externalApplication,
-        );
-      } else {
-        print('Could not launch $url');
-      }
-    } catch (e) {
-      print('Error launching URL: $e');
-    }
-  }
-
   Widget _buildNoInspection() {
     return Container(
       padding: const EdgeInsets.all(24),
@@ -537,12 +522,23 @@ class _VerifyResultsDialog extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton.icon(
-                  onPressed: () {
+                  onPressed: () async {
                     // Open Google Maps to Manjeera Majestic Homes
                     final lat = 17.491294;
                     final lng = 78.393504;
-                    final mapsUrl = 'https://www.google.com/maps/search/?api=1&query=$lat,$lng';
-                    _launchMapsUrl(mapsUrl);
+                    final mapsUrl = 'https://www.google.com/maps/?q=$lat,$lng';
+                    try {
+                      if (await canLaunchUrl(Uri.parse(mapsUrl))) {
+                        await launchUrl(
+                          Uri.parse(mapsUrl),
+                          mode: LaunchMode.externalApplication,
+                        );
+                      } else {
+                        print('Could not launch Google Maps');
+                      }
+                    } catch (e) {
+                      print('Error launching Maps: $e');
+                    }
                   },
                   icon: const Icon(Icons.location_on),
                   label: const Text('View Location in Google Maps'),
