@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
@@ -527,17 +528,37 @@ class _VerifyResultsDialog extends StatelessWidget {
                     final lat = 17.491294;
                     final lng = 78.393504;
                     final mapsUrl = 'https://www.google.com/maps/?q=$lat,$lng';
+                    
                     try {
-                      if (await canLaunchUrl(Uri.parse(mapsUrl))) {
+                      final uri = Uri.parse(mapsUrl);
+                      if (await canLaunchUrl(uri)) {
+                        // On web, use webOnlyWindowName to open in new tab
                         await launchUrl(
-                          Uri.parse(mapsUrl),
-                          mode: LaunchMode.externalApplication,
+                          uri,
+                          mode: kIsWeb ? LaunchMode.platformDefault : LaunchMode.externalApplication,
+                          webOnlyWindowName: '_blank',
                         );
                       } else {
-                        print('Could not launch Google Maps');
+                        // Fallback: show snackbar with URL
+                        if (context.mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: const Text('Unable to open Google Maps. Please try again.'),
+                              backgroundColor: FimmsColors.danger,
+                            ),
+                          );
+                        }
                       }
                     } catch (e) {
-                      print('Error launching Maps: $e');
+                      print('Error opening Maps: $e');
+                      if (context.mounted) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text('Error: $e'),
+                            backgroundColor: FimmsColors.danger,
+                          ),
+                        );
+                      }
                     }
                   },
                   icon: const Icon(Icons.location_on),
