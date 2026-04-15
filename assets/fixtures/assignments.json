@@ -92,5 +92,15 @@
     "due_date": "2026-04-15",
     "status": "pending",
     "is_reinspection": false
+  },
+  {
+    "id": "a11",
+    "facility_id": "f_test_001",
+    "officer_id": "u_field_1",
+    "assigned_by": "u_admin",
+    "due_date": "2026-04-15",
+    "status": "completed",
+    "is_reinspection": false,
+    "inspection_id": "i26"
   }
 ]

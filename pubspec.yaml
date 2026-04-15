@@ -37,14 +37,14 @@ dependencies:
   pdf: ^3.11.1
   printing: ^5.13.2
 
+  # URL Launcher
+  url_launcher: ^6.2.4
+
   # Typography
   google_fonts: ^6.2.1
 
   # Formatting
   intl: ^0.19.0
-
-  # URL / deep links (Google Maps, etc.)
-  url_launcher: ^6.3.0
 
 dev_dependencies:
   flutter_test:

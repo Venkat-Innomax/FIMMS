@@ -300,5 +300,17 @@
       {"section_id": "s4_sanitation", "title": "Sanitation & Waste Management", "raw_score": 16, "max_score": 20, "normalized": 80, "field_responses": {}, "remarks": "Biomedical waste managed properly. TSPCB authorization displayed. Patient washrooms clean. Drinking water RO-filtered.", "photo_paths": [], "skipped": false},
       {"section_id": "s5_safety", "title": "Safety & Emergency Preparedness", "raw_score": 16, "max_score": 20, "normalized": 80, "field_responses": {}, "remarks": "Fire safety adequate. Emergency protocols displayed. Ambulance arrangement with 108. Staff trained in BLS.", "photo_paths": [], "skipped": false}
     ]
+  },
+  {
+    "id": "i26", "facility_id": "f_test_001", "officer_id": "u_field_1",
+    "datetime": "2026-04-10T15:45:00", "lat": 17.491294, "lng": 78.393504,
+    "geofence_pass": true, "urgent_flag": false,
+    "total_score": 85, "grade": "excellent", "status": "approved", "sections": [
+      {"section_id": "s1_infra", "title": "Infrastructure & Buildings", "raw_score": 17, "max_score": 20, "normalized": 85, "field_responses": {}, "remarks": "Modern residential complex with well-maintained common areas. All facilities in good condition.", "photo_paths": ["evidence/i26_s1.jpg"], "skipped": false},
+      {"section_id": "s2_staff", "title": "Staff & Administration", "raw_score": 17, "max_score": 20, "normalized": 85, "field_responses": {}, "remarks": "Efficient administrative staff. Records well-organized. Attendance and leave systems properly maintained.", "photo_paths": [], "skipped": false},
+      {"section_id": "s3_kitchen", "title": "Kitchen & Nutrition", "raw_score": 18, "max_score": 20, "normalized": 90, "field_responses": {}, "remarks": "Professional kitchen setup with regular menu cards. Quality meals verified. Hygiene standards excellent.", "photo_paths": ["evidence/i26_s3.jpg"], "skipped": false},
+      {"section_id": "s4_sanitation", "title": "Sanitation & Hygiene", "raw_score": 17, "max_score": 20, "normalized": 85, "field_responses": {}, "remarks": "Outstanding cleanliness across facility. Regular sanitization schedule maintained. Water supply and disposal systems excellent.", "photo_paths": [], "skipped": false},
+      {"section_id": "s5_safety", "title": "Safety & Security", "raw_score": 16, "max_score": 20, "normalized": 80, "field_responses": {}, "remarks": "24/7 security system operational. CCTV surveillance comprehensive. Emergency protocols in place. Fire safety measures compliant.", "photo_paths": ["evidence/i26_s5.jpg"], "skipped": false}
+    ]
   }
 ]

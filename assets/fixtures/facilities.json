@@ -714,18 +714,7 @@
     "mandal_id": "bhongir",
     "village": "KPHB Phase 1, Kukatpally, Hyderabad",
     "lat": 17.491294,
-    "lng": 78.393504
-  },
-  {
-    "id": "f_test_002",
-    "name": "Manjeera Majestic Homes",
-    "type": "hostel",
-    "sub_type": "bc",
-    "department": "BC Welfare",
-    "gender": "Mixed",
-    "mandal_id": "choutuppal",
-    "village": "KPHB Phase 1, Kukatpally, Hyderabad",
-    "lat": 17.491294,
-    "lng": 78.393504
+    "lng": 78.393504,
+    "last_inspection_id": "i26"
   }
 ]
