@@ -596,12 +596,15 @@ class _RoleCategory {
   final String description;
   final Set<Role> roles;
   final bool initiallyExpanded;
+  /// If non-null, only shown when this module is active.
+  final AppModule? onlyFor;
 
   const _RoleCategory({
     required this.title,
     required this.description,
     required this.roles,
     this.initiallyExpanded = false,
+    this.onlyFor,
   });
 }
 
@@ -613,24 +616,48 @@ const _roleCategories = <_RoleCategory>[
     initiallyExpanded: true,
   ),
   _RoleCategory(
-    title: 'Mandal Level',
-    description: 'Mandal-level coordination and nodal operations',
+    title: 'Mandal & Nodal Level',
+    description: 'Additional Collectors, mandal coordination and nodal operations',
     roles: {Role.mandalAdmin, Role.mandalOfficer},
   ),
   _RoleCategory(
-    title: 'Field Operations',
-    description: 'On-ground inspections, audits, and supervisory checks',
-    roles: {Role.fieldOfficer, Role.inspectionSupervisor},
+    title: 'Department Admin',
+    description: 'Per-department admin for BC Welfare, SC Welfare, KGBV, etc.',
+    roles: {Role.departmentAdmin},
   ),
   _RoleCategory(
-    title: 'Facility',
-    description: 'Hostel, hospital, and facility-side administration',
+    title: 'Hostel Field Operations',
+    description: 'On-ground hostel inspections and welfare monitoring',
+    roles: {Role.fieldOfficer, Role.inspectionSupervisor, Role.welfareOfficer},
+    onlyFor: AppModule.hostel,
+  ),
+  _RoleCategory(
+    title: 'Hospital / Health',
+    description: 'DMHO, Dy. DMHO, and hospital field inspections',
+    roles: {Role.dmhoAdmin, Role.dyDmhoAdmin, Role.fieldOfficerHospital},
+    onlyFor: AppModule.hospital,
+  ),
+  _RoleCategory(
+    title: 'Facility Admin',
+    description: 'Hostel wardens and compliance portal',
     roles: {Role.facilityAdmin},
+    onlyFor: AppModule.hostel,
   ),
   _RoleCategory(
-    title: 'Public',
-    description: 'Citizen grievance filing and grievance review',
-    roles: {Role.publicUser, Role.grievanceOfficer},
+    title: 'Facility Admin',
+    description: 'Hospital superintendents',
+    roles: {Role.hospitalSuperintendent},
+    onlyFor: AppModule.hospital,
+  ),
+  _RoleCategory(
+    title: 'Complaint Users',
+    description: 'Students (hostel complaints) and citizens (hospital complaints)',
+    roles: {Role.studentUser, Role.citizenUser, Role.publicUser},
+  ),
+  _RoleCategory(
+    title: 'Grievance Officer',
+    description: 'Grievance review and resolution officers',
+    roles: {Role.grievanceOfficer},
   ),
 ];
 
@@ -638,7 +665,7 @@ const _roleCategories = <_RoleCategory>[
 // Grouped user list with expandable sections
 // ---------------------------------------------------------------------------
 
-class _GroupedUserList extends StatelessWidget {
+class _GroupedUserList extends ConsumerWidget {
   final List<User> users;
   final User? selected;
   final ValueChanged<User> onSelect;
@@ -650,10 +677,14 @@ class _GroupedUserList extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final module = ref.watch(moduleProvider);
+    final visibleCategories = _roleCategories
+        .where((c) => c.onlyFor == null || c.onlyFor == module)
+        .toList();
     return Column(
       children: [
-        for (final category in _roleCategories)
+        for (final category in visibleCategories)
           _buildSection(context, category),
       ],
     );

@@ -17,6 +17,7 @@ import 'widgets/escalation_tracker.dart';
 import 'widgets/facility_popup.dart';
 import 'widgets/filter_panel.dart';
 import 'widgets/mandal_bars.dart';
+import 'widgets/officer_workload_panel.dart';
 import 'widgets/reports_table.dart';
 import 'widgets/stat_card_row.dart';
 import 'widgets/trend_chart.dart';
@@ -36,7 +37,7 @@ class CollectorDashboardPage extends ConsumerStatefulWidget {
       _CollectorDashboardPageState();
 }
 
-enum _ViewMode { map, reports, trends, alerts, escalations }
+enum _ViewMode { map, reports, trends, alerts, escalations, workload }
 
 class _CollectorDashboardPageState
     extends ConsumerState<CollectorDashboardPage> {
@@ -212,6 +213,10 @@ class _CollectorDashboardPageState
                     value: _ViewMode.escalations,
                     icon: Icon(Icons.north_east, size: 16),
                     label: Text('Escalations')),
+                ButtonSegment(
+                    value: _ViewMode.workload,
+                    icon: Icon(Icons.people_alt_outlined, size: 16),
+                    label: Text('Officers')),
               ],
               selected: {_viewMode},
               onSelectionChanged: (s) =>
@@ -239,6 +244,12 @@ class _CollectorDashboardPageState
         );
       case _ViewMode.escalations:
         mainContent = const EscalationTracker();
+      case _ViewMode.workload:
+        mainContent = OfficerWorkloadPanel(
+          inspections: inspections,
+          userMap: userById,
+          facilityMap: {for (final f in facilities) f.id: f},
+        );
     }
 
     // Wrap in AnimatedSwitcher for smooth fade between map/reports/trends.

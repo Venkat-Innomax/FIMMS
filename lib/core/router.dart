@@ -6,11 +6,16 @@ import 'package:go_router/go_router.dart';
 import '../features/admin_dash/admin_dashboard_page.dart';
 import '../features/auth/forgot_password_page.dart';
 import '../features/auth/login_page.dart';
+import '../features/complaint/citizen_complaint_page.dart';
+import '../features/complaint/student_complaint_page.dart';
 import '../features/grievance/grievance_portal_page.dart';
 import '../features/grievance_admin/grievance_admin_page.dart';
 import '../features/collector_dash/collector_dashboard_page.dart';
 import '../features/compliance/compliance_portal_page.dart';
 import '../features/collector_dash/widgets/facility_detail_page.dart';
+import '../features/dept_admin_dash/dept_admin_dashboard_page.dart';
+import '../features/dmho_dash/dmho_dashboard_page.dart';
+import '../features/field_officer/inspection_history_page.dart';
 import '../features/field_officer/inspection_page.dart';
 import '../features/field_officer/institution_preview_page.dart';
 import '../features/field_officer/officer_home_page.dart';
@@ -20,6 +25,7 @@ import '../features/nodal_dash/nodal_dashboard_page.dart';
 import '../features/notifications/notifications_page.dart';
 import '../features/profile/profile_page.dart';
 import '../features/supervisor_dash/supervisor_dashboard_page.dart';
+import '../features/welfare_dash/welfare_officer_page.dart';
 import '../models/user.dart';
 import '../services/mock_auth_service.dart';
 
@@ -125,7 +131,32 @@ final routerProvider = Provider<GoRouter>((ref) {
               inspectionId: state.pathParameters['id']!,
             ),
           ),
+          GoRoute(
+            path: 'history',
+            builder: (context, state) => const InspectionHistoryPage(),
+          ),
         ],
+      ),
+
+      // ── Health / Hospital ────────────────────────────────────
+
+      GoRoute(
+        path: '/dmho',
+        builder: (context, state) => const DmhoDashboardPage(),
+      ),
+
+      // ── Department Admin ─────────────────────────────────────
+
+      GoRoute(
+        path: '/dept-admin',
+        builder: (context, state) => const DeptAdminDashboardPage(),
+      ),
+
+      // ── Welfare Officer ──────────────────────────────────────
+
+      GoRoute(
+        path: '/welfare',
+        builder: (context, state) => const WelfareOfficerPage(),
       ),
 
       // ── Facility-Side ────────────────────────────────────────
@@ -145,6 +176,17 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/grievance-admin',
         builder: (context, state) => const GrievanceAdminPage(),
       ),
+
+      // ── Complaint Flows ──────────────────────────────────────
+
+      GoRoute(
+        path: '/complaint/hostel',
+        builder: (context, state) => const StudentComplaintPage(),
+      ),
+      GoRoute(
+        path: '/complaint/hospital',
+        builder: (context, state) => const CitizenComplaintPage(),
+      ),
     ],
   );
 });
@@ -161,10 +203,26 @@ String _homeFor(User user) {
       return '/mandal/${user.mandalId ?? 'unknown'}';
     case Role.fieldOfficer:
       return '/officer';
+    case Role.fieldOfficerHospital:
+      return '/officer';
     case Role.inspectionSupervisor:
       return '/supervisor';
+    case Role.welfareOfficer:
+      return '/welfare';
+    case Role.dmhoAdmin:
+      return '/dmho';
+    case Role.dyDmhoAdmin:
+      return '/dmho';
+    case Role.departmentAdmin:
+      return '/dept-admin';
     case Role.facilityAdmin:
       return '/compliance';
+    case Role.hospitalSuperintendent:
+      return '/compliance';
+    case Role.studentUser:
+      return '/complaint/hostel';
+    case Role.citizenUser:
+      return '/complaint/hospital';
     case Role.publicUser:
       return '/grievance';
     case Role.grievanceOfficer:

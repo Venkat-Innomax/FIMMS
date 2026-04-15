@@ -24,12 +24,20 @@ class SubTypeLabels {
   SubTypeLabels._();
 
   static const Map<String, String> labels = {
-    'sw': 'Social Welfare (TSWREIS)',
-    'bc': 'BC Welfare (MJPTBCWREIS)',
+    'sw': 'TSSWR EIS (TSWREIS)',
+    'bc': 'BC Welfare',
     'min': 'Minority (TMREIS)',
     'tw': 'Tribal Welfare',
     'urs': 'Urban Residential',
     'other': 'Other',
+    'sc': 'SC Welfare',
+    'st': 'ST Welfare',
+    'kgbv': 'KGBV',
+    'mjptb': 'MJPTB CWREIS',
+    'tmreis': 'TMREIS',
+    'tsreis': 'TSREIS',
+    'tstwr': 'TSTWR EIS',
+    'wcw': 'Women & Child Welfare',
     'dh': 'District Hospital',
     'chc': 'Community Health Centre',
     'phc': 'Primary Health Centre',

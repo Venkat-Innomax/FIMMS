@@ -147,6 +147,28 @@ class FieldRenderer extends StatelessWidget {
           onChanged: onChanged,
         );
 
+      case FieldType.date:
+        return TextFormField(
+          initialValue: value?.toString() ?? '',
+          keyboardType: TextInputType.datetime,
+          decoration: const InputDecoration(
+            hintText: 'DD/MM/YYYY',
+            prefixIcon: Icon(Icons.calendar_today_outlined, size: 18),
+          ),
+          onChanged: onChanged,
+        );
+
+      case FieldType.time:
+        return TextFormField(
+          initialValue: value?.toString() ?? '',
+          keyboardType: TextInputType.datetime,
+          decoration: const InputDecoration(
+            hintText: 'HH:MM',
+            prefixIcon: Icon(Icons.access_time_outlined, size: 18),
+          ),
+          onChanged: onChanged,
+        );
+
       case FieldType.dropdown:
         return DropdownButtonFormField<String>(
           initialValue: value as String?,

@@ -181,6 +181,8 @@ class ScoringEngine {
 
       case FieldType.number:
       case FieldType.text:
+      case FieldType.date:
+      case FieldType.time:
       case FieldType.dropdown:
         return const _ScoreRule.excluded();
     }

@@ -7,6 +7,8 @@ enum FieldType {
   regularInterruptedNa,
   number,
   text,
+  date,
+  time,
   dropdown,
   staffTable,
 }
@@ -28,6 +30,10 @@ extension FieldTypeX on FieldType {
         return FieldType.number;
       case 'text':
         return FieldType.text;
+      case 'date':
+        return FieldType.date;
+      case 'time':
+        return FieldType.time;
       case 'dropdown':
         return FieldType.dropdown;
       case 'staff_table':
