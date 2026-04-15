@@ -531,30 +531,18 @@ class _VerifyResultsDialog extends StatelessWidget {
                     
                     try {
                       final uri = Uri.parse(mapsUrl);
-                      if (await canLaunchUrl(uri)) {
-                        // On web, use webOnlyWindowName to open in new tab
-                        await launchUrl(
-                          uri,
-                          mode: kIsWeb ? LaunchMode.platformDefault : LaunchMode.externalApplication,
-                          webOnlyWindowName: '_blank',
-                        );
-                      } else {
-                        // Fallback: show snackbar with URL
-                        if (context.mounted) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: const Text('Unable to open Google Maps. Please try again.'),
-                              backgroundColor: FimmsColors.danger,
-                            ),
-                          );
-                        }
-                      }
+                      // Directly launch without checking - works better across platforms
+                      await launchUrl(
+                        uri,
+                        mode: kIsWeb ? LaunchMode.platformDefault : LaunchMode.externalApplication,
+                        webOnlyWindowName: '_blank',
+                      );
                     } catch (e) {
                       print('Error opening Maps: $e');
                       if (context.mounted) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
-                            content: Text('Error: $e'),
+                            content: Text('Error opening Maps: $e'),
                             backgroundColor: FimmsColors.danger,
                           ),
                         );
