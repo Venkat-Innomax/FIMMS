@@ -901,5 +901,228 @@
     "mandal_id": "bhuvanagiri",
     "username": "7013405416",
     "password": "Welcome@2026"
+  },
+
+  {
+    "id": "u_addl_collector_rev",
+    "name": "Sri K. Venka Reddy",
+    "designation": "Additional Collector (Revenue)",
+    "role": "mandal_admin",
+    "mandal_id": null,
+    "username": "addl_rev",
+    "password": "Admin@2026"
+  },
+  {
+    "id": "u_addl_collector_lb",
+    "name": "Sri A. Bhaskar Rao",
+    "designation": "Additional Collector (Local Bodies)",
+    "role": "mandal_admin",
+    "mandal_id": null,
+    "username": "addl_lb",
+    "password": "Admin@2026"
+  },
+  {
+    "id": "u_admin_officer",
+    "name": "Sri K. Anji Reddy",
+    "designation": "Administrative Officer, Collectorate",
+    "role": "admin",
+    "mandal_id": null,
+    "username": "admin_ao",
+    "password": "Admin@2026"
+  },
+
+  {
+    "id": "u_dmho",
+    "name": "Dr. M. Manohar",
+    "designation": "District Medical & Health Officer (DMHO)",
+    "role": "dmho_admin",
+    "mandal_id": null,
+    "module_type": "hospital",
+    "username": "dmho_manohar",
+    "password": "Health@2026"
+  },
+  {
+    "id": "u_dy_dmho_bhongir",
+    "name": "Dr. Shilipini",
+    "designation": "Dy. DMHO — Bhongir Zone",
+    "role": "dy_dmho_admin",
+    "mandal_id": "bhongir",
+    "module_type": "hospital",
+    "username": "dy_dmho_bhongir",
+    "password": "Health@2026"
+  },
+  {
+    "id": "u_dy_dmho_choutuppal",
+    "name": "Dr. L. Yashoda",
+    "designation": "Dy. DMHO — Choutuppal Zone",
+    "role": "dy_dmho_admin",
+    "mandal_id": "choutuppal",
+    "module_type": "hospital",
+    "username": "dy_dmho_choutuppal",
+    "password": "Health@2026"
+  },
+
+  {
+    "id": "u_welfare_1",
+    "name": "Sri K. Nasimha Rao",
+    "designation": "District Welfare Officer",
+    "role": "welfare_officer",
+    "mandal_id": null,
+    "module_type": "hostel",
+    "username": "welfare_officer",
+    "password": "Admin@2026"
+  },
+
+  {
+    "id": "u_hosp_supt",
+    "name": "Dr. S. Ramaiah",
+    "designation": "Medical Superintendent — District Hospital, Bhongir",
+    "role": "hospital_superintendent",
+    "mandal_id": "bhongir",
+    "facility_id": "f_p01",
+    "module_type": "hospital",
+    "username": "supt_dh_bhongir",
+    "password": "Health@2026"
+  },
+
+  {
+    "id": "u_field_hosp_1",
+    "name": "Sri T. Narasimha Rao",
+    "designation": "Hospital Field Inspector — Bhongir Zone",
+    "role": "field_officer_hospital",
+    "mandal_id": "bhongir",
+    "module_type": "hospital",
+    "username": "hosp_field_bhongir",
+    "password": "Health@2026"
+  },
+
+  {
+    "id": "u_student_demo",
+    "name": "Student Demo",
+    "designation": "Student",
+    "role": "student_user",
+    "mandal_id": null,
+    "username": "student_demo",
+    "password": "Demo@2026"
+  },
+  {
+    "id": "u_citizen_demo",
+    "name": "Citizen Demo",
+    "designation": "Citizen",
+    "role": "citizen_user",
+    "mandal_id": null,
+    "username": "citizen_demo",
+    "password": "Demo@2026"
+  },
+
+  {
+    "id": "u_dept_bc",
+    "name": "BC Welfare Dept Admin",
+    "designation": "Department Admin — BC Welfare",
+    "role": "department_admin",
+    "department": "BC Welfare",
+    "mandal_id": null,
+    "username": "dept_bc",
+    "password": "Dept@2026"
+  },
+  {
+    "id": "u_dept_sc",
+    "name": "SC Welfare Dept Admin",
+    "designation": "Department Admin — SC Welfare",
+    "role": "department_admin",
+    "department": "SC Welfare",
+    "mandal_id": null,
+    "username": "dept_sc",
+    "password": "Dept@2026"
+  },
+  {
+    "id": "u_dept_st",
+    "name": "ST Welfare Dept Admin",
+    "designation": "Department Admin — ST Welfare",
+    "role": "department_admin",
+    "department": "ST Welfare",
+    "mandal_id": null,
+    "username": "dept_st",
+    "password": "Dept@2026"
+  },
+  {
+    "id": "u_dept_kgbv",
+    "name": "KGBV Dept Admin",
+    "designation": "Department Admin — KGBV",
+    "role": "department_admin",
+    "department": "KGBV",
+    "mandal_id": null,
+    "username": "dept_kgbv",
+    "password": "Dept@2026"
+  },
+  {
+    "id": "u_dept_mjptb",
+    "name": "MJPTB CWREIS Dept Admin",
+    "designation": "Department Admin — MJPTB CWREIS",
+    "role": "department_admin",
+    "department": "MJPTB CWREIS",
+    "mandal_id": null,
+    "username": "dept_mjptb",
+    "password": "Dept@2026"
+  },
+  {
+    "id": "u_dept_tsswr",
+    "name": "TSSWR EIS Dept Admin",
+    "designation": "Department Admin — TSSWR EIS",
+    "role": "department_admin",
+    "department": "TSSWR EIS",
+    "mandal_id": null,
+    "username": "dept_tsswr",
+    "password": "Dept@2026"
+  },
+  {
+    "id": "u_dept_tmreis",
+    "name": "TMREIS Dept Admin",
+    "designation": "Department Admin — TMREIS",
+    "role": "department_admin",
+    "department": "TMREIS",
+    "mandal_id": null,
+    "username": "dept_tmreis",
+    "password": "Dept@2026"
+  },
+  {
+    "id": "u_dept_tsreis",
+    "name": "TSREIS Dept Admin",
+    "designation": "Department Admin — TSREIS",
+    "role": "department_admin",
+    "department": "TSREIS",
+    "mandal_id": null,
+    "username": "dept_tsreis",
+    "password": "Dept@2026"
+  },
+  {
+    "id": "u_dept_tstwr",
+    "name": "TSTWR EIS Dept Admin",
+    "designation": "Department Admin — TSTWR EIS",
+    "role": "department_admin",
+    "department": "TSTWR EIS",
+    "mandal_id": null,
+    "username": "dept_tstwr",
+    "password": "Dept@2026"
+  },
+  {
+    "id": "u_dept_urs",
+    "name": "URS Dept Admin",
+    "designation": "Department Admin — URS",
+    "role": "department_admin",
+    "department": "URS",
+    "mandal_id": null,
+    "username": "dept_urs",
+    "password": "Dept@2026"
+  },
+  {
+    "id": "u_dept_wcw",
+    "name": "Women & Child Welfare Dept Admin",
+    "designation": "Department Admin — Women & Child Welfare",
+    "role": "department_admin",
+    "department": "Women & Child Welfare",
+    "mandal_id": null,
+    "username": "dept_wcw",
+    "password": "Dept@2026"
   }
 ]

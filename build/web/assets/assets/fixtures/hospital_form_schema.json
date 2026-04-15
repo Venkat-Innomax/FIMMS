@@ -1,10 +1,38 @@
 {
   "id": "hospital",
-  "title": "Government Hospital Inspection",
+  "title": "Government Hospital / Health Facility Inspection — Yadadri Bhuvanagiri District",
   "sections": [
     {
+      "id": "hp1_facility",
+      "title": "HP1 — Facility Details",
+      "max_score": 0,
+      "fields": [
+        { "id": "facility_name",     "label": "Name of the Facility",                                           "type": "text",     "scored": false },
+        { "id": "facility_type",     "label": "Facility Type",                                                  "type": "dropdown", "scored": false, "options": ["District Hospital", "CHC", "PHC", "UPHC", "Other"] },
+        { "id": "mandal",            "label": "Mandal",                                                         "type": "text",     "scored": false },
+        { "id": "address",           "label": "Address",                                                        "type": "text",     "scored": false },
+        { "id": "inspecting_officer","label": "Name of Inspecting Officer",                                     "type": "text",     "scored": false },
+        { "id": "inspection_date",   "label": "Date of Inspection",                                             "type": "date",     "scored": false },
+        { "id": "inspection_time",   "label": "Time of Inspection",                                             "type": "text",     "scored": false }
+      ]
+    },
+    {
+      "id": "hp3_services",
+      "title": "HP3 — Service Availability",
+      "max_score": 15,
+      "fields": [
+        { "id": "opd_available",       "label": "OPD services functional",                  "type": "yes_no",       "scored": true, "weight": 2 },
+        { "id": "ipd_available",       "label": "IPD / in-patient services functional",     "type": "yes_no_na",    "scored": true, "weight": 2 },
+        { "id": "emergency_service",   "label": "Emergency / casualty services available",  "type": "yes_no_na",    "scored": true, "weight": 2 },
+        { "id": "delivery_service",    "label": "Delivery / maternity services available",  "type": "yes_no_na",    "scored": true, "weight": 2, "show_for": ["dh", "chc"] },
+        { "id": "lab_service",         "label": "Lab / diagnostic services available",      "type": "yes_no_na",    "scored": true, "weight": 2 },
+        { "id": "pharmacy_service",    "label": "Pharmacy open and functional",             "type": "yes_no",       "scored": true, "weight": 2 },
+        { "id": "ambulance_service",   "label": "Ambulance / referral transport available", "type": "yes_no_na",    "scored": true, "weight": 3 }
+      ]
+    },
+    {
       "id": "s1_infra",
-      "title": "Infrastructure & Wards",
+      "title": "HP4 — Infrastructure",
       "max_score": 15,
       "fields": [
         { "id": "opd_condition", "label": "OPD area condition", "type": "good_avg_poor", "scored": true, "weight": 2 },
@@ -19,7 +47,7 @@
     },
     {
       "id": "s2_staff",
-      "title": "Staff & Availability",
+      "title": "HP2 — Human Resources & Staff",
       "max_score": 25,
       "fields": [
         {
@@ -46,7 +74,7 @@
     },
     {
       "id": "s3_medicines",
-      "title": "Medicines & Equipment",
+      "title": "HP6 — Medicines & Equipment",
       "max_score": 25,
       "fields": [
         { "id": "essential_meds", "label": "Essential medicines available", "type": "avail_partial_na", "scored": true, "weight": 4 },
@@ -60,7 +88,7 @@
     },
     {
       "id": "s4_sanitation",
-      "title": "Sanitation & Hygiene",
+      "title": "HP5 — Cleanliness / Sanitation / IPC",
       "max_score": 15,
       "fields": [
         { "id": "ward_cleanliness", "label": "Ward cleanliness", "type": "good_avg_poor", "scored": true, "weight": 3 },
@@ -73,7 +101,7 @@
     },
     {
       "id": "s5_records",
-      "title": "Records & Administration",
+      "title": "HP8 — Registers & Governance",
       "max_score": 10,
       "fields": [
         { "id": "opd_register", "label": "OPD patient register maintained", "type": "yes_no", "scored": true, "weight": 1.5 },
@@ -86,7 +114,7 @@
     },
     {
       "id": "s6_utilities",
-      "title": "Utilities & Safety",
+      "title": "HP7 — Labour Room / OT / Utilities & Safety",
       "max_score": 10,
       "fields": [
         { "id": "power_backup", "label": "Power backup / generator available", "type": "yes_no", "scored": true, "weight": 1.5 },
@@ -95,6 +123,31 @@
         { "id": "fire_safety", "label": "Fire safety equipment available", "type": "yes_no", "scored": true, "weight": 1.5 },
         { "id": "fire_valid", "label": "Fire equipment within validity", "type": "yes_no", "scored": true, "weight": 1.5 },
         { "id": "emergency_contacts", "label": "Emergency contact list displayed", "type": "yes_no", "scored": true, "weight": 2 }
+      ]
+    },
+    {
+      "id": "hp9_patient",
+      "title": "HP9 — Patient / Citizen Service",
+      "max_score": 10,
+      "fields": [
+        { "id": "grievance_mechanism", "label": "Grievance / complaint mechanism available",         "type": "yes_no",        "scored": true, "weight": 2 },
+        { "id": "patient_water",       "label": "Drinking water available for patients",             "type": "yes_no",        "scored": true, "weight": 2 },
+        { "id": "waiting_area",        "label": "Adequate waiting area for patients / attendants",   "type": "yes_no",        "scored": true, "weight": 2 },
+        { "id": "help_desk",           "label": "Help desk / reception functional",                  "type": "yes_no_na",     "scored": true, "weight": 2 },
+        { "id": "patient_toilet",      "label": "Patient toilet accessible and functional",          "type": "avail_partial_na","scored": true, "weight": 2 }
+      ]
+    },
+    {
+      "id": "hp10_findings",
+      "title": "HP10 — Findings of the Inspecting Officer",
+      "max_score": 0,
+      "requires_remarks": true,
+      "fields": [
+        { "id": "critical_findings",   "label": "Critical findings observed",                        "type": "text",     "scored": false, "helper": "Describe critical non-compliances found during the inspection" },
+        { "id": "severity",            "label": "Severity level",                                    "type": "dropdown", "scored": false, "options": ["Critical", "High", "Medium", "Low", "None"] },
+        { "id": "compliance_action",   "label": "Compliance action required",                        "type": "text",     "scored": false },
+        { "id": "reinspect_required",  "label": "Reinspection required",                             "type": "yes_no",   "scored": false },
+        { "id": "escalation_required", "label": "Escalation to DMHO required",                      "type": "yes_no",   "scored": false }
       ]
     }
   ]

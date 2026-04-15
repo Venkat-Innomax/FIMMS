@@ -3,6 +3,26 @@
   "title": "Inspection Report of Welfare Hostels / Residential Institutions — Yadadri Bhuvanagiri District",
   "sections": [
     {
+      "id": "s1_officer",
+      "title": "Details of Inspecting Officer",
+      "max_score": 0,
+      "fields": [
+        { "id": "officer_designation", "label": "Designation",             "type": "text", "scored": false },
+        { "id": "officer_mobile",      "label": "Mobile Number",            "type": "text", "scored": false },
+        { "id": "inspection_date",     "label": "Date of Inspection",       "type": "date", "scored": false },
+        { "id": "inspection_time",     "label": "Time of Inspection",       "type": "text", "scored": false }
+      ]
+    },
+    {
+      "id": "s2_institution",
+      "title": "Details of Hostel / Residential Institution",
+      "max_score": 0,
+      "fields": [
+        { "id": "institution_name",     "label": "Name of the Institution",      "type": "text",     "scored": false },
+        { "id": "institution_location", "label": "Location of the Institution",   "type": "text",     "scored": false }
+      ]
+    },
+    {
       "id": "s3_hwo",
       "title": "Functioning of Hostel Welfare Officer",
       "max_score": 10,
@@ -14,8 +34,7 @@
         { "id": "students_present","label": "No. Present at the Time of Inspection",          "type": "number", "scored": false },
         { "id": "records_maintained","label": "Is HWO / Principal maintaining records regularly", "type": "yes_no", "scored": true, "weight": 3 },
         { "id": "meetings_regular","label": "Is HWO / Principal convening meetings regularly", "type": "yes_no", "scored": true, "weight": 2 },
-        { "id": "parent_meeting",  "label": "Parent Committee meeting held on (date)",        "type": "text",   "scored": false },
-        { "id": "police_patrolling","label": "Whether Police Patrolling is conducted regularly and point book is maintained", "type": "yes_no", "scored": true, "weight": 2 }
+        { "id": "parent_meeting",  "label": "Parent Committee meeting held on (date)",        "type": "text",   "scored": false }
       ]
     },
     {
@@ -134,6 +153,23 @@
         { "id": "menu_followed",   "label": "Whether the Menu is followed on the day of visit", "type": "yes_no","scored": false },
         { "id": "kitchen_clean",   "label": "Whether Kitchen and Dining areas are cleaned", "type": "yes_no",   "scored": false },
         { "id": "kitchen_wash",    "label": "Whether kitchen wash area is clean and free from algae and foul smell", "type": "yes_no", "scored": false }
+      ]
+    },
+    {
+      "id": "s11_meetings",
+      "title": "Conducting Meetings",
+      "max_score": 5,
+      "fields": [
+        { "id": "hwo_meetings",    "label": "Is HWO / Principal / Special Officer convening meetings regularly", "type": "yes_no", "scored": true, "weight": 3 },
+        { "id": "parent_comm",     "label": "Parent Committee meeting held on (date)",                           "type": "text",   "scored": false }
+      ]
+    },
+    {
+      "id": "s12_police",
+      "title": "Police Patrolling",
+      "max_score": 5,
+      "fields": [
+        { "id": "police_patrolling", "label": "Whether Police Patrolling is conducted regularly and point book is maintained", "type": "yes_no", "scored": true, "weight": 5 }
       ]
     },
     {
