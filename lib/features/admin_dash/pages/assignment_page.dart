@@ -4,6 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:url_launcher/url_launcher.dart';
+// ignore: avoid_web_libraries_in_flutter
+import 'dart:html' as html;
 
 import '../../../core/theme.dart';
 import '../../../data/repositories/assignment_repository.dart';
@@ -386,24 +388,7 @@ class _VerifyResultsDialog extends StatelessWidget {
     final mapsUrl = 'https://www.google.com/maps/?q=$lat,$lng';
     
     return GestureDetector(
-      onTap: () async {
-        // For web, try to launch the URL directly
-        try {
-          await launchUrl(Uri.parse(mapsUrl), mode: LaunchMode.platformDefault);
-        } catch (e) {
-          // If that fails, just log it  - user can see the URL and copy if needed
-          print('Could not open Maps: $e');
-          // Show a snackbar with the URL
-          if (context.mounted) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: const Text('Click the link or search "Manjeera Majestic Homes" in Google Maps'),
-                action: SnackBarAction(label: 'View Map', onPressed: () {}),
-              ),
-            );
-          }
-        }
-      },
+      onTap: () => _openMapInNewTab(mapsUrl),
       child: Container(
         width: double.infinity,
         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
@@ -432,6 +417,23 @@ class _VerifyResultsDialog extends StatelessWidget {
       ),
     );
   }
+
+  void _openMapInNewTab(String url) {
+    if (kIsWeb) {
+      // On web, use JavaScript window.open directly via html library
+      try {
+        html.window.open(url, '_blank');
+      } catch (e) {
+        print('Error opening map: $e');
+        // Fallback to url_launcher if html approach fails
+        launchUrl(Uri.parse(url), mode: LaunchMode.platformDefault).catchError((_) {});
+      }
+    } else {
+      // On mobile/desktop, use url_launcher
+      launchUrl(Uri.parse(url), mode: LaunchMode.platformDefault).catchError((_) {});
+    }
+  }
+
 
   Widget _buildNoInspection() {
     return Container(
